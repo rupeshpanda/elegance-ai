@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #FAFAF8;
+  --navy: #0C1A2E;
+  --indigo: #4338CA;
+  --indigo-dark: #3730A3;
+  --ink: #111111;
+  --border: #E8E8E4;
+  --muted: #6B7280;
+  --card: #FFFFFF;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-navy: var(--navy);
+  --color-indigo: var(--indigo);
+  --color-indigo-dark: var(--indigo-dark);
+  --color-ink: var(--ink);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --font-serif: var(--font-dm-serif);
+  --font-sans: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
