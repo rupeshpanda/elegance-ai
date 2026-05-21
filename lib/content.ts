@@ -6,14 +6,14 @@
 export const site = {
   name:     "Elegance AI",
   domain:   "eleganceai.ai",
-  linkedin: "https://linkedin.com/in/rupeshpanda",
+  linkedin: "https://www.linkedin.com/in/rupeshpandaispmp/",
   email:    "rupeshpanda@gmail.com",
 };
 
 export const hero = {
   eyebrow: "Enterprise AI · Independent Perspective",
-  headline: ["Helping CIOs navigate", "AI in the enterprise", "landscape."],
-  sub: `I write about what it actually takes to integrate AI into complex enterprise environments —
+  headline: ["Helping Business Leaders navigate", "AI in the enterprise", "landscape."],
+  sub: `I write about what it actually takes to integrate AI into complex enterprise environments -
     existing SAP landscapes, legacy architecture, governance constraints, and the real economics
     of inference at scale. No vendor agenda. No hype. Just honest analysis from someone who
     lives in these systems.`,
@@ -30,7 +30,7 @@ export const hero = {
     { value: "Free", label: "Always" },
   ],
   quote: {
-    text: "Finally — AI writing that speaks to the realities of enterprise IT, not just startup greenfield. This is what CIOs actually need to read.",
+    text: "Finally - AI writing that speaks to the realities of enterprise IT, not just startup greenfield. This is what CIOs actually need to read.",
     cite: "VP of Technology, Fortune 500",
   },
 };
@@ -213,7 +213,7 @@ export const contact = {
   sub:      "If you're a CIO, technology leader, or practitioner thinking through AI integration challenges — I'm genuinely happy to have a candid conversation. No pitch. No invoice. Just an honest exchange with someone who finds this space fascinating.",
   links: [
     { key: "Email",    val: "rupeshpanda@gmail.com",       url: "mailto:rupeshpanda@gmail.com" },
-    { key: "LinkedIn", val: "linkedin.com/in/rupeshpanda", url: "https://linkedin.com/in/rupeshpanda" },
+    { key: "LinkedIn", val: "https://www.linkedin.com/in/rupeshpandaispmp/", url: "https://www.linkedin.com/in/rupeshpandaispmp/" },
     { key: "Location", val: "Frisco, Dallas TX",           url: "#" },
     { key: "Approach", val: "Pro bono — no charge, ever",  url: "#" },
   ],
