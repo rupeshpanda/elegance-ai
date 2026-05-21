@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { about } from "@/lib/content";
 
 function renderParagraph(text: string) {
@@ -39,15 +40,18 @@ export default function About() {
             ))}
           </div>
 
-          <div className="bg-card border border-border rounded-2xl p-8 sticky top-24">
+          <div className="bg-card border border-border rounded-2xl overflow-hidden sticky top-24">
+            <div className="relative w-full aspect-[4/3]">
+              <Image
+                src="/rupesh.jpg.png"
+                alt="Rupesh Panda"
+                fill
+                className="object-cover object-top"
+                sizes="300px"
+              />
+            </div>
+            <div className="p-8">
             <div className="mb-6 pb-6 border-b border-border">
-              <div className="w-12 h-12 bg-indigo/10 rounded-full flex items-center justify-center mb-4">
-                <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
-                  <polygon points="20,2 38,20 20,38 2,20" fill="#4338CA" />
-                  <polygon points="20,8 32,20 20,32 8,20" fill="#EEF2FF" />
-                  <polygon points="20,14 26,20 20,26 14,20" fill="#4338CA" />
-                </svg>
-              </div>
               <div className="text-sm font-semibold text-ink">Rupesh Panda</div>
               <div className="text-xs text-muted mt-0.5">Enterprise AI Practitioner</div>
             </div>
@@ -61,6 +65,7 @@ export default function About() {
                 </div>
               ))}
             </dl>
+            </div>
           </div>
         </div>
       </div>
