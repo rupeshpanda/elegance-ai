@@ -12,7 +12,7 @@ export const site = {
 
 export const hero = {
   eyebrow: "Enterprise AI · Independent Perspective",
-  headline: ["What enterprise AI", "actually takes."],
+  headline: ["Helping leaders cut", "through AI noise."],
   sub: `I write about what it actually takes to integrate AI into complex enterprise environments -
     existing SAP landscapes, legacy architecture, governance constraints, and the real economics
     of inference at scale. No vendor agenda. No hype. Just honest analysis from someone who
