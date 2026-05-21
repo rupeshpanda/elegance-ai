@@ -12,7 +12,7 @@ export const site = {
 
 export const hero = {
   eyebrow: "Enterprise AI · Independent Perspective",
-  headline: ["Helping leaders cut", "through AI noise."],
+  headline: ["Enterprise AI.", "Independent.", "No agenda."],
   sub: `I write about what it actually takes to integrate AI into complex enterprise environments -
     existing SAP landscapes, legacy architecture, governance constraints, and the real economics
     of inference at scale. No vendor agenda. No hype. Just honest analysis from someone who
@@ -168,7 +168,7 @@ export const about = {
   eyebrow:  "About",
   headline: "Why I write.\nWhy I share.",
   paragraphs: [
-    "I've spent 25 years running large-scale IT and SAP transformation programs for Fortune 500 clients — the kind with $100M+ budgets, multi-year timelines, and very little room for vendor hype. I currently lead SAP S/4HANA Greenfield initiatives and advise CXO and business leaders on embedding AI into existing enterprise landscapes. That's the experience this site is written from.",
+    "I've spent 25 years running large-scale IT and SAP transformation programs for Fortune 500 clients — the kind with $100M+ budgets, multi-year timelines, and very little room for vendor hype. I currently lead SAP S/4HANA Greenfield initiatives and advise CXO and business leaders on embedding AI into existing enterprise landscapes. I graduated from NIT Calicut, one of India's premier technology institutions, and hold an MBA and MS in IT Management from Jindal School of Management at UT Dallas. I'm a PhD Scholar at IIM India and Bordeaux University, France, where my research focuses on the application of AI in enterprises. That's the experience this site is written from.",
     "The question I hear most often from CIOs and technology leaders is not *\"should we do AI?\"* — that decision has already been made. The question is **\"how do we integrate AI into what we already have\"** — and that question is much harder than the vendors acknowledge.",
     "The complexity is real. Existing SAP landscapes, legacy integration layers, data governance obligations, inference economics at scale, the governance implications of autonomous agents — these are not problems that resolve with a SaaS subscription. They require **clear thinking, architectural discipline, and honest analysis** of trade-offs.",
     "I write about these problems because I find them genuinely fascinating, and because I believe the enterprise technology community deserves more independent analysis and fewer vendor-sponsored perspectives. Everything I publish here is written from my own observation and experience — no sponsorship, no affiliate arrangements.",
@@ -177,7 +177,8 @@ export const about = {
   facts: [
     { key: "Experience",  val: "25 years · Enterprise IT & SAP transformation" },
     { key: "Background",  val: "Cognizant · Capgemini · Hitachi" },
-    { key: "Education",   val: "NIT Calicut · Jindal MBA · UT Dallas MSITM · IIM & Bordeaux PhD/DBA Scholar" },
+    { key: "Education",   val: "B.Tech, NIT Calicut · MBA & MS (IT Management), Jindal School of Management / UT Dallas" },
+    { key: "Research",    val: "PhD Scholar, IIM India & Bordeaux University, France · AI Applications in Enterprise" },
     { key: "Location",    val: "Frisco, Dallas TX" },
     { key: "Community",   val: "The AI Edge — free weekly sessions" },
     { key: "Approach",    val: "Pro bono — no charge, no agenda" },
