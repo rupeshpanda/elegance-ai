@@ -9,7 +9,7 @@ export default function Perspectives() {
             <p className="text-xs font-semibold tracking-widest text-indigo uppercase mb-4">
               {perspectives.eyebrow}
             </p>
-            <h2 className="font-serif text-4xl md:text-5xl text-navy leading-tight whitespace-pre-line">
+            <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight whitespace-pre-line">
               {perspectives.headline}
             </h2>
           </div>

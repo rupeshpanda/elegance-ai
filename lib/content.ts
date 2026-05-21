@@ -12,7 +12,7 @@ export const site = {
 
 export const hero = {
   eyebrow: "Enterprise AI · Independent Perspective",
-  headline: ["The real work", "of enterprise AI."],
+  headline: ["What enterprise AI", "actually takes."],
   sub: `I write about what it actually takes to integrate AI into complex enterprise environments -
     existing SAP landscapes, legacy architecture, governance constraints, and the real economics
     of inference at scale. No vendor agenda. No hype. Just honest analysis from someone who
@@ -168,18 +168,19 @@ export const about = {
   eyebrow:  "About",
   headline: "Why I write.\nWhy I share.",
   paragraphs: [
-    "I work full-time in the technology industry, at the intersection of enterprise systems and emerging AI capability. The question I hear most often from CIOs and technology leaders is not *\"should we do AI?\"* — that decision has already been made. The question is **\"how do we integrate AI into what we already have\"** — and that question is much harder than the vendors acknowledge.",
+    "I've spent 25 years running large-scale IT and SAP transformation programs for Fortune 500 clients — the kind with $100M+ budgets, multi-year timelines, and very little room for vendor hype. I currently lead SAP S/4HANA Greenfield initiatives and advise CXO and business leaders on embedding AI into existing enterprise landscapes. That's the experience this site is written from.",
+    "The question I hear most often from CIOs and technology leaders is not *\"should we do AI?\"* — that decision has already been made. The question is **\"how do we integrate AI into what we already have\"** — and that question is much harder than the vendors acknowledge.",
     "The complexity is real. Existing SAP landscapes, legacy integration layers, data governance obligations, inference economics at scale, the governance implications of autonomous agents — these are not problems that resolve with a SaaS subscription. They require **clear thinking, architectural discipline, and honest analysis** of trade-offs.",
     "I write about these problems because I find them genuinely fascinating, and because I believe the enterprise technology community deserves more independent analysis and fewer vendor-sponsored perspectives. Everything I publish here is written from my own observation and experience — no sponsorship, no affiliate arrangements.",
     "**Everything I share is pro bono.** I do this in my spare time because I believe clear thinking about enterprise AI should be accessible to the leaders who need it most — not gated behind a consulting retainer.",
   ],
   facts: [
-    { key: "Location",   val: "Frisco, Dallas TX" },
-    { key: "Focus",      val: "Enterprise AI integration & architecture" },
-    { key: "Topics",     val: "Agentic AI · SAP Joule · Context Engineering · Inference Economics" },
-    { key: "Community",  val: "The AI Edge — free weekly sessions" },
-    { key: "Publishing", val: "Independent perspectives on LinkedIn" },
-    { key: "Approach",   val: "Pro bono — no charge, no agenda" },
+    { key: "Experience",  val: "25 years · Enterprise IT & SAP transformation" },
+    { key: "Background",  val: "Cognizant · Capgemini · Hitachi" },
+    { key: "Education",   val: "NIT Calicut · Jindal MBA · UT Dallas MSITM · IIM & Bordeaux PhD/DBA Scholar" },
+    { key: "Location",    val: "Frisco, Dallas TX" },
+    { key: "Community",   val: "The AI Edge — free weekly sessions" },
+    { key: "Approach",    val: "Pro bono — no charge, no agenda" },
   ],
 };
 

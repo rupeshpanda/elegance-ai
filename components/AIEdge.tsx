@@ -8,7 +8,7 @@ export default function AIEdge() {
           <p className="text-xs font-semibold tracking-widest text-indigo uppercase mb-4">
             {aiEdge.eyebrow}
           </p>
-          <h2 className="font-serif text-4xl md:text-5xl leading-tight mb-6">
+          <h2 className="font-serif text-5xl md:text-6xl leading-tight mb-6">
             {aiEdge.headline.map((line, i) => (
               <span
                 key={i}

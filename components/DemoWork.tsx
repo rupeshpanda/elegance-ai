@@ -8,7 +8,7 @@ export default function DemoWork() {
           <p className="text-xs font-semibold tracking-widest text-indigo uppercase mb-4">
             {work.eyebrow}
           </p>
-          <h2 className="font-serif text-4xl md:text-5xl text-navy leading-tight whitespace-pre-line mb-5">
+          <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight whitespace-pre-line mb-5">
             {work.headline}
           </h2>
           <p className="text-base text-muted leading-relaxed">{work.sub}</p>

@@ -8,7 +8,7 @@ export default function WhatIShare() {
           <p className="text-xs font-semibold tracking-widest text-indigo uppercase mb-4">
             {whatIShare.eyebrow}
           </p>
-          <h2 className="font-serif text-4xl md:text-5xl text-navy leading-tight mb-5 whitespace-pre-line">
+          <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight mb-5 whitespace-pre-line">
             {whatIShare.headline}
           </h2>
           <p className="text-base text-muted leading-relaxed">{whatIShare.sub}</p>

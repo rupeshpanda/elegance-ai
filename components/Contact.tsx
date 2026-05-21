@@ -17,7 +17,7 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitted(true);
   }
@@ -30,7 +30,7 @@ export default function Contact() {
             <p className="text-xs font-semibold tracking-widest text-indigo uppercase mb-4">
               {contact.eyebrow}
             </p>
-            <h2 className="font-serif text-4xl md:text-5xl text-navy leading-tight mb-6 whitespace-pre-line">
+            <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight mb-6 whitespace-pre-line">
               {contact.headline}
             </h2>
             <p className="text-base text-muted leading-relaxed mb-10">{contact.sub}</p>
