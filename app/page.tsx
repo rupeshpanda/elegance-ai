@@ -7,21 +7,36 @@ import About from "@/components/About";
 import AIEdge from "@/components/AIEdge";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import {
+  getSite, getHero, getWhatIShare, getPerspectivesSection,
+  getWorkSection, getAbout, getAiEdge, getContact,
+  getPerspectives, getWork,
+} from "@/lib/reader";
 
-export default function Home() {
+export default async function Home() {
+  const [
+    site, hero, whatIShare, perspectivesSection,
+    workSection, about, aiEdge, contact,
+    articles, projects,
+  ] = await Promise.all([
+    getSite(), getHero(), getWhatIShare(), getPerspectivesSection(),
+    getWorkSection(), getAbout(), getAiEdge(), getContact(),
+    getPerspectives(), getWork(),
+  ]);
+
   return (
     <>
-      <Nav />
+      <Nav site={site} />
       <main>
-        <Hero />
-        <WhatIShare />
-        <Perspectives />
-        <DemoWork />
-        <About />
-        <AIEdge />
-        <Contact />
+        <Hero data={hero} />
+        <WhatIShare data={whatIShare} />
+        <Perspectives section={perspectivesSection} articles={articles} />
+        <DemoWork section={workSection} projects={projects} />
+        <About data={about} />
+        <AIEdge data={aiEdge} />
+        <Contact data={contact} />
       </main>
-      <Footer />
+      <Footer site={site} />
     </>
   );
 }

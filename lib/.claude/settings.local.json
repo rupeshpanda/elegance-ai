@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/rupes/OneDrive/Desktop/000-AGENTIC AI/elegance-ai/**)",
+      "Bash(node -e \"const k = require\\('./node_modules/@keystatic/next/dist/keystatic-next-api.js'\\); console.log\\(Object.keys\\(k\\)\\)\")",
+      "Bash(node -e \"const k = require\\('c:/Users/rupes/OneDrive/Desktop/000-AGENTIC AI/elegance-ai/node_modules/@keystatic/next/dist/keystatic-next-api.js'\\); const fn = k.makeAPIRouteHandler; console.log\\(fn.toString\\(\\).substring\\(0, 300\\)\\)\")"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+eyebrow: 'Enterprise AI · Independent Perspective'
+headline:
+  - 'Enterprise AI.'
+  - 'Independent.'
+  - 'No agenda.'
+sub: >-
+  I write about what it actually takes to integrate AI into complex enterprise
+  environments - existing SAP landscapes, legacy architecture, governance
+  constraints, and the real economics of inference at scale. No vendor agenda.
+  No hype. Just honest analysis from someone who lives in these systems.
+cta1Label: Read my thinking
+cta1Href: '#perspectives'
+cta2Label: Explore demos
+cta2Href: '#work'
+bylineName: Rupesh Panda
+bylineRole: 'Enterprise AI Practitioner · Frisco, Dallas TX'
+stats:
+  - value: '8'
+    label: Topics covered
+  - value: '4'
+    label: Demo systems built
+  - value: '100'
+    label: AI Edge members
+  - value: Free
+    label: Always
+quoteText: >-
+  Finally - AI writing that speaks to the realities of enterprise IT, not just
+  startup greenfield. This is what CIOs actually need to read.
+quoteCite: 'VP of Technology, Fortune 500'

@@ -1,4 +1,4 @@
-import { site } from "@/lib/content";
+type Site = { name: string };
 
 const footerLinks = [
   { label: "Perspectives", href: "#perspectives" },
@@ -8,7 +8,7 @@ const footerLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-export default function Footer() {
+export default function Footer({ site }: { site: Site }) {
   return (
     <footer className="border-t border-border px-6 py-10">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
@@ -25,11 +25,7 @@ export default function Footer() {
 
         <nav className="flex flex-wrap justify-center gap-6">
           {footerLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-[11px] text-muted hover:text-ink transition-colors"
-            >
+            <a key={link.href} href={link.href} className="text-[11px] text-muted hover:text-ink transition-colors">
               {link.label}
             </a>
           ))}

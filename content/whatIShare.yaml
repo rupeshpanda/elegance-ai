@@ -1,0 +1,32 @@
+eyebrow: What you'll find here
+headline: "Three things I do.\nAll of it free."
+sub: >-
+  I write to share what I learn at the intersection of enterprise architecture
+  and AI, build demos to make complex ideas concrete, and host a weekly
+  community where practitioners help each other. No charge. Ever.
+items:
+  - num: '01'
+    title: Enterprise AI Perspectives
+    desc: >-
+      I write about the real challenges of integrating AI into enterprise
+      landscapes — SAP ecosystems, headless architecture, agentic systems,
+      inference economics, and context engineering. Written for technical
+      leaders making high-stakes decisions.
+    link: '#perspectives'
+    cta: Read my writing
+  - num: '02'
+    title: Demo Systems & Experiments
+    desc: >-
+      I build AI systems to explore ideas and make abstract concepts concrete
+      for enterprise audiences. Each demo is documented so engineering teams can
+      understand the architecture and adapt it. All openly shared.
+    link: '#work'
+    cta: Explore demos
+  - num: '03'
+    title: The AI Edge — Free Community
+    desc: >-
+      A free weekly session where business leaders and practitioners learn to
+      apply AI. I started it because I couldn't find education that bridged the
+      gap between enterprise IT reality and AI possibility. No fees. No upsells.
+    link: '#edge'
+    cta: Join for free

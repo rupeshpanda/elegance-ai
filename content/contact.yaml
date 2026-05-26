@@ -1,0 +1,20 @@
+eyebrow: Contact
+headline: "Let's exchange\nideas."
+sub: >-
+  If you're a CIO, technology leader, or practitioner thinking through AI
+  integration challenges — I'm genuinely happy to have a candid conversation.
+  No pitch. No invoice. Just an honest exchange with someone who finds this
+  space fascinating.
+links:
+  - key: Email
+    val: rupeshpanda@gmail.com
+    url: 'mailto:rupeshpanda@gmail.com'
+  - key: LinkedIn
+    val: linkedin.com/in/rupeshpandaispmp
+    url: 'https://www.linkedin.com/in/rupeshpandaispmp/'
+  - key: Location
+    val: 'Frisco, Dallas TX'
+    url: '#'
+  - key: Approach
+    val: 'Pro bono — no charge, ever'
+    url: '#'

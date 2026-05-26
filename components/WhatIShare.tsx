@@ -1,21 +1,26 @@
-import { whatIShare } from "@/lib/content";
+type WhatIShareData = {
+  eyebrow: string;
+  headline: string;
+  sub: string;
+  items: { num: string; title: string; desc: string; link: string; cta: string }[];
+};
 
-export default function WhatIShare() {
+export default function WhatIShare({ data }: { data: WhatIShareData }) {
   return (
     <section className="py-20 md:py-28 px-6 border-t border-border">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-xl mb-16">
           <p className="text-xs font-semibold tracking-widest text-indigo uppercase mb-4">
-            {whatIShare.eyebrow}
+            {data.eyebrow}
           </p>
           <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight mb-5 whitespace-pre-line">
-            {whatIShare.headline}
+            {data.headline}
           </h2>
-          <p className="text-base text-muted leading-relaxed">{whatIShare.sub}</p>
+          <p className="text-base text-muted leading-relaxed">{data.sub}</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-px bg-border">
-          {whatIShare.items.map((item) => (
+          {data.items.map((item) => (
             <div key={item.num} className="bg-bg p-8 md:p-10 flex flex-col gap-5">
               <span className="text-xs font-semibold text-indigo tracking-widest font-sans">
                 {item.num}
