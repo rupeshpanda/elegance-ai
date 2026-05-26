@@ -107,6 +107,23 @@ export async function getPerspectives() {
   );
 }
 
+export async function getPerspective(slug: string) {
+  const d = await reader.collections.perspectives.read(slug, { resolveLinkedFiles: true });
+  if (!d) return null;
+  return {
+    slug,
+    tag:     d.tag     ?? '',
+    title:   d.title   ?? '',
+    excerpt: d.excerpt ?? '',
+    date:    d.date    ?? '',
+    content: d.content ?? [],
+  };
+}
+
+export async function getPerspectiveSlugs() {
+  return reader.collections.perspectives.list();
+}
+
 export async function getWork() {
   const slugs = await reader.collections.work.list();
   return Promise.all(
