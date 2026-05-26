@@ -6,6 +6,10 @@ export default config({
       ? { kind: 'github', repo: 'rupeshpanda/elegance-ai' }
       : { kind: 'local' },
 
+  cloud: {
+    project: 'rupeshpanda/elegance-ai',
+  },
+
   ui: {
     brand: { name: 'Elegance AI' },
   },
