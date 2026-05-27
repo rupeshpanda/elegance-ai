@@ -2,10 +2,97 @@
 title: 'Implementing Agentic AI in the Enterprise: What the Vendors Won''t Tell You'
 tag: Agentic AI
 excerpt: >-
-  Agentic AI is not a product you deploy — it's an architectural shift. Before
+  Agentic AI is not a product you deploy. It's an architectural shift. Before
   you evaluate a single vendor, there are five foundational decisions your
   organisation needs to make about autonomy, observability, and failure modes.
 date: May 2025
 ---
+# Implementing Agentic AI in the Enterprise: What the SI's Won't Tell You
 
-Write your full article here. Use the rich text editor to format headings, bold text, and lists.
+\**
+
+Agentic AI is not a product you deploy. It is an architectural shift.
+
+Every vendor in this space will tell you their platform is enterprise-ready. Some of them are right. But enterprise-ready does not mean your organisation is ready. Those are two completely different things, and the gap between them is where most programmes fail.
+
+I have been writing about pieces of this problem for a while. The context gap. Headless architecture. The Agent Operator. The inference economy. Each of those is a real problem on its own. But organisations that are starting their agentic AI journey right now need a way to see them together, before they walk into a vendor conversation.
+
+This article is that. Five foundational decisions your organisation needs to make before you evaluate a single platform.
+
+## Decision 1: Where does the agent end and the human begin?
+
+Most organisations enter agentic AI implementation without a clear answer to this question. They have a rough idea. The agent handles routine cases, humans handle exceptions. But when you actually map the workflow, that line is almost never clear.
+
+Take a procurement approval workflow. The agent can validate invoice data, match purchase orders, check policy compliance, and flag anomalies. That part is manageable. But what happens when a supplier invoice comes in 12% over the approved rate because of a raw material spike? Does the agent reject it automatically? Escalate to a buyer? Approve within a defined tolerance?
+
+Who sets that tolerance? Who updates it when market conditions change?
+
+These are not technical questions. They are governance questions. And until your organisation answers them explicitly, you are not ready to build anything.
+
+Define the autonomy boundary first. Write it down. Get sign-off from the business. Then build.
+
+## Decision 2: How will you know if the agent is wrong?
+
+Observability is the most underinvested area in enterprise agentic AI. Every organisation I have spoken with is focused on what the agent can do. Very few have thought seriously about how they will detect when it is doing something wrong.
+
+This matters more in agentic systems than in any previous wave of enterprise automation. Traditional RPA bots follow deterministic rules. If they break, they break loudly. Agentic systems fail differently. They can be confidently wrong. They can misread a contractual clause, misattribute a supplier record, or apply a policy incorrectly in a way that looks completely plausible until someone downstream catches it. Sometimes weeks later.
+
+I wrote earlier about verifiability as the lens for AI deployment success. This is the operational version of that argument. You need observability at three levels. First, the output level: is the agent producing results that look correct? Second, the reasoning level: can you trace why the agent made a specific decision? Third, the drift level: is the agent's behaviour changing over time as context shifts?
+
+Most enterprise teams are only thinking about the first level. The second and third are where the real risk sits.
+
+Before you go live with any agentic workflow, define what a wrong answer looks like. Then build the instrumentation to catch it.
+
+## Decision 3: What does failure actually cost you?
+
+Vendors will show you demos in controlled environments. In a demo, failure is just a retry. In production, failure has a cost.
+
+The question is not whether your agent will fail. It will. The question is what happens when it does.
+
+In a pharmaceutical company, an agent that misclassifies a batch disposition could trigger a regulatory audit. In a utility, an agent that misroutes a field service order could affect grid reliability. In financial services, an agent that applies the wrong rule to a transaction could create a compliance breach.
+
+Failure mode analysis is not optional. It is foundational. For every agentic workflow you are considering, you need to answer three questions. What is the worst realistic failure? What is the blast radius? How quickly can you reverse it?
+
+Some failure modes are acceptable at scale. Others require a human in the loop at every step. Knowing the difference before you build changes your architecture significantly.
+
+## Decision 4: Where does your agent's context actually come from?
+
+This is the question most implementations get wrong, and vendors have almost no incentive to raise it because it has nothing to do with their product.
+
+I have written about the context gap as the defining implementation challenge of enterprise agentic AI. This is where that argument becomes concrete.
+
+Agentic systems are only as good as the context they operate in. In a well-run enterprise, most of that context exists. But it lives in SAP configuration tables, SharePoint sites, policy documents from 2019, email threads, and tribal knowledge held by experienced employees. None of that was designed to be consumed by an AI agent at runtime.
+
+Before you can deploy an effective agent, you need to solve the context problem. That means identifying what context the agent actually needs, finding where it lives, deciding how it gets retrieved, and figuring out how to keep it current as business rules change.
+
+This is not a one-time data migration. Context is dynamic. Prices change. Policies change. Supplier terms change. Your agent needs a mechanism to consume those changes in near real-time, or its decisions will drift out of alignment with business reality.
+
+The organisations winning with agentic AI have invested heavily in context infrastructure. It is not the exciting part of the programme. It is the part that determines whether the system works in production.
+
+## Decision 5: Who owns the agent after go-live?
+
+Most enterprise AI programmes are treated like software projects. A team builds something, it goes live, it gets handed to IT operations. That model does not work for agentic systems.
+
+I have been writing about the Agent Operator as an emerging role for this reason. An agentic system is not a static application. It is a decision-making entity operating in a dynamic environment. The business rules it operates against will change. The data it consumes will change. The workflows it supports will change. And unlike traditional software, those changes do not always produce visible errors. They produce subtle shifts in behaviour that accumulate over time.
+
+Someone needs to own this. Not just technically, but operationally. Someone who monitors agent behaviour on an ongoing basis, flags when outputs start drifting, updates context and instructions as the business evolves, and decides when a failure pattern requires the agent to be pulled back and reconfigured.
+
+That person sits at the intersection of business process knowledge and AI system understanding. It is not a traditional IT role. It is not a pure data science role. It is something new, and most organisations have not created it yet.
+
+If you cannot answer the question "who owns this agent twelve months after go-live," you are not ready to deploy it.
+
+## What this means before you call a vendor
+
+Vendors are going to show you capability. That is their job. The demos are real. The integrations work. The platform is probably solid.
+
+The problem is that most organisations walk into those conversations before they have made these five decisions. They evaluate platforms before they have defined their autonomy boundaries. They sign contracts before they have thought seriously about observability. They go live before they have built context infrastructure or identified who owns the system after deployment.
+
+Then they wonder why the programme stalls after the pilot.
+
+Get the foundational decisions right first. The vendor conversation becomes far more productive when you know exactly what you are asking the platform to do and what governance you are wrapping around it.
+
+Agentic AI will create real value in the enterprise. The organisations that get there are the ones treating it as an architectural shift, not a procurement decision.
+
+---
+
+*Personal views only. Nothing to do with my employer or any organisation I am affiliated with.*
