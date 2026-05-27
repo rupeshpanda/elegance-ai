@@ -7,7 +7,7 @@ export default config({
       : { kind: 'local' },
 
   cloud: {
-    project: 'rupeshpanda/elegance-ai',
+    project: 'elegance-ai/elegance-ai',
   },
 
   ui: {
