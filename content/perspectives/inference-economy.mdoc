@@ -3,10 +3,105 @@ title: 'The Inference Economy: Why Token Costs Will Define Your AI Strategy'
 tag: Economics
 excerpt: >-
   Most enterprise AI strategies are being built without a serious model of
-  inference costs at scale. Token economics isn't a finance problem — it's an
+  inference costs at scale. Token economics isn't a finance problem - it's an
   architecture problem. And the decisions you make today will be very expensive
   to unwind.
 date: Apr 2025
 ---
+StartFragment
 
-Write your full article here.
+# The Inference Economy: Why Token Costs Will Define Your AI Strategy
+
+\**
+
+Two stories broke recently that belong in every enterprise AI strategy conversation happening right now.
+
+Microsoft began revoking internal Claude Code licences on May 14, with a full wind-down deadline of June 30. The tool had been deployed to thousands of engineers across Windows and Microsoft 365 just six months earlier. The reason for pulling it was not performance. It was cost. Token expenses had grown to the point where the CFO conversation forced a decision that the strategy conversation had not anticipated.
+
+Uber's story is sharper. Uber's CTO, Praveen Neppalli Naga, told The Information in April that the company had burned through its entire planned 2026 AI coding budget in four months. Claude Code had spread to roughly 5,000 engineers, with monthly adoption rates running between 84 and 95 percent by April. Per-engineer API spending was running between $500 and $2,000 per month. Around 70 percent of code committed at Uber now originates with AI. The tool worked. That was the problem.
+
+This is what the inference economy looks like when it arrives. Not a warning. A bill.
+
+Most enterprise AI strategies are being built without a serious model of inference costs at scale. The pilots look fine. A few hundred model calls a day, even at frontier prices, costs almost nothing. The problem is that the cost curve does not grow linearly with adoption. It compounds, and the architectural decisions that drive it were made months earlier under completely different conditions.
+
+---
+
+## What inference is and why it compounds
+
+When most enterprise leaders talk about AI cost, they are thinking about access fees. A per-user license. A platform subscription. A hyperscaler commitment. These are real costs but they are not the costs that grow with what you do with AI.
+
+Inference is what happens every time your AI system processes a request. Every prompt sent to a model, every token generated in response, every reasoning step an agent takes, every document retrieved and passed as context. Each of those operations has a cost, measured in tokens, billed by the provider at rates that vary by model and volume.
+
+At pilot scale, this is invisible. A few hundred calls a day, even at frontier model prices, costs almost nothing. The problem is that the cost curve is not linear with usage. It is compounded by two things that scale together: the number of users and the architectural choices that determine how many tokens each interaction actually consumes.
+
+An enterprise that moves from a controlled pilot to full deployment does not simply multiply its inference bill by the ratio of users. It multiplies it by users, times the average tokens per interaction, times the frequency of use, times any agentic recursion built into the workflow. That number is frequently five to ten times what the original business case modelled. Sometimes more.
+
+## The four architectural decisions that drive your inference bill
+
+Token economics is not a finance problem. It is an architecture problem. The cost you pay in production is almost entirely determined by decisions your engineering team made before anyone looked seriously at the numbers. There are four that matter most.
+
+**Model selection.** Frontier models are extraordinarily capable and extraordinarily expensive per token. Smaller, cheaper models are adequate for most well-defined enterprise tasks. The instinct in every pilot is to use the most capable model available, because the pilot needs to demonstrate value and the additional cost per call is invisible at low volumes. Production looks different. The discipline of routing different parts of a workflow to different model tiers, based on the actual complexity of each step, can reduce inference cost by an order of magnitude without any visible change in output quality for the end user.
+
+Most enterprise teams have not built this routing logic. They are running frontier models on tasks that a model one or two tiers cheaper would handle equally well. At scale, this is one of the most expensive oversights in the architecture.
+
+**Context length.** Long context windows are genuinely useful and genuinely expensive. Many enterprise AI systems are designed to pass the maximum available context on every call, on the assumption that more context produces better answers. That is true up to a point. Beyond that point, you are paying for tokens that are not changing the output. In a high-volume enterprise deployment, the cost of context you did not need is not trivial. Precision in what you pass to the model, and why, is an architectural discipline with a direct cost consequence.
+
+**Caching.** Most enterprise AI workloads have significant repeated patterns. The same system prompts on every call. The same policy documents retrieved for similar queries. The same reasoning steps applied to structurally similar inputs. Prompt caching, embedding caching, and response caching for deterministic queries can each reduce inference cost substantially. Few enterprise systems treat caching as a first-class concern at the design stage. It gets added later, after the bills arrive, when the cost to retrofit it is higher than it would have been to design for it upfront.
+
+**Agentic depth.** This is the one that surprises most organisations. Agents are powerful because they reason recursively, decomposing problems into subtasks and iterating toward a solution. They are expensive for exactly the same reason. An agent that breaks a problem into six subtasks, each requiring two or three model calls, can consume fifteen to twenty calls per user interaction. At pilot volumes, this is fine. At enterprise volumes, the maths changes fast. The architectural discipline of constraining agentic depth, designing stopping criteria, and routing to deterministic logic where reasoning is not actually needed is the difference between an agentic system that scales economically and one that hits a budget ceiling within the first quarter of full deployment.
+
+## Why AI success is more expensive than AI failure
+
+This is the counterintuitive part of the inference economy, and the Uber story makes it concrete.
+
+Uber did not have a failed AI deployment. It had a successful one. Engineers adopted Claude Code at rates of 84 to 95 percent. Productivity improved. Code quality, by most accounts, held up. The tool worked exactly as intended. And the budget was gone in four months.
+
+A pilot that fails to drive adoption costs you the pilot budget. A pilot that succeeds and scales across the organisation costs you the inference budget for every user, every transaction, every workflow, indefinitely. The more successfully AI embeds itself into how your organisation operates, the larger the ongoing inference cost. Success and cost grow together.
+
+This does not mean the economics are unfavourable. For most enterprise use cases, the productivity gain, the reduction in error rates, the acceleration of cycle times more than justifies the inference cost at scale. But it does mean the financial model needs to be built with production volumes and realistic token consumption, not pilot volumes and optimistic assumptions. And it means that architectural decisions made under the low-cost conditions of a pilot become very expensive to change once you are operating at scale.
+
+I have written about the context gap as the defining implementation challenge of enterprise agentic AI. The inference economy is the parallel financial challenge. Both have the same characteristic: they are invisible in the pilot and unavoidable in production. The organisations thinking about both before they commit to an architecture are the ones that will not be surprised by what they find when the bills arrive.
+
+## The token metric trap
+
+There is a related problem worth naming. The moment an organisation starts managing AI by token usage metrics, those metrics start to break down as useful signals.
+
+I worked through this in an earlier post. If teams are measured on token efficiency, they optimise for token efficiency. They compress prompts in ways that reduce reasoning quality. They limit context in ways that increase error rates. They add caching in places where freshness matters. The metric improves while the actual output quality degrades, and the degradation is often invisible until it surfaces in a business process failure downstream.
+
+Token economics needs to be managed as a cost-quality tradeoff, not as a cost minimisation target. The goal is not to use the fewest tokens. The goal is to use the right tokens for the outcome you need, at a cost that sustains the business case. That is a more complex management challenge than a usage dashboard, and it requires the people making architectural decisions to understand both the cost drivers and the quality implications of every optimisation they make.
+
+## What the market for inference actually means for your strategy
+
+The inference market is moving fast. Frontier model prices have fallen significantly over the past two years. New providers are entering the market with aggressive pricing. Specialised inference hardware from providers other than Nvidia is maturing. The cost per token will continue to decline.
+
+This creates a temptation to defer the inference economics conversation on the assumption that costs will sort themselves out. That temptation is worth resisting.
+
+The Microsoft and Uber decisions point to something more structural than a price problem. Both organisations had the financial capacity to absorb the cost if the return justified it. What they did not have was visibility into what the cost would be before adoption scaled. That is a modelling and governance failure, not a pricing failure.
+
+The industry is responding by changing the billing model. GitHub is moving all Copilot plans to usage-based billing from June 2026. AI software prices across the US have reportedly climbed between 20 and 37 percent in recent months. The shift from flat-rate subscriptions to pay-per-use pricing means the budget volatility that caught Uber and Microsoft off guard will become the standard condition for every enterprise running AI tools at scale. Quarterly costs will swing based on how heavily teams use these systems. That is not a CFO-friendly cost structure without architectural discipline behind it.
+
+There are three reasons to think carefully before assuming costs will decline fast enough to solve the problem.
+
+First, the price decline is not uniform. Frontier model prices fall. But frontier models are also being replaced by more capable frontier models, and the tendency is to move to the new capability rather than take the cost saving. If your architectural incentives push toward the most capable model available, price decreases will be consumed by capability increases and your bill will not fall the way the market headlines suggest.
+
+Second, the volume increase tends to outrun the price decrease. As AI embeds more deeply into enterprise workflows, the number of interactions grows faster than the per-token price falls. Many organisations that modelled inference cost on current prices and current volumes are finding that both have moved in the wrong direction simultaneously.
+
+Third, the architectural lock-in is real. If you build your AI systems on the assumption that frontier model calls are cheap enough to use everywhere, and then the business case requires a lower cost structure to work at scale, the refactoring cost is significant. Redesigning an agentic system to route intelligently across model tiers, add caching, and constrain context consumption is not a small project. It is much easier to build those disciplines in from the start.
+
+## What to do now
+
+The organisations that are ahead of this problem have done one thing consistently: they have built a serious inference cost model before committing to a production architecture, not after.
+
+The model does not need to be sophisticated. It needs to capture volume per transaction by use case, tokens per call by model tier, frequency at full adoption, and cost per token with a realistic sensitivity range. The output is not a precise forecast. It is a discipline. It forces every architectural decision through the question of what the inference cost consequence is at production scale.
+
+Most teams have not done this analysis. Most business cases I have seen were built on assumptions about inference cost that would not survive serious scrutiny. The gap between the business case and the actual production bill is where AI programmes quietly become budget problems that nobody wants to surface.
+
+The inference economy is the current reality of enterprise AI, not a future state. The organisations taking it seriously now are building cost structures that will compound in their favour. The ones discovering it later, when the architecture is already committed and the bills are already scaling, are going to find it expensive to fix.
+
+Token economics is the new unit economics of enterprise software. That conversation belongs at the executive level, not delegated to the engineering team after the architecture is already set.
+
+---
+
+*Personal views only. Nothing to do with my employer or any organisation I am affiliated with.*
+
+---
