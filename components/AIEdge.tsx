@@ -23,7 +23,15 @@ export default function AIEdge({ data }: { data: AIEdgeData }) {
               </span>
             ))}
           </h2>
-          <p className="text-base text-white/60 leading-relaxed">{data.desc}</p>
+          <p className="text-base text-white/60 leading-relaxed mb-8">{data.desc}</p>
+          <a
+            href="https://lu.ma/1fxx84io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-indigo text-white text-sm font-medium rounded-full hover:bg-indigo-dark transition-colors"
+          >
+            Join for free →
+          </a>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 md:gap-20">

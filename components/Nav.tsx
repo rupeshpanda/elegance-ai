@@ -37,12 +37,14 @@ export default function Nav({ site }: { site: Site }) {
                 {link.label}
               </a>
             ))}
-            <button
-              onClick={() => setModalOpen(true)}
+            <a
+              href="https://lu.ma/1fxx84io"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm px-5 py-2 bg-indigo text-white rounded-full hover:bg-indigo-dark transition-colors"
             >
               Join AI Edge
-            </button>
+            </a>
           </nav>
 
           <button
@@ -66,12 +68,15 @@ export default function Nav({ site }: { site: Site }) {
                 {link.label}
               </a>
             ))}
-            <button
-              onClick={() => { setMenuOpen(false); setModalOpen(true); }}
-              className="text-sm py-2.5 bg-indigo text-white rounded-full"
+            <a
+              href="https://lu.ma/1fxx84io"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+              className="text-sm py-2.5 bg-indigo text-white rounded-full text-center"
             >
               Join AI Edge
-            </button>
+            </a>
           </div>
         )}
       </header>
