@@ -6,7 +6,136 @@ excerpt: >-
   needs to know to be useful in your specific enterprise environment. Closing it
   is not a technology problem — it's a data architecture and organisational
   design problem.
-date: Feb 2025
+date: Feb 2026
+---
+# The Context Gap: Why Enterprise AI Pilots Fail to Scale
+
+\**
+
+Every enterprise I have worked with over the last two years has run an AI pilot. Most have run several. A small number have moved one into production. Almost none have scaled one across the organisation in a way that delivers the value the business case promised.
+
+The conventional explanations are familiar. The model was not good enough. The integration was harder than expected. Change management did not happen. The vendor over-promised. These are all true sometimes. None of them is the real reason most enterprise AI pilots stall.
+
+The real reason is the context gap.
+
+The context gap is the distance between what your AI system knows and what it needs to know to be useful inside your specific enterprise. Pilots succeed because that distance is small. They are run on clean data, by a small team that already carries the domain knowledge, against a narrow use case chosen specifically to minimise complexity. Production fails because the distance is enormous, and nobody has built the systems or the discipline to close it.
+
 ---
 
-Write your full article here.
+## What enterprise context actually is
+
+When people say context in the AI conversation, they usually mean the prompt, or the documents passed to the model, or the retrieval layer. These are components of context. They are not the whole thing.
+
+Real enterprise context is the accumulated knowledge that an experienced employee carries after years inside your organisation. It is the configuration choices your team made when implementing SAP fifteen years ago that still constrain how every process runs today. It is the difference between your billing logic for utility customers in regulated and unregulated states. It is the seventeen exceptions your finance team manually applies during month-end close that nobody has documented. It is the approval thresholds set by your CFO in 2019, the master data hierarchies that took three years to clean up, the Z-table customisations, the OSS notes on your installation, the unwritten rules about which supplier relationships require executive involvement.
+
+None of this is in any model's training data. None of it can be inferred from a system prompt. None of it will appear in a retrieval layer unless someone explicitly put it there.
+
+This is the knowledge that makes an experienced employee effective inside your organisation. It is also the knowledge your AI system does not have when it starts working inside your organisation. That gap, between what the system knows and what it needs to know, is what determines whether your deployment works in production or quietly accumulates errors that surface weeks later.
+
+## Why pilots succeed and production fails
+
+There is a pattern I have seen in enough enterprise AI programmes to call it consistent.
+
+The pilot succeeds because a human bridges the gap.
+
+Someone on the pilot team carries the domain knowledge. They write the prompts that compensate for what the model does not know. They curate the documents that go into retrieval. They choose the test cases carefully, selecting the scenarios the system can handle and avoiding the ones it cannot. When the model produces a wrong answer, they catch it and adjust.
+
+The pilot works. The business case looks strong. The decision is made to scale.
+
+When scaling happens, that person is no longer patching the gap in real time. The system runs against the full range of production data, which includes every edge case, every exception, every regional variation, every legacy contract term that the pilot never encountered. The model has the same knowledge it had during the pilot. The business reality it is operating in has become significantly more complex.
+
+Errors accumulate. Some are caught. Others are not, because nobody designed the observability to find them. The programme slows down. People say the AI is not reliable enough. What they mean is the context is not complete enough.
+
+This is pilot purgatory. The demo was impressive, the prototype worked in controlled conditions, but production reliability has not been proven. The initiative stalls not because the technology failed, but because the context infrastructure was never built.
+
+## The three forms the gap takes
+
+The context gap is not a single problem. It shows up in three distinct forms, and each requires a different approach to close.
+
+**The knowledge gap.** This is the missing information about how your organisation specifically operates. Your pricing rules, your approval hierarchies, your exception handling logic, your regulatory compliance constraints, your vendor-specific terms. This knowledge exists somewhere in your organisation. It lives in policy documents, in configuration tables, in process guides, in the heads of senior employees. The knowledge gap is about making that information accessible to an AI system at the moment it needs it.
+
+The knowledge gap is the one most teams are aware of, even if they underestimate its size. It is the gap they try to address with RAG implementations and document retrieval. The challenge is that the knowledge is rarely clean, consistently maintained, or structured for machine consumption. A policy document that was written for humans to read during an annual review is not the same as a structured knowledge base that an agent can query at runtime with precision.
+
+**The operational gap.** This is the gap between the documented state of your business and the live state of your business at the moment an agent is making a decision.
+
+A purchase order that is listed as open in the system but is actually being disputed by the vendor. A supplier that passed a compliance check six weeks ago but has had a sanctions update since. A cost centre that has an available budget according to the financial system but a verbal freeze applied by the division head this morning. A contract that is technically active but under renegotiation and therefore should not be used as the basis for new commitments.
+
+This is operational context. It is dynamic, often informal, and almost entirely absent from most enterprise AI implementations. Agents operating without operational context make decisions that are technically correct given what the system says, but wrong given what is actually happening in the business. In a high-stakes process, the consequences of that gap can be significant.
+
+**The institutional gap.** This is the hardest one to close because it is the hardest one to locate.
+
+Institutional context is the knowledge that exists only in the experience of your people. The supplier who always ships late in Q4 and needs an earlier order date. The region that has a different interpretation of the approval policy because of a historical dispute that was settled informally five years ago. The product category where quality issues make the standard exception handling logic unreliable. The executive who needs to be in the loop on anything involving a specific customer relationship regardless of what the approval matrix says.
+
+This knowledge is real. It affects outcomes. It is not written down anywhere. It cannot be retrieved from a system. It can only be captured through deliberate interviews with the people who carry it, structured in a form that makes it accessible to an AI agent, and maintained as those people change roles and the institutional landscape evolves.
+
+Most enterprise AI programmes have no process for capturing institutional context. They build on top of what is in the systems and wonder why the system's outputs do not match what an experienced employee would do.
+
+## The ERP coexistence problem
+
+There is a specific form of the context gap that is particularly acute for organisations running large ERP landscapes, and it is the one I have spent the most time working through.
+
+SAP, Oracle, and similar systems are extraordinarily rich sources of business context. They contain decades of transactional history, process logic encoded in configuration, master data structures that reflect how the organisation thinks about its business, and workflow rules that encode the accumulated decisions of years of operational experience.
+
+The problem is that this context was never designed to be consumed by an AI agent at runtime. It was designed to be navigated by humans through a user interface. The business logic is embedded in ABAP programs and Fiori applications. The configuration is in tables that require system-level expertise to interpret. The relationships between objects are expressed through SAP's own data model, which an agent cannot reason about without explicit translation.
+
+An AI agent that is trying to make decisions involving an SAP landscape needs to understand that the purchase order is blocked not because of a data error but because of a payment hold on the vendor master. It needs to know that the delivery tolerance exception is within the approved range for this purchasing group but not for others. It needs to understand that the workflow routing is going to a specific approver not because of the cost centre hierarchy but because of a substitution rule that is active while the primary approver is on leave.
+
+None of this is accessible through a simple API call. It requires a context layer that translates SAP's internal logic into a form an agent can use. Building that layer is significant work, and it is work that has to be done by people who understand both SAP and AI system design. Most organisations do not have people who are deep in both.
+
+This is why I have written about the ERP coexistence challenge separately from the general context gap problem. Closing the context gap in an SAP-centric enterprise is not a data pipeline project. It is an architectural challenge that requires a new layer between the systems of record and the AI systems operating on top of them.
+
+## Why this is a data architecture and organisational design problem
+
+The framing of the context gap as a technology problem leads organisations to the wrong solutions. They upgrade their models. They try different vector databases. They experiment with prompt techniques. None of these close the gap because the gap is not in the technology.
+
+The gap is in two places. The data architecture, meaning the systems and processes that make enterprise knowledge accessible in a form AI systems can consume. And the organisational design, meaning the people, roles, and responsibilities that ensure that knowledge is captured, maintained, and kept current.
+
+On the data architecture side, closing the context gap requires treating enterprise knowledge as infrastructure. Not a one-time project to document and ingest, but an ongoing system that captures new knowledge as it is created, updates existing knowledge as the business changes, and delivers the right knowledge to the right system at the right moment. Most organisations do not have this. They have fragmented documentation, inconsistently maintained, distributed across systems that were never designed to work together.
+
+On the organisational design side, closing the context gap requires owning it. Someone needs to be responsible for the knowledge that AI systems operate on, in the same way someone is responsible for the data quality in the ERP or the accuracy of the financial records. Without explicit ownership, knowledge decays. The organisation evolves, the AI system does not, and the gap widens.
+
+I wrote about the Agent Operator as an emerging role for this reason. Part of what that role owns is the context layer for the agents it operates. Not the technical infrastructure, but the business knowledge the infrastructure delivers. Who updates the pricing rules when they change? Who captures the new exception handling logic when a business decision is made? Who audits the agent's outputs against actual business decisions to detect when the context has drifted? Those are not engineering questions. They are operational questions, and they need an owner.
+
+## Verifiability as the test
+
+There is a practical question that cuts through the complexity of assessing whether a context gap has been closed well enough to go to production.
+
+Can you define what a correct answer looks like in terms specific enough to verify?
+
+If the answer to that question is no, the context gap is not closed. You may have a system that produces plausible-sounding outputs. You may even have a system that is right most of the time. But without a definition of correct that is specific to your business reality, you have no way to know when the system is wrong, and no foundation for the observability you need to operate it safely at scale.
+
+This is the verifiability test. I have written about it as the lens for enterprise AI deployment decisions. Applied to the context gap, it means that every workflow you are considering automating or augmenting with AI needs a clear answer to the question: how would we know if the agent got this wrong?
+
+If the answer involves checking against a human expert's judgement, the context gap is not closed. The human is still bridging it. If the answer involves checking against a defined, documented rule or threshold that the agent has access to, you are closer. If the answer involves checking against an automated validation that the agent itself can apply, the context gap is closed well enough to operate.
+
+Most enterprise AI systems, honestly assessed, fall into the first category. The human is still in the room, catching errors that the agent does not know it is making.
+
+## What closing the gap actually requires
+
+There is no shortcut to closing the context gap. But there is a sequence that works, and it is different from how most programmes approach it.
+
+Start with the workflow, not the technology. Before you choose a retrieval architecture or a vector database, map the workflow the agent will execute decision by decision. For each decision, ask what an experienced human would know at that point that the agent does not. That inventory is your context requirements. Build to that specification.
+
+Treat knowledge capture as a project, not an assumption. The institutional and operational context you need does not exist in a form the agent can use. Someone has to go find it, document it, structure it, and get it into the system. Plan for that work explicitly. Budget time for it. Most programmes that fail at context underestimate this phase by a factor of three to five.
+
+Build maintenance from the start. Context that is accurate today will drift. Business rules change. Regulatory requirements change. Operational practices change. Design the maintenance model before you launch, not after the first context failure surfaces in production.
+
+Make someone own it. Not the technology. The knowledge. Identify who is responsible for the accuracy of the context layer for each agent in production, and make that responsibility explicit, ongoing, and reviewed.
+
+Test against production reality before you call it done. The test cases that matter are not the clean, representative examples you built the system on. They are the edge cases, the exceptions, the legacy conditions, the things that exist in production but never appeared in the pilot. Testing against those is the only reliable way to know whether the context gap is actually closed.
+
+## The honest view
+
+The context gap is the reason enterprise AI is harder than the demos suggest. Not because the technology is unreliable. Because enterprise environments are genuinely complex, and that complexity has to be reflected in the context the AI system operates on.
+
+The organisations that are scaling AI beyond the pilot are not the ones with the best models. They are the ones that have done the harder, less glamorous work of building the context infrastructure that makes those models useful in their specific reality.
+
+That work is not exciting. It does not appear in keynote demonstrations. It does not generate press releases. It looks like documenting exception handling logic, cleaning master data, interviewing subject matter experts, building maintenance processes for knowledge bases, and assigning operational ownership for context accuracy.
+
+It is, however, the work that determines whether your AI programme delivers the value the business case promised.
+
+The model is the easy part. The context is the job.
+
+---
+
+*Personal views only. Nothing to do with my employer or any organisation I am affiliated with.*
