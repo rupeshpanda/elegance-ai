@@ -62,8 +62,8 @@ export default function JoinModal({ isOpen, onClose }: JoinModalProps) {
               </p>
               <h3 className="font-serif text-2xl text-navy mb-2">Join for free</h3>
               <p className="text-sm text-muted leading-relaxed">
-                Weekly live sessions every Wednesday. No fees. No upsells. Just honest,
-                practical AI education for enterprise practitioners.
+                Monthly live session — 1st Wednesday of each month. No fees. No upsells.
+                Practical AI education for enterprise practitioners.
               </p>
             </div>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
