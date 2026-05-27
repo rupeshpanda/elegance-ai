@@ -8,5 +8,108 @@ excerpt: >-
   implications for your existing investments.
 date: May 2025
 ---
+StartFragment
 
-Write your full article here.
+# Headless Architecture and the AI Integration Layer: A CIO's Framework
+
+*Personal views only. Nothing to do with my employer or any organisation I am affiliated with.*
+
+---
+
+Every CIO I speak with right now is running the same calculation. They have SAP, Salesforce, Workday, ServiceNow. They have AI platforms. And they are trying to figure out how to connect the two without rebuilding everything they spent the last decade implementing.
+
+The answer most of them land on is an integration project. It is the wrong frame. The right frame is headless architecture.
+
+---
+
+## What headless actually means in this context
+
+The original headless concept was simple. Remove the assumption that a system has a single, fixed presentation layer. Separate the logic and data from the interface. Expose the underlying capabilities through APIs so any consumer, any surface, any channel can access them without needing to navigate the system's native UI.
+
+For a long time, the "consumer" in that model was another application, or a mobile app, or a third-party website. Then it became voice interfaces and chatbots. Now it is AI agents.
+
+An AI agent operating inside an enterprise does not open a browser. It does not navigate a Fiori app or a Salesforce screen. It calls APIs, reads structured responses, makes decisions, calls the next API, and executes transactions, all without a human touching a keyboard. That is headless operation in its most literal form. The UI is irrelevant. The API is the interface.
+
+This is not a future state. Salesforce made it explicit when Marc Benioff launched Headless 360 and said, plainly, that the API is now the UI. Every capability in the platform exposed for agents to consume directly. The message to enterprise software vendors was clear: if your platform cannot operate headlessly, it will not participate in the agentic era.
+
+---
+
+## Why most enterprise landscapes are not ready for this
+
+Here is where it gets uncomfortable for most organisations.
+
+The enterprise technology estate that most CIOs are managing today was built on the opposite assumption. It was built for humans. SAP, Oracle, Workday, Salesforce, ServiceNow, and dozens of other platforms have rich UIs, complex navigation, and workflows that were designed for a person to move through them step by step. The integrations between those systems were designed the same way, point-to-point connections that assume a defined sequence of steps and a human somewhere in the loop.
+
+Agentic AI does not work like that. An agent needs to call the right API, get a clean structured response, make a decision, and move to the next step, often in seconds, often without a human reviewing each action. The integration architecture most enterprises have does not support that pattern. It was never designed to.
+
+I have written before about the context gap as the defining challenge of enterprise agentic AI. Headless architecture is the other side of that same problem. The context gap is about what the agent knows. The headless gap is about what the agent can reach. Both have to be solved for agents to work in production.
+
+---
+
+## The three layers that matter
+
+When I think about the AI integration layer for an enterprise, I think about three distinct things that need to work together.
+
+**The API surface.** This is the set of capabilities your enterprise systems expose that agents can actually call. Not all systems expose clean APIs. Many have APIs that were designed for programmatic access but not for high-frequency agentic consumption. Others have capabilities that exist only inside the UI. The first question to answer honestly is: what can an agent actually call today, and what is locked behind a screen?
+
+**The context layer.** APIs return data. But an agent also needs business context to interpret that data correctly. What does a status code of "blocked" mean in your procurement system? When a purchase order shows a tolerance exception, what is the approved threshold? That context lives in configuration tables, policy documents, and the heads of experienced employees. It is not in the API response. I have covered this extensively in the context gap work. The integration layer and the context layer have to be designed together, not separately.
+
+**The orchestration layer.** This is the layer that sits between the agent and the underlying systems. It manages authentication, rate limiting, error handling, retry logic, and transaction sequencing. It also decides which agent can call which system and under what conditions. In a well-designed headless architecture, the orchestration layer is where governance lives. It is not an afterthought. It is the thing that makes agentic operation safe at enterprise scale.
+
+Most enterprises have partial versions of all three. Very few have all three designed to work together as a coherent system.
+
+---
+
+## What SAP's API policy tells us about where this is heading
+
+In April this year, SAP published an updated API policy that restricted agentic use of its APIs to SAP-endorsed pathways: Joule, Business Data Cloud, the Agent Gateway, AI Core. Outside those pathways, autonomous AI consuming SAP APIs at scale sits in a grey area at best.
+
+I wrote about this at the time. The contrast with Salesforce was striking. One vendor was opening its platform to third-party agents. The other was drawing a perimeter around its own AI ecosystem.
+
+Whether SAP's position is right or wrong is a separate debate. What it signals is that headless architecture in the enterprise is not simply a technical decision. It is a vendor relationship and licensing question. The API surface your agents can reach is shaped partly by what your platform vendors will permit. That is a CIO-level concern, not something to delegate to an integration team.
+
+If you are building an agentic AI strategy and you have not had a direct conversation with your major platform vendors about API consumption at agent scale, that conversation is overdue.
+
+---
+
+## The competitive implication CIOs are underweighting
+
+Here is the part of this that does not get enough attention.
+
+For the past two decades, competitive advantage in most industries came partly from how well a company could operate its enterprise systems. The organisations that had better SAP implementations, cleaner data, more disciplined processes, tended to outperform over time. That advantage was real but slow to compound. You could not tell from the outside whether a competitor's ERP implementation was better than yours.
+
+Agentic AI changes that dynamic. An organisation with a well-designed headless integration layer, clean APIs, a solved context problem, and an orchestration framework in place can deploy agents that operate at a speed and scale that a traditionally integrated enterprise simply cannot match. Procurement decisions that took three days can happen in minutes. Exception handling that required a team of analysts can be delegated to agents. Supply chain replanning that happened quarterly can happen in response to real-time signals.
+
+The gap between an organisation with a headless-ready enterprise architecture and one without it will be visible in operational performance within two or three years. It will be visible in cost structures even sooner, because I have written about how inference economics reward organisations that can route the right task to the right model with the right context efficiently. That efficiency starts with the integration layer.
+
+---
+
+## What a CIO should actually do with this
+
+None of this requires a rip-and-replace programme. The existing enterprise landscape has value. The data, the process logic, the years of configuration, all of that is real. The goal is not to rebuild it. The goal is to expose it in a way that agents can use.
+
+There are four concrete things worth doing now.
+
+First, audit your API surface. For your five most critical enterprise systems, map what is actually accessible via API today, what the consumption limits are, and whether those APIs are fit for agentic use. Not all of them will be. That is important to know.
+
+Second, separate your context problem from your API problem. They are related but not the same. Your APIs tell an agent what it can do. Your context layer tells it what it should do in your specific environment. Both need investment, and they need to be sequenced correctly.
+
+Third, have the vendor conversation. With your major platform vendors, get a clear answer on their position toward agentic API consumption. What is permitted, what requires an additional license, and what sits in a grey area. SAP's API policy was a warning. It will not be the last one.
+
+Fourth, identify where your orchestration layer lives. In some organisations this is BTP Integration Suite. In others it is MuleSoft or Azure API Management. In many it is a patchwork. Whatever it is, that layer needs to be capable of managing agent-scale API consumption with proper governance. If it cannot do that today, you need a plan.
+
+---
+
+## The longer view
+
+Headless architecture was always about decoupling. Separating the logic from the presentation so the logic could be used in more contexts without being rebuilt.
+
+In the AI era, that decoupling is no longer optional. The intelligence layer and the presentation layer are being separated by force, because AI agents have no use for presentation layers. They need clean, well-governed, high-availability APIs. They need context. They need orchestration. The organisations that have built those things will compound their advantage. The ones that have not will keep running pilots that struggle to scale, and they will keep wondering why.
+
+The integration layer is not plumbing. In the agentic era, it is strategy.
+
+---
+
+*Personal views only. Nothing to do with my employer or any organisation I am affiliated with.*
+
+---
