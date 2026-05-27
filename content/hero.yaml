@@ -1,8 +1,8 @@
-eyebrow: 'Enterprise AI · Independent Perspective'
+eyebrow: Enterprise AI · Independent Perspective
 headline:
-  - 'Enterprise AI.'
-  - 'Independent.'
-  - 'No agenda.'
+  - Enterprise AI.
+  - Independent.
+  - No agenda.
 sub: >-
   I write about what it actually takes to integrate AI into complex enterprise
   environments - existing SAP landscapes, legacy architecture, governance
@@ -13,9 +13,9 @@ cta1Href: '#perspectives'
 cta2Label: Explore demos
 cta2Href: '#work'
 bylineName: Rupesh Panda
-bylineRole: 'Enterprise AI Practitioner · Frisco, Dallas TX'
+bylineRole: Enterprise AI Practitioner · Frisco, Dallas TX
 stats:
-  - value: '8'
+  - value: '6'
     label: Topics covered
   - value: '4'
     label: Demo systems built
@@ -26,4 +26,4 @@ stats:
 quoteText: >-
   Finally - AI writing that speaks to the realities of enterprise IT, not just
   startup greenfield. This is what CIOs actually need to read.
-quoteCite: 'VP of Technology, Fortune 500'
+quoteCite: VP of Technology, Fortune 500
