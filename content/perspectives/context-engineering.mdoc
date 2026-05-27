@@ -4,9 +4,112 @@ tag: Context Engineering
 excerpt: >-
   Prompt engineering was a starting point. Context engineering is the practice
   that determines whether your enterprise AI systems actually perform at
-  production scale — and most organisations have not yet built the capability
-  to do it well.
-date: Mar 2025
+  production scale — and most organisations have not yet built the capability to
+  do it well.
+date: Mar 2026
+---
+# Context Engineering: The Discipline Your AI Team Is Missing
+
+I built a billing dispute resolution agent in an SAP environment. The model was capable. The tools were defined. The workflow looked clean in testing. Then we ran it against real production data and watched it fail in ways that had nothing to do with the model's intelligence.
+
+It failed because it did not know that a particular customer was on legacy contract terms. That a specific region had different tax handling. That a product family had pricing exceptions nobody had formally documented. That certain dispute types required approval routing that existed in someone's head and nowhere else.
+
+The agent was making confident decisions with incomplete context. The model was not broken. The context was broken.
+
+This is what I have come to call the context gap, and it is the reason most enterprise AI systems that work in testing fail in production. Closing it is not a model problem. It is a discipline problem. And the discipline is context engineering.
+
+## Why prompt engineering is not enough
+
+The AI field spent two years obsessing over prompts. How to phrase the instruction. How to give examples. How to structure the request. That work was valuable, and it still matters. But prompt engineering, taken alone, treats the model as the primary variable. In enterprise environments, the model is rarely the primary variable.
+
+The model you are using today is extraordinarily capable. Any frontier model from any major provider can reason, write, summarise, classify, and plan at a level that would have been unimaginable four years ago. The quality ceiling imposed by the model is almost never what limits enterprise AI performance in production.
+
+What limits it is context. Specifically, the gap between the context the model has access to and the context it needs to make a correct decision in your specific operating environment.
+
+Prompt engineering tells the model what to do. Context engineering determines what the model knows when it does it. The first is a craft. The second is a discipline, and most organisations have invested heavily in the first without building the capability for the second.
+
+## The three things an AI system actually needs to know
+
+Before you can engineer context well, you need to understand what context actually is. Most people treat it as a single thing. It is not.
+
+There are three distinct categories of context that any enterprise AI system needs to operate effectively, and they require completely different approaches to design, delivery, and maintenance.
+
+**The instruction layer.** This is what the model is being asked to do, what rules it must follow, what outputs it should produce, and what it must never do. This is the system prompt. It is static within a session, written by a human, and reviewed deliberately. Most organisations have this layer in some form. It is the closest thing to what prompt engineering addresses. Getting it right matters, but it is the easiest of the three to manage.
+
+**The retrieved layer.** This is the information the model needs to look up at the time of a request. Policies, product specifications, customer records, contract terms, historical transactions, regulatory requirements. In a well-designed enterprise AI system, this content is not embedded in the system prompt. It is retrieved dynamically, at the point of need, based on what the current request actually requires. This is where RAG architecture lives. It is also where most enterprise implementations have significant gaps, because the content that needs to be retrieved is often unstructured, inconsistently maintained, and distributed across systems that were never designed to serve an AI agent at runtime.
+
+**The operational layer.** This is the live state of the business at the moment the agent is making a decision. The current status of a purchase order. Whether a supplier is on a payment hold. What the current approval threshold is for a specific cost centre. Whether a regulatory review is in progress. This layer is dynamic, often real-time, and almost entirely absent from most enterprise AI implementations. Agents that lack operational context are making decisions about a world that may no longer exist by the time the decision is executed.
+
+Most enterprise AI systems have fragments of the first layer. Some have parts of the second. Almost none have serious investment in the third. That is the context gap.
+
+## What context engineering actually involves
+
+Context engineering is the practice of designing, building, and maintaining the systems that ensure an AI agent has the right information, in the right form, at the right moment of decision.
+
+That definition sounds straightforward. The work is not.
+
+**Mapping what the agent actually needs.** Before you can deliver context, you need to know what context is required for each step of each workflow the agent will execute. This requires sitting down with the business process, decomposing it into decisions, and asking for every decision: what would an experienced human know at this point that the agent does not? That inventory is the starting point for context design. Most teams skip it. They give the agent general access to a data source and assume it will figure out what is relevant. It will not, not reliably, not at production scale.
+
+**Finding where the context lives.** In most enterprise environments, the answer to this question is uncomfortable. The context lives in SAP configuration tables, SharePoint sites with no consistent naming conventions, policy documents last updated in 2021, email threads, and the institutional memory of subject matter experts who are not available at the moment the agent needs them. Before you can engineer context, you have to locate it. That is often a significant discovery exercise on its own.
+
+**Getting it into the context window correctly.** This is where the technical work sits, and it is more nuanced than most teams anticipate. Not all retrieved context is equal. A 200-page policy document retrieved in full is not the same as the three paragraphs from that document that are relevant to this specific request. Chunking strategy, retrieval precision, re-ranking, and context compression all determine whether the information the agent receives is signal or noise. I worked through this directly building a RAG demo for procurement use cases, comparing TF-IDF retrieval, semantic search, and knowledge graph traversal. The difference in output quality between a poorly designed retrieval layer and a well-designed one is not marginal. It is the difference between an agent that works and one that confidently produces wrong answers.
+
+**Keeping it current.** This is the maintenance problem that nobody budgets for. Context is not static. Business rules change. Pricing changes. Regulatory requirements change. Supplier relationships change. An agent operating on stale context will drift out of alignment with business reality over time, and the drift is often invisible until it surfaces in a process failure that is hard to trace back to a context problem. Context engineering requires a maintenance model, not just a build model.
+
+## The prompt, context, and memory distinction
+
+One of the posts I worked on earlier this year distinguished between prompt, context, and memory as three separate things that most organisations conflate. It is worth being precise about this in the context of context engineering, because each requires a different design approach.
+
+The prompt is the instruction. It tells the model what to do, what role to play, what constraints to respect. It is deliberate, static within a session, and human-authored.
+
+The context is the information the model has access to at the moment of decision. It is assembled dynamically from multiple sources: the retrieved layer, the operational layer, the conversation history, tool outputs. It changes with every interaction and every step of an agentic workflow.
+
+Memory is what persists across sessions. User preferences, prior decisions, historical patterns, accumulated domain knowledge specific to this organisation and its operations. Memory is the layer that allows an agent to become more useful over time, because it is not starting from zero with every interaction. Most enterprise AI systems have no serious memory architecture. They treat every session as stateless, which means every session requires the agent to relearn context that it should already have.
+
+Getting these three things right, separately and in combination, is what context engineering produces. Conflating them is why most enterprise AI systems plateau at pilot quality and never reach production reliability.
+
+## The skill.md pattern and structured agent workflows
+
+One approach that has real practical value for enterprise teams is the structured workflow document, sometimes called a skill file. The idea is simple. For each agent capability you are building, you write an explicit document that defines what the agent knows, what it should do, what constraints it operates under, what a good output looks like, and what failure looks like. That document becomes part of the agent's instruction layer, and it is maintained as a living artefact as the workflow evolves.
+
+The discipline this creates is as valuable as the artefact itself. It forces the team to be explicit about things that are usually implicit. What does the agent know about this domain? What does it not know? What are the edge cases that require human review? What does correct look like in a way that can be verified?
+
+I have found the verifiability question particularly important. If you cannot define what a correct output looks like in terms that allow you to check it, you are not ready to automate the workflow. This is not a limitation of AI. It is a limitation of your understanding of the workflow, and context engineering forces that understanding to become explicit before the system goes into production.
+
+## Where this sits in the broader architecture
+
+Context engineering does not exist in isolation. It connects to the other architectural problems I have written about across this series.
+
+It connects to the headless architecture question because context often needs to be retrieved from enterprise systems at runtime, which means those systems need to expose clean, agent-accessible APIs. If your SAP landscape is not headless-ready, your context engineering options are constrained by what you can actually reach.
+
+It connects to the inference economy because poorly engineered context is expensive. Passing more context than necessary to the model on every call, because you have not done the work of retrieving precisely what is needed, drives token costs up at scale. The organisations that solve context engineering well tend to have significantly better inference economics than the ones that do not.
+
+It connects to the Agent Operator question because context maintenance is an ongoing operational responsibility. Someone needs to own the context layer for each agent in production, monitor when it drifts from business reality, and update it as the business evolves. This is not a set-and-forget engineering task. It is a continuous operational one.
+
+## What building this capability actually looks like
+
+Most organisations do not have context engineering as a named discipline. The people who do this work are scattered across data engineering, AI development, and business analysis, often without a shared framework or vocabulary.
+
+Building the capability requires a few things that go beyond hiring or tooling.
+
+A shared vocabulary. The distinction between the instruction layer, the retrieved layer, and the operational layer needs to be understood consistently across the team. Without shared language, architectural decisions get made at cross-purposes.
+
+A content inventory practice. Before any new agent is built, the team should be able to answer: what does this agent need to know, where does that information live, and how current is it? That practice needs to become standard, not optional.
+
+An evaluation framework. For every workflow the agent handles, you need a definition of what correct looks like that is specific enough to check. The skill.md pattern is one way to make this explicit. Whatever the form, the discipline of writing down what good looks like before you build is what separates teams that ship reliable agents from teams that ship impressive demos.
+
+An ownership model. Context does not maintain itself. Every agent in production needs a named owner responsible for the context layer, with a cadence for reviewing whether the information the agent is working from still reflects business reality.
+
+## The honest assessment
+
+Prompt engineering will take your pilot from zero to demo. Context engineering is what takes your demo from pilot to production.
+
+The organisations that are struggling to move past their first few AI pilots are almost universally underinvested in context engineering. They have capable models. They have reasonable prompts. They do not have the context infrastructure that makes those models useful in the specific, messy, exception-filled reality of their enterprise environment.
+
+The gap is not technical in the sense that it requires new technology. The tools for RAG, vector search, knowledge graphs, and structured retrieval are mature and accessible. The gap is organisational. It requires someone to own the work, a team to build the practice, and an investment in the unglamorous task of making enterprise knowledge accessible to AI systems at the moment they need it.
+
+The model is the easy part. The context is the job.
+
 ---
 
-Write your full article here.
+*Personal views only. Nothing to do with my employer or any organisation I am affiliated with.*
