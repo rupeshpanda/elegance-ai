@@ -1,0 +1,132 @@
+---
+title: What S/4HANA Customers Need to Know About the AI Readiness Gap
+excerpt: >-
+  Hundreds of enterprises completed S/4HANA migrations with a clean core
+  objective. They delivered on it. What they did not deliver was an AI-ready
+  landscape, and the distance between those two things is what this article is
+  about.
+date: June 2026
+---
+StartFragment
+
+# What SAP - S/4HANA Customers Need to Know About the AI Readiness Gap
+
+\**
+
+Between 2019 and 2024, hundreds of large enterprises completed or substantially progressed S/4HANA migrations. Most of them went in with a clean core objective. Get off ECC. Reduce custom code. Standardise processes. Move to RISE. Set the foundation for what comes next.
+
+They delivered on that objective. The landscapes are cleaner. The custom code footprints are smaller. The data models are more standardised. The technical debt from twenty years of ECC is meaningfully reduced.
+
+Now the same organisations are being asked to deploy agentic AI on top of that landscape. And they are discovering that clean core and AI-ready are not the same thing.
+
+The readiness gap between these two states is the subject of this article. It is specific, it is practical, and it is affecting every S/4HANA customer in the market right now whether they know it or not.
+
+## What clean core actually delivered
+
+Before describing the gap, it is worth being precise about what clean core actually achieved, because the framing of it as a foundation for AI has been misleading in ways that are creating real problems.
+
+Clean core delivered a more standardised data model. ACDOCA replaced the fragmented FI ledger tables. The Universal Journal consolidated what had been split across dozens of tables in ECC. Material ledger, profit centre accounting, and controlling now write to a single source of truth. For analytics and reporting, this is genuinely valuable. For AI systems that need to understand financial data, having a clean and consistent structure is a prerequisite that organisations on ECC did not have.
+
+Clean core delivered a reduced custom code footprint. Extensions that used to be embedded in core SAP code are now side-by-side on BTP, in key user apps, or in the Business Add-In framework. This separation matters for AI because it means the core system is more predictable. An agent interacting with standard processes is less likely to encounter unexpected behaviour from buried custom logic.
+
+Clean core delivered a more current release posture. Organisations on RISE or S/4HANA Cloud are receiving quarterly updates. The AI scenarios SAP is building into the platform, including the Joule capabilities we covered in an earlier article, require a current release level. Customers still on older S/4HANA on-premise releases are excluded from the most important parts of SAP's AI roadmap regardless of how clean their core is.
+
+These are real achievements. They are necessary conditions for enterprise AI. They are not sufficient ones.
+
+## The four gaps clean core did not close
+
+**The API surface gap**
+
+Agentic AI systems interact with enterprise software through APIs, not through user interfaces. An agent that needs to check a purchase order status, trigger a goods receipt, update a vendor record, or initiate an approval workflow needs to call an API that exposes that capability in a form the agent can consume reliably.
+
+S/4HANA has APIs. The Business Accelerator Hub lists thousands of them. The problem is not the number of APIs. The problem is that the API surface required for agent-scale consumption is different from the API surface that was built for human-initiated integrations.
+
+Most S/4HANA API implementations were built for point-to-point system integrations. An EDI interface that sends an IDoc. A middleware connection that calls a BAPI. An OData service that feeds a Fiori app. These integrations were designed for defined, predictable call patterns at moderate volumes, with a human somewhere in the governance chain.
+
+Agentic API consumption looks different. Agents call APIs in loops. They call them conditionally based on reasoning steps. They call multiple APIs in sequence to assemble context before making a decision. They call them at volumes and in patterns that were not anticipated when the integration landscape was designed. Many existing API implementations are not robust enough for this pattern, and the organisations that discover this in production, rather than in architecture design, face expensive retrofit work.
+
+The RAP framework, which is SAP's current standard for building new OData services on S/4HANA, provides a better foundation for agent-accessible APIs than the older BAPI and RFC-based approaches. But most S/4HANA customers completed their migrations before RAP adoption was mature, and their integration landscapes reflect that. Auditing the API surface for agent readiness is work most post-migration programmes have not done.
+
+**The context infrastructure gap**
+
+I have written at length about the context gap as the defining implementation challenge of enterprise agentic AI. The S/4HANA-specific version of that problem deserves its own treatment.
+
+S/4HANA contains an extraordinary amount of business context. Configuration that encodes how your organisation processes procurement. Pricing conditions that reflect years of commercial decisions. Credit management rules that embody your risk tolerance. Authorisation objects that define who can do what under what conditions. Material master attributes that carry decades of product knowledge. This context is extraordinarily valuable to an AI agent that is trying to make decisions inside your business processes.
+
+The problem is that this context was never designed to be consumed by an AI agent. It was designed to be enforced by the SAP application layer during human-initiated transactions. An agent trying to understand whether a purchase order can be approved does not automatically have access to the tolerance limits, the budget availability logic, the workflow substitution rules, or the vendor-specific terms that an experienced buyer would consider. That context has to be extracted from configuration tables, translated into a form the agent can reason about, and delivered to the agent at the moment it needs it.
+
+Clean core did not create this context layer. It created a cleaner system that makes the context more consistent and more accessible in principle. The work of actually making it accessible to agents is a separate programme of work that most organisations have not started.
+
+**The data quality gap**
+
+This is the one that is least discussed and most consequential.
+
+AI agents are sensitive to data quality in ways that traditional SAP workflows are not. A traditional workflow fails loudly when master data is incomplete or inconsistent. An agent with bad master data makes confident decisions on the basis of wrong information, which is a different category of failure.
+
+S/4HANA migrations improved data quality in the sense that they required a data migration and cleansing exercise. Duplicate vendors were consolidated. Customer master records were standardised. Material descriptions were cleaned up. That work was real and valuable.
+
+But the data quality required for agentic AI is more granular than what most data migration programmes targeted. An agent reasoning about supplier risk needs complete and current vendor evaluation scores, not just a clean vendor master. An agent making procurement decisions needs accurate material lead times, not just standardised material descriptions. An agent handling billing disputes needs a complete history of prior resolutions and the terms that governed them, not just a clean customer record.
+
+The delta between migration-quality data and agent-quality data is significant, and it varies by process area. Organisations that have not assessed this delta by use case are going to encounter data-driven failures in production that are difficult to diagnose because they look like model failures rather than data failures.
+
+**The operational governance gap**
+
+Clean core addressed technical governance. It defined what goes in the core and what does not. It established extension patterns. It created guardrails for customisation that protect upgrade paths and maintainability.
+
+Agentic AI requires a different kind of governance, and it is governance that the clean core programme was not designed to deliver.
+
+When an AI agent executes a transaction in SAP, who is accountable for that transaction? When an agent makes a decision that turns out to be wrong, what is the audit trail? When the business process the agent is supporting changes, who is responsible for updating the agent's instructions and the context it operates on? When the agent starts behaving differently from how it was designed, who detects it and who fixes it?
+
+These are not questions the clean core programme answered. They are questions that sit at the intersection of SAP Basis, AI operations, business process ownership, and risk management. Most S/4HANA organisations have not assembled the governance model to answer them, because they did not need to until AI deployments became a real operational system rather than a pilot.
+
+I have written about the Agent Operator as the emerging role that owns this governance at the agent level. The S/4HANA-specific version of this problem is broader. It requires someone at the programme level who understands both SAP operational governance and AI system behaviour, and can design the oversight model that connects them.
+
+## The deployment model constraint that compounds everything
+
+There is a structural constraint that compounds all four gaps, and it is one that organisations mid-migration or recently completed need to face directly.
+
+Joule, SAP's AI copilot, and the broader SAP AI ecosystem on BTP, are optimally available on S/4HANA Cloud Public Edition. Availability on RISE Private Edition is more limited and more complex to activate. Availability on on-premise S/4HANA is currently unsupported for Joule specifically.
+
+This means that the deployment model your organisation chose during the migration, often driven by security requirements, regulatory constraints, data residency concerns, or simply risk tolerance, has direct implications for how much of SAP's AI roadmap you can access and when.
+
+An organisation on Public Edition that completed migration two years ago is in the best position. The AI scenarios are available, the activation path is defined, and the quarterly release cadence keeps them current with SAP's expanding capabilities.
+
+An organisation on RISE Private Edition that completed migration three years ago needs to map exactly which AI scenarios are available in their deployment model, what the activation timeline looks like, and where the gaps are between the SAP roadmap as presented and the SAP roadmap as available to them specifically.
+
+An organisation that migrated to on-premise S/4HANA and is not planning to move to RISE needs a parallel AI strategy that does not depend on Joule and is clear-eyed about the SAP API policy implications for any third-party agents they build on top of their landscape.
+
+None of these is a comfortable position. All of them require a deliberate answer. The organisations that have not mapped their deployment model against SAP's AI availability matrix are making AI investment decisions without the information they need.
+
+## What this means for organisations currently mid-migration
+
+If your organisation is in the middle of an S/4HANA migration right now, the AI readiness gap is a programme decision you can still influence.
+
+The deployment model choice is the most consequential. If you have flexibility on whether to land on Public Edition or Private Edition, and if agentic AI deployment is a near-term priority, that flexibility is worth using. The difference in AI scenario availability between the two models is material and growing.
+
+The API surface is the second area where current programme decisions have long-term AI implications. RAP-based OData services are significantly more agent-ready than BAPI-based integrations. Where your programme has discretion on which integration pattern to use, RAP is the right choice for any interface that will eventually be consumed by an AI agent. That means most of them.
+
+The data strategy is the third. If your programme is doing a data migration and cleanse, the scope of that work should be informed by the AI use cases you are planning to deploy post-migration. Agent-quality data requirements are more granular than migration-quality requirements for several process areas. Understanding those requirements before you close the data workstream is significantly cheaper than discovering them in a post-migration AI programme.
+
+## What this means for organisations that have already completed migration
+
+If your organisation completed an S/4HANA migration in the last three to five years and is now being asked to deploy AI on top of that landscape, the honest starting point is an AI readiness assessment that is distinct from the clean core assessment you did during migration.
+
+That assessment should cover four things. The API surface audit: which of your current integrations are fit for agent-scale consumption, and which need to be rebuilt or supplemented. The context infrastructure assessment: what business context does each planned agent use case require, where does that context live today, and what is required to make it accessible at runtime. The data quality review: for each AI use case you are prioritising, what is the data quality required and what is the current state. The governance design: who will own the operational accountability for each agent in production, and what oversight model connects AI operations to your existing SAP governance.
+
+None of this is a large programme in itself. It is a diagnostic that determines where the real investment is required before you commit resources to building something that will fail in production for reasons you could have identified in advance.
+
+## The honest framing for executive conversations
+
+The S/4HANA investment was significant. Most organisations spent tens of millions of dollars and multiple years delivering it. The case for that investment was partly about building the foundation for digital transformation, including AI.
+
+The honest conversation with executives is that the foundation is real and it matters. Organisations on S/4HANA are in a better starting position for AI deployment than organisations still on ECC. The clean data model, the reduced custom code, the current release posture, these things genuinely help.
+
+But the foundation is not the building. The AI readiness work that sits between the completed migration and a functioning agentic AI deployment is substantial, specific, and largely unbudgeted in most organisations. The API surface work. The context infrastructure. The data quality delta. The operational governance model. These are not obstacles that will resolve themselves. They are investment decisions that need to be made explicitly.
+
+The organisations that are moving fastest with AI on S/4HANA are the ones that recognised this early and treated the post-migration AI readiness work as a programme in its own right, not an assumption baked into the original migration business case.
+
+The gap between clean core and AI-ready is real. Naming it clearly is the first step to closing it.
+
+---
+
+*Personal views only. Nothing to do with my employer or any organisation I am affiliated with.*
