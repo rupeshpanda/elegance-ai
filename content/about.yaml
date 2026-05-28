@@ -1,5 +1,7 @@
 eyebrow: About
-headline: "Why I write.\nWhy I share."
+headline: |-
+  Why I write.
+  Why I share.
 paragraphs:
   - >-
     I've spent 25 years running large-scale IT and SAP transformation programs
@@ -17,34 +19,37 @@ paragraphs:
     *"should we do AI?"* — that decision has already been made. The question is
     **"how do we integrate AI into what we already have"** — and that question
     is much harder than the vendors acknowledge.
-  - >-
-    The complexity is real. Existing SAP landscapes, legacy integration layers,
-    data governance obligations, inference economics at scale, the governance
-    implications of autonomous agents — these are not problems that resolve with
-    a SaaS subscription. They require **clear thinking, architectural
-    discipline, and honest analysis** of trade-offs.
+  - >
+    SAP landscapes, legacy integrations, data governance, inference costs,
+    autonomous agents - the complexity is real and it compounds.
+
+
+    What it requires is clear thinking, architectural discipline, and honest
+    trade-off analysis.
   - >-
     I write about these problems because I find them genuinely fascinating, and
     because I believe the enterprise technology community deserves more
-    independent analysis and fewer vendor-sponsored perspectives. Everything I
-    publish here is written from my own observation and experience — no
-    sponsorship, no affiliate arrangements.
+    independent analysis and fewer vendor-sponsored perspectives. 
   - >-
     **Everything I share is pro bono.** I do this in my spare time because I
     believe clear thinking about enterprise AI should be accessible to the
-    leaders who need it most — not gated behind a consulting retainer.
+    leaders who need it most and not gated behind a consulting retainer.
 facts:
   - key: Experience
-    val: 25 years · Enterprise IT & SAP transformation
+    val: 25 years · Enterprise IT & SAP Transformation
   - key: Background
-    val: 'Cognizant · Capgemini · Hitachi'
+    val: Cognizant · Capgemini · Hitachi . HCL
   - key: Education
-    val: 'B.Tech, NIT Calicut · MBA & MS (IT Management), Jindal School of Management / UT Dallas'
+    val: >-
+      B.Tech, NIT Calicut · MBA & MS , Jindal School of Management , UT Dallas,
+      TX
   - key: Research
-    val: 'PhD Scholar, IIM India & Bordeaux University, France · AI Applications in Enterprise'
+    val: >-
+      PhD Scholar, IIM India & Bordeaux University, France · Applied AI in
+      Enterprises
   - key: Location
-    val: 'Frisco, Dallas TX'
+    val: Frisco, Dallas TX
   - key: Community
-    val: The AI Edge — free weekly sessions
+    val: The AI Edge - Free Monthly Sessions
   - key: Approach
-    val: 'Pro bono — no charge, no agenda'
+    val: Pro bono - No Charge, No Agenda
