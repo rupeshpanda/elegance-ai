@@ -21,9 +21,9 @@ function renderParagraph(text: string) {
 
 export default function About({ data }: { data: AboutData }) {
   return (
-    <section id="about" className="px-6 py-20">
+    <section id="about" className="px-6 py-12 md:py-20">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-14">
+        <div className="mb-8 md:mb-14">
           <SectionLabel text="ABOUT" />
           <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight whitespace-pre-line">
             {data.headline}

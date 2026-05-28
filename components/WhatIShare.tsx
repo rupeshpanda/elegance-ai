@@ -12,9 +12,9 @@ type WhatIShareData = {
 
 export default function WhatIShare({ data }: { data: WhatIShareData }) {
   return (
-    <section className="px-6 py-20">
+    <section className="px-6 py-12 md:py-20">
       <div className="max-w-6xl mx-auto">
-        <div className="max-w-xl mb-14">
+        <div className="max-w-xl mb-8 md:mb-14">
           <SectionLabel text="WHAT I DO" />
           <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight mb-5 whitespace-pre-line">
             {data.headline}
@@ -29,16 +29,12 @@ export default function WhatIShare({ data }: { data: WhatIShareData }) {
             return (
               <div
                 key={item.num}
-                className="flex flex-col gap-5 py-8 md:py-0"
-                style={{
-                  paddingLeft: idx === 0 ? 0 : 32,
-                  paddingRight: isLast ? 0 : 32,
-                  borderRight: !isLast ? "1px solid var(--border)" : "none",
-                  borderBottom:
-                    idx < data.items.length - 1
-                      ? "1px solid var(--border)"
-                      : "none",
-                }}
+                className={[
+                  "flex flex-col gap-5 py-8 md:py-0",
+                  idx > 0 ? "md:pl-8" : "",
+                  !isLast ? "md:pr-8" : "",
+                  !isLast ? "border-b md:border-b-0 md:border-r border-border" : "",
+                ].filter(Boolean).join(" ")}
               >
                 <div className="flex items-start gap-4">
                   <Icon

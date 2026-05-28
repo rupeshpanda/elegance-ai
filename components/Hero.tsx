@@ -11,7 +11,7 @@ type HeroData = {
 
 export default function Hero({ data }: { data: HeroData }) {
   return (
-    <section className="px-6 py-20">
+    <section className="px-6 py-14 md:py-20">
       <div className="max-w-6xl mx-auto">
         {/* Two-column grid: text left, photo right */}
         <div className="grid md:grid-cols-[3fr_2fr] gap-16 items-center mb-16">

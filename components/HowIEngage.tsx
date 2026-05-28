@@ -20,9 +20,9 @@ const STEPS = [
 
 export default function HowIEngage() {
   return (
-    <section id="how-i-engage" className="px-6 py-20">
+    <section id="how-i-engage" className="px-6 py-12 md:py-20">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-14">
+        <div className="mb-8 md:mb-14">
           <SectionLabel text="HOW IT WORKS" />
           <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight mb-3">
             How I engage
@@ -38,16 +38,12 @@ export default function HowIEngage() {
             return (
               <div
                 key={s.step}
-                className="py-8 md:py-0"
-                style={{
-                  paddingLeft: idx === 0 ? 0 : 32,
-                  paddingRight: isLast ? 0 : 32,
-                  borderRight: !isLast ? "1px solid var(--border)" : "none",
-                  borderBottom:
-                    idx < STEPS.length - 1
-                      ? "1px solid var(--border)"
-                      : "none",
-                }}
+                className={[
+                  "py-8 md:py-0",
+                  idx > 0 ? "md:pl-8" : "",
+                  !isLast ? "md:pr-8" : "",
+                  !isLast ? "border-b md:border-b-0 md:border-r border-border" : "",
+                ].filter(Boolean).join(" ")}
               >
                 <span className="section-label">{s.step}</span>
                 <h3
