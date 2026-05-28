@@ -11,9 +11,6 @@
   --muted: #6B7280;
   --card: #FFFFFF;
 
-  /* warm brown for section headings */
-  --heading: #7C5230;
-
   /* teal accent — used sparingly */
   --accent: #0D7377;
   --accent-hover: #0A5C60;
@@ -36,7 +33,6 @@
   --color-border: var(--border);
   --color-muted: var(--muted);
   --color-card: var(--card);
-  --color-heading: var(--heading);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-light: var(--accent-light);

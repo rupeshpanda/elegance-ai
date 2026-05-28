@@ -1,4 +1,4 @@
-ï»¿"use client";
+"use client";
 import Image from "next/image";
 
 type HeroData = {
@@ -36,11 +36,11 @@ export default function Hero({ data }: { data: HeroData }) {
                   color: "var(--muted)",
                 }}
               >
-                Frisco, TX &nbsp;Â·&nbsp; Pro bono &nbsp;Â·&nbsp; Est. 2025
+                Frisco, TX &nbsp;·&nbsp; Pro bono &nbsp;·&nbsp; Est. 2025
               </span>
             </div>
 
-            <h1 className="font-serif text-6xl md:text-7xl lg:text-[5rem] text-heading leading-[1.08] mb-7">
+            <h1 className="font-serif text-6xl md:text-7xl lg:text-[4.5rem] text-navy leading-[1.08] mb-7">
               {data.headline.map((line, i) => (
                 <span key={i} className="block">{line}</span>
               ))}

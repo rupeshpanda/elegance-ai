@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useState } from "react";
 import { SectionLabel } from "./SectionLabel";
 
@@ -35,7 +35,7 @@ export default function Contact({ data }: { data: ContactData }) {
         <div className="grid md:grid-cols-[1fr_480px] gap-12 md:gap-20">
           <div>
             <SectionLabel text="GET IN TOUCH" />
-            <h2 className="font-serif text-6xl md:text-7xl text-heading leading-tight mb-6 whitespace-pre-line mt-2">
+            <h2 className="font-serif text-6xl md:text-7xl text-navy leading-tight mb-6 whitespace-pre-line mt-2">
               {data.headline}
             </h2>
             <p className="text-base text-muted leading-relaxed mb-10">
@@ -71,7 +71,7 @@ export default function Contact({ data }: { data: ContactData }) {
               </p>
               {subscribed ? (
                 <p style={{ fontSize: 13, color: "var(--accent)", fontWeight: 500 }}>
-                  ✓ You&apos;re subscribed.
+                  ? You&apos;re subscribed.
                 </p>
               ) : (
                 <form onSubmit={handleSubscribe} style={{ display: "flex", gap: 8 }}>
@@ -106,7 +106,7 @@ export default function Contact({ data }: { data: ContactData }) {
                       whiteSpace: "nowrap",
                     }}
                   >
-                    Subscribe →
+                    Subscribe ?
                   </button>
                 </form>
               )}
@@ -144,7 +144,7 @@ export default function Contact({ data }: { data: ContactData }) {
             {submitted ? (
               <div className="flex items-center justify-center bg-card border border-border rounded-2xl p-10 text-center min-h-[400px]">
                 <div>
-                  <div className="text-4xl mb-5">✓</div>
+                  <div className="text-4xl mb-5">?</div>
                   <h3 className="font-serif text-2xl text-navy mb-2">Message received.</h3>
                   <p className="text-sm text-muted leading-relaxed max-w-xs mx-auto">
                     I&apos;ll reply personally within a day or two.
@@ -188,7 +188,7 @@ export default function Contact({ data }: { data: ContactData }) {
                 />
                 <textarea
                   name="message"
-                  placeholder="Describe the AI integration challenge you're facing…"
+                  placeholder="Describe the AI integration challenge you're facing�"
                   value={form.message}
                   onChange={handleChange}
                   required
@@ -208,7 +208,7 @@ export default function Contact({ data }: { data: ContactData }) {
                     ((e.currentTarget as HTMLButtonElement).style.background = "var(--accent)")
                   }
                 >
-                  Send message →
+                  Send message ?
                 </button>
                 <p className="text-xs text-center text-muted">
                   I read every message personally and reply within 48 hours.

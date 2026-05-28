@@ -16,7 +16,7 @@ export default function AIEdge({ data }: { data: AIEdgeData }) {
       <div className="max-w-6xl mx-auto">
         <div className="max-w-2xl mb-6 md:mb-12">
           <SectionLabel text="FREE COMMUNITY" />
-          <h2 className="font-serif text-6xl md:text-7xl leading-tight mb-6 mt-2">
+          <h2 className="font-serif text-5xl md:text-6xl leading-tight mb-6 mt-2">
             {data.headline.map((line, i) => (
               <span
                 key={i}

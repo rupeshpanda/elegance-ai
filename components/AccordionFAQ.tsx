@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useState } from "react";
 import { SectionLabel } from "./SectionLabel";
 
@@ -37,7 +37,7 @@ export default function AccordionFAQ() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-5 md:mb-10">
           <SectionLabel text="COMMON QUESTIONS" />
-          <h2 className="font-serif text-6xl md:text-7xl text-heading leading-tight">
+          <h2 className="font-serif text-6xl md:text-7xl text-navy leading-tight">
             Common questions
           </h2>
         </div>
@@ -72,7 +72,7 @@ export default function AccordionFAQ() {
                     flexShrink: 0,
                   }}
                 >
-                  {open === i ? "−" : "+"}
+                  {open === i ? "-" : "+"}
                 </span>
               </div>
               {open === i && (
