@@ -16,7 +16,7 @@ export default function Perspectives({ section, articles }: { section: Section; 
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-5 md:mb-10 gap-6">
           <div>
             <SectionLabel text="PERSPECTIVES" />
-            <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight whitespace-pre-line">
+            <h2 className="font-serif text-6xl md:text-7xl text-heading leading-tight whitespace-pre-line">
               {section.headline}
             </h2>
           </div>

@@ -1,4 +1,4 @@
-import { FileText, Terminal, Users } from "lucide-react";
+﻿import { FileText, Terminal, Users } from "lucide-react";
 import { SectionLabel } from "./SectionLabel";
 
 const ICONS = [FileText, Terminal, Users];
@@ -16,7 +16,7 @@ export default function WhatIShare({ data }: { data: WhatIShareData }) {
       <div className="max-w-6xl mx-auto">
         <div className="max-w-xl mb-5 md:mb-10">
           <SectionLabel text="WHAT I DO" />
-          <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight mb-5 whitespace-pre-line">
+          <h2 className="font-serif text-6xl md:text-7xl text-heading leading-tight mb-5 whitespace-pre-line">
             {data.headline}
           </h2>
           <p className="text-base text-muted leading-relaxed">{data.sub}</p>

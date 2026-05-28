@@ -54,7 +54,7 @@ export default async function PerspectivePage({ params }: Props) {
               </span>
               <span className="text-xs text-muted">{article.date}</span>
             </div>
-            <h1 className="font-serif text-4xl md:text-5xl text-navy leading-tight mb-6">
+            <h1 className="font-serif text-4xl md:text-5xl text-heading leading-tight mb-6">
               {article.title}
             </h1>
             <p className="text-base text-muted leading-relaxed border-l-2 border-indigo pl-4">
@@ -75,11 +75,11 @@ export default async function PerspectivePage({ params }: Props) {
                   heading: ({ level, children }) => {
                     const Tag = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
                     const sizes: Record<number, string> = {
-                      1: 'font-serif text-3xl text-navy mt-12 mb-4',
-                      2: 'font-serif text-2xl text-navy mt-10 mb-3',
-                      3: 'font-serif text-xl text-navy mt-8 mb-3',
+                      1: 'font-serif text-3xl text-heading mt-12 mb-4',
+                      2: 'font-serif text-2xl text-heading mt-10 mb-3',
+                      3: 'font-serif text-xl text-heading mt-8 mb-3',
                     };
-                    return <Tag className={sizes[level] ?? 'font-serif text-lg text-navy mt-6 mb-2'}>{children}</Tag>;
+                    return <Tag className={sizes[level] ?? 'font-serif text-lg text-heading mt-6 mb-2'}>{children}</Tag>;
                   },
                   paragraph: ({ children }) => (
                     <p className="text-base text-ink leading-relaxed mb-5">{children}</p>
