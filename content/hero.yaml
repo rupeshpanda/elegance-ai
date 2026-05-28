@@ -15,11 +15,11 @@ cta2Href: '#work'
 bylineName: Rupesh Panda
 bylineRole: Enterprise AI Practitioner · Frisco, Dallas TX
 stats:
-  - value: '6'
+  - value: '7'
     label: Topics covered
   - value: '4'
     label: Demo systems built
-  - value: '100'
+  - value: '20'
     label: AI Edge members
   - value: Free
     label: Always
