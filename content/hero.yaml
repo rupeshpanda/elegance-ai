@@ -4,25 +4,24 @@ headline:
   - Independent.
   - No agenda.
 sub: >-
-  I write about what it actually takes to integrate AI into complex enterprise
-  environments - existing SAP landscapes, legacy architecture, governance
-  constraints, and the real economics of inference at scale. No vendor agenda.
-  No hype. Just honest analysis from someone who lives in these systems.
-cta1Label: Read my thinking
+  I write about what it takes to integrate AI into complex enterprise
+  environments — SAP landscapes, legacy architecture, governance constraints,
+  and the real economics of inference at scale. No vendor agenda. No hype.
+cta1Label: Read the perspectives →
 cta1Href: '#perspectives'
-cta2Label: Explore demos
+cta2Label: Explore demos ↓
 cta2Href: '#work'
 bylineName: Rupesh Panda
 bylineRole: Enterprise AI Practitioner · Frisco, Dallas TX
 stats:
   - value: '7'
-    label: Topics covered
-  - value: '4'
-    label: Demo systems built
+    label: Articles published
+  - value: '3'
+    label: Live demos
   - value: '20'
     label: AI Edge members
-  - value: Free
-    label: Always
+  - value: 25+
+    label: Yrs experience
 quoteText: >-
   Finally - AI writing that speaks to the realities of enterprise IT, not just
   startup greenfield. This is what CIOs actually need to read.

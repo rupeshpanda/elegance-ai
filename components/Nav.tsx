@@ -1,98 +1,104 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
-import JoinModal from "./JoinModal";
+import { LogoMark } from "./LogoMark";
 
-type Site = { name: string };
+const desktopLinks = [
+  { label: "Perspectives", href: "#perspectives" },
+  { label: "Work", href: "#work" },
+  { label: "About", href: "#about" },
+];
 
-const navLinks = [
+const mobileLinks = [
   { label: "Perspectives", href: "#perspectives" },
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
   { label: "AI Edge", href: "#edge" },
+  { label: "FAQ", href: "#faq" },
+  { label: "Contact", href: "#contact" },
 ];
 
-export default function Nav({ site }: { site: Site }) {
+export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <>
-      <header className="fixed top-0 inset-x-0 z-50 border-b border-border bg-bg/90 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <DiamondLogo />
-            <span className="text-sm font-semibold tracking-[0.2em] text-navy uppercase">
-              {site.name}
-            </span>
-          </Link>
+    <header className="sticky top-0 z-50 border-b border-border bg-bg/95 backdrop-blur-sm">
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <LogoMark />
 
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted hover:text-ink transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
+        <nav className="hidden md:flex items-center gap-8">
+          {desktopLinks.map((link) => (
             <a
-              href="https://lu.ma/1fxx84io"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm px-5 py-2 bg-indigo text-white rounded-full hover:bg-indigo-dark transition-colors"
+              key={link.href}
+              href={link.href}
+              className="text-sm text-muted hover:text-ink transition-colors"
             >
-              Join AI Edge
+              {link.label}
             </a>
-          </nav>
-
-          <button
-            className="md:hidden p-1 text-ink"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
+          ))}
+          <a
+            href="https://lu.ma/1fxx84io"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              border: "1px solid var(--border)",
+              background: "transparent",
+              color: "var(--ink)",
+              padding: "5px 14px",
+              borderRadius: 4,
+              fontSize: 12,
+              fontWeight: 500,
+              textDecoration: "none",
+              transition: "all 0.15s ease",
+              whiteSpace: "nowrap",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--accent)";
+              (e.currentTarget as HTMLAnchorElement).style.color = "var(--accent)";
+              (e.currentTarget as HTMLAnchorElement).style.background = "var(--accent-light)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--border)";
+              (e.currentTarget as HTMLAnchorElement).style.color = "var(--ink)";
+              (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+            }}
           >
-            {menuOpen ? <CloseIcon /> : <MenuIcon />}
-          </button>
-        </div>
+            Join AI Edge →
+          </a>
+        </nav>
 
-        {menuOpen && (
-          <div className="md:hidden border-t border-border bg-bg px-6 py-5 flex flex-col gap-5">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted"
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
+        <button
+          className="md:hidden p-1 text-ink"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <CloseIcon /> : <MenuIcon />}
+        </button>
+      </div>
+
+      {menuOpen && (
+        <div className="md:hidden border-t border-border bg-bg px-6 py-5 flex flex-col gap-5">
+          {mobileLinks.map((link) => (
             <a
-              href="https://lu.ma/1fxx84io"
-              target="_blank"
-              rel="noopener noreferrer"
+              key={link.href}
+              href={link.href}
+              className="text-sm text-muted"
               onClick={() => setMenuOpen(false)}
-              className="text-sm py-2.5 bg-indigo text-white rounded-full text-center"
             >
-              Join AI Edge
+              {link.label}
             </a>
-          </div>
-        )}
-      </header>
-
-      <JoinModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
-    </>
-  );
-}
-
-function DiamondLogo() {
-  return (
-    <svg width="26" height="26" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <polygon points="20,2 38,20 20,38 2,20" fill="#4338CA" />
-      <polygon points="20,8 32,20 20,32 8,20" fill="#FAFAF8" />
-      <polygon points="20,14 26,20 20,26 14,20" fill="#4338CA" />
-    </svg>
+          ))}
+          <a
+            href="https://lu.ma/1fxx84io"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            className="text-sm py-2.5 bg-indigo text-white rounded-full text-center"
+          >
+            Join AI Edge →
+          </a>
+        </div>
+      )}
+    </header>
   );
 }
 

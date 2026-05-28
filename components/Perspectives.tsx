@@ -1,15 +1,20 @@
+import { SectionLabel } from "./SectionLabel";
+
 type Section = { eyebrow: string; headline: string; sub: string };
 type Article = { slug: string; tag: string; title: string; excerpt: string; date: string; url: string };
 
+function readTime(excerpt: string) {
+  const words = excerpt.split(/\s+/).length;
+  return Math.max(3, Math.ceil(words / 40));
+}
+
 export default function Perspectives({ section, articles }: { section: Section; articles: Article[] }) {
   return (
-    <section id="perspectives" className="py-20 md:py-28 px-6 border-t border-border">
+    <section id="perspectives" className="px-6 py-20">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
-            <p className="text-xs font-semibold tracking-widest text-indigo uppercase mb-4">
-              {section.eyebrow}
-            </p>
+            <SectionLabel text="PERSPECTIVES" />
             <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight whitespace-pre-line">
               {section.headline}
             </h2>
@@ -19,31 +24,76 @@ export default function Perspectives({ section, articles }: { section: Section; 
           </p>
         </div>
 
-        <div className="divide-y divide-border">
+        <div className="grid md:grid-cols-2 gap-5">
           {articles.map((article) => (
-            <article key={article.slug} className="py-8 group">
-              <a href={article.url} className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-xs font-semibold tracking-widest text-indigo uppercase">
-                      {article.tag}
-                    </span>
-                    <span className="text-xs text-muted">{article.date}</span>
-                  </div>
-                  <h3 className="font-serif text-xl md:text-2xl text-navy mb-3 group-hover:text-indigo transition-colors">
-                    {article.title}
-                  </h3>
-                  <p className="text-sm text-muted leading-relaxed max-w-2xl">
-                    {article.excerpt}
-                  </p>
-                </div>
-                <div className="hidden md:flex items-start pt-1 text-muted group-hover:text-indigo transition-colors">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M4 10h12M10 4l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-              </a>
-            </article>
+            <a
+              key={article.slug}
+              href={article.url}
+              className="group flex flex-col"
+              style={{
+                border: "1px solid var(--border)",
+                borderRadius: 8,
+                padding: 24,
+                textDecoration: "none",
+                color: "inherit",
+                transition: "box-shadow 0.15s ease, border-color 0.15s ease",
+                background: "var(--card)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
+                  "0 4px 16px rgba(0,0,0,0.07)";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor =
+                  "var(--accent)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor =
+                  "var(--border)";
+              }}
+            >
+              {/* Tag badge */}
+              <span className="tag-badge self-start mb-3">{article.tag}</span>
+
+              {/* Date + read time */}
+              <span
+                style={{ fontSize: 12, color: "var(--muted)", marginBottom: 8 }}
+              >
+                {article.date}&nbsp;&nbsp;·&nbsp;&nbsp;{readTime(article.excerpt)} min read
+              </span>
+
+              {/* Title */}
+              <h3
+                className="font-serif text-navy group-hover:text-indigo transition-colors"
+                style={{ fontSize: "1.05rem", fontWeight: 500, marginBottom: 8, lineHeight: 1.4 }}
+              >
+                {article.title}
+              </h3>
+
+              {/* Excerpt */}
+              <p
+                style={{
+                  fontSize: 13,
+                  color: "var(--muted)",
+                  lineHeight: 1.55,
+                  margin: 0,
+                  flex: 1,
+                }}
+              >
+                {article.excerpt.split(". ")[0]}.
+              </p>
+
+              {/* Read link */}
+              <span
+                style={{
+                  fontSize: 12,
+                  color: "var(--accent)",
+                  marginTop: 16,
+                  display: "block",
+                }}
+              >
+                Read →
+              </span>
+            </a>
           ))}
         </div>
       </div>

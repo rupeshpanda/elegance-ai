@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SectionLabel } from "./SectionLabel";
 
 type AboutData = {
   eyebrow: string;
@@ -20,26 +21,18 @@ function renderParagraph(text: string) {
 
 export default function About({ data }: { data: AboutData }) {
   return (
-    <section id="about" className="py-20 md:py-28 px-6 border-t border-border">
+    <section id="about" className="px-6 py-20">
       <div className="max-w-6xl mx-auto">
         <div className="mb-14">
-          <p className="text-xs font-semibold tracking-widest text-indigo uppercase mb-4">
-            {data.eyebrow}
-          </p>
+          <SectionLabel text="ABOUT" />
           <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight whitespace-pre-line">
             {data.headline}
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-[1fr_300px] gap-12 md:gap-20 items-start">
-          <div className="flex flex-col gap-6">
-            {data.paragraphs.map((para, i) => (
-              <p key={i} className="text-base text-muted leading-relaxed">
-                {renderParagraph(para)}
-              </p>
-            ))}
-          </div>
-
+        {/* Credential card FIRST, then prose */}
+        <div className="grid md:grid-cols-[300px_1fr] gap-12 md:gap-20 items-start">
+          {/* Credential card */}
           <div className="bg-card border border-border rounded-2xl overflow-hidden sticky top-24">
             <div className="relative w-full aspect-[4/3]">
               <Image
@@ -66,6 +59,15 @@ export default function About({ data }: { data: AboutData }) {
                 ))}
               </dl>
             </div>
+          </div>
+
+          {/* Prose */}
+          <div className="flex flex-col gap-6">
+            {data.paragraphs.map((para, i) => (
+              <p key={i} className="text-base text-muted leading-relaxed">
+                {renderParagraph(para)}
+              </p>
+            ))}
           </div>
         </div>
       </div>

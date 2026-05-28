@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { DocumentRenderer } from '@keystatic/core/renderer';
-import { getPerspective, getPerspectiveSlugs, getSite } from '../../../lib/reader';
+import { getPerspective, getPerspectiveSlugs } from '../../../lib/reader';
 import Nav from '../../../components/Nav';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -19,17 +19,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${article.title} — Elegance AI`,
     description: article.excerpt,
+    openGraph: {
+      images: [
+        `/api/og?title=${encodeURIComponent(article.title)}&tag=${encodeURIComponent(article.tag)}`,
+      ],
+    },
   };
 }
 
 export default async function PerspectivePage({ params }: Props) {
   const { slug } = await params;
-  const [article, site] = await Promise.all([getPerspective(slug), getSite()]);
+  const article = await getPerspective(slug);
   if (!article) notFound();
 
   return (
     <>
-      <Nav site={site} />
+      <Nav />
       <main className="pt-24 pb-24 px-6">
         <div className="max-w-2xl mx-auto">
           <Link

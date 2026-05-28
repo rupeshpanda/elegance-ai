@@ -1,3 +1,5 @@
+import { SectionLabel } from "./SectionLabel";
+
 type AIEdgeData = {
   eyebrow: string;
   headline: readonly string[];
@@ -10,15 +12,18 @@ type AIEdgeData = {
 
 export default function AIEdge({ data }: { data: AIEdgeData }) {
   return (
-    <section id="edge" className="py-20 md:py-28 px-6 bg-navy">
+    <section id="edge" className="py-20 px-6 bg-navy">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-2xl mb-16">
-          <p className="text-xs font-semibold tracking-widest text-indigo uppercase mb-4">
-            {data.eyebrow}
-          </p>
-          <h2 className="font-serif text-5xl md:text-6xl leading-tight mb-6">
+          <SectionLabel text="FREE COMMUNITY" />
+          <h2 className="font-serif text-5xl md:text-6xl leading-tight mb-6 mt-2">
             {data.headline.map((line, i) => (
-              <span key={i} className={`block ${line === data.italicLine ? "italic text-indigo" : "text-white"}`}>
+              <span
+                key={i}
+                className={`block ${
+                  line === data.italicLine ? "italic text-indigo" : "text-white"
+                }`}
+              >
                 {line}
               </span>
             ))}

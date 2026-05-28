@@ -1,3 +1,8 @@
+import { FileText, Terminal, Users } from "lucide-react";
+import { SectionLabel } from "./SectionLabel";
+
+const ICONS = [FileText, Terminal, Users];
+
 type WhatIShareData = {
   eyebrow: string;
   headline: string;
@@ -7,36 +12,61 @@ type WhatIShareData = {
 
 export default function WhatIShare({ data }: { data: WhatIShareData }) {
   return (
-    <section className="py-20 md:py-28 px-6 border-t border-border">
+    <section className="px-6 py-20">
       <div className="max-w-6xl mx-auto">
-        <div className="max-w-xl mb-16">
-          <p className="text-xs font-semibold tracking-widest text-indigo uppercase mb-4">
-            {data.eyebrow}
-          </p>
+        <div className="max-w-xl mb-14">
+          <SectionLabel text="WHAT I DO" />
           <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight mb-5 whitespace-pre-line">
             {data.headline}
           </h2>
           <p className="text-base text-muted leading-relaxed">{data.sub}</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-px bg-border">
-          {data.items.map((item) => (
-            <div key={item.num} className="bg-bg p-8 md:p-10 flex flex-col gap-5">
-              <span className="text-xs font-semibold text-indigo tracking-widest font-sans">
-                {item.num}
-              </span>
-              <div>
-                <h3 className="font-serif text-2xl text-navy mb-3">{item.title}</h3>
-                <p className="text-sm text-muted leading-relaxed">{item.desc}</p>
-              </div>
-              <a
-                href={item.link}
-                className="mt-auto text-sm font-medium text-navy border-b border-navy/30 self-start hover:border-navy transition-colors pb-0.5"
+        <div className="grid md:grid-cols-3">
+          {data.items.map((item, idx) => {
+            const Icon = ICONS[idx] ?? FileText;
+            const isLast = idx === data.items.length - 1;
+            return (
+              <div
+                key={item.num}
+                className="flex flex-col gap-5 py-8 md:py-0"
+                style={{
+                  paddingLeft: idx === 0 ? 0 : 32,
+                  paddingRight: isLast ? 0 : 32,
+                  borderRight: !isLast ? "1px solid var(--border)" : "none",
+                  borderBottom:
+                    idx < data.items.length - 1
+                      ? "1px solid var(--border)"
+                      : "none",
+                }}
               >
-                {item.cta} →
-              </a>
-            </div>
-          ))}
+                <div className="flex items-start gap-4">
+                  <Icon
+                    size={22}
+                    style={{ color: "var(--accent)", flexShrink: 0, marginTop: 2 }}
+                    strokeWidth={1.5}
+                  />
+                  <span
+                    className="text-xs font-semibold tracking-widest font-sans"
+                    style={{ color: "var(--muted)" }}
+                  >
+                    {item.num}
+                  </span>
+                </div>
+                <div>
+                  <h3 className="font-serif text-2xl text-navy mb-3">{item.title}</h3>
+                  <p className="text-sm text-muted leading-relaxed">{item.desc}</p>
+                </div>
+                <a
+                  href={item.link}
+                  className="mt-auto text-sm font-medium self-start pb-0.5"
+                  style={{ color: "var(--accent)", borderBottom: "1px solid var(--accent-light)", textDecoration: "none" }}
+                >
+                  {item.cta} →
+                </a>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

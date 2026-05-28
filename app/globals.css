@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  /* existing palette */
   --bg: #FAFAF8;
   --navy: #0C1A2E;
   --indigo: #4338CA;
@@ -9,6 +10,18 @@
   --border: #E8E8E4;
   --muted: #6B7280;
   --card: #FFFFFF;
+
+  /* teal accent — used sparingly */
+  --accent: #0D7377;
+  --accent-hover: #0A5C60;
+  --accent-light: #E8F5F5;
+  --bg-secondary: #F4F4F1;
+
+  /* spacing scale */
+  --space-section: 80px;
+  --space-section-sm: 48px;
+  --space-inner: 40px;
+  --space-card-gap: 20px;
 }
 
 @theme inline {
@@ -20,6 +33,10 @@
   --color-border: var(--border);
   --color-muted: var(--muted);
   --color-card: var(--card);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-light: var(--accent-light);
+  --color-bg-secondary: var(--bg-secondary);
   --font-serif: var(--font-dm-serif);
   --font-sans: var(--font-inter);
 }
@@ -31,4 +48,35 @@ html {
 body {
   background: var(--bg);
   color: var(--ink);
+}
+
+/* Section dividers — placed between sections, not inside them */
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* Uppercase section labels */
+.section-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+/* Tag / badge pill */
+.tag-badge {
+  display: inline-block;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
