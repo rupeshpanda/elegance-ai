@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState, useCallback } from 'react'
-import type { Metadata } from 'next'
 
 const ACCENT = '#1E3A5F'
 const GREEN = '#16A34A'
@@ -353,7 +352,7 @@ export default function ContextBridgePage() {
         </div>
 
         <p style={{ textAlign: 'center', color: '#D1D5DB', fontSize: '0.72rem', marginTop: 28 }}>
-          Synthetic data only · Analysis by Claude claude-sonnet-4-20250514 · Reference date 2026-05-27
+          Synthetic data only · Analysis by Claude claude-sonnet-4-5 · Reference date 2026-05-27
         </p>
 
       </div>

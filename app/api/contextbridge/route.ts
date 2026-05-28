@@ -30,7 +30,7 @@ export async function GET(req: NextRequest) {
         send(controller, { stage: 'sap', status: 'loading' })
 
         const sapRes = await client.messages.create({
-          model: 'claude-sonnet-4-20250514',
+          model: 'claude-sonnet-4-5',
           max_tokens: 600,
           messages: [{
             role: 'user',
@@ -54,7 +54,7 @@ ${ctx.sapContext}`,
         send(controller, { stage: 'crm', status: 'loading' })
 
         const crmRes = await client.messages.create({
-          model: 'claude-sonnet-4-20250514',
+          model: 'claude-sonnet-4-5',
           max_tokens: 900,
           messages: [{
             role: 'user',
