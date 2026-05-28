@@ -48,13 +48,17 @@ export default function About({ data }: { data: AboutData }) {
                 <div className="text-sm font-semibold text-ink">Rupesh Panda</div>
                 <div className="text-xs text-muted mt-0.5">Enterprise AI Practitioner</div>
               </div>
-              <dl className="flex flex-col gap-4">
+              <dl className="flex flex-col gap-5">
                 {data.facts.map((fact) => (
                   <div key={fact.key}>
-                    <dt className="text-xs font-semibold text-muted uppercase tracking-wider mb-0.5">
+                    <dt className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">
                       {fact.key}
                     </dt>
-                    <dd className="text-sm text-ink leading-snug">{fact.val}</dd>
+                    <dd className="flex flex-wrap gap-2">
+                      {fact.val.split(",").map((v) => (
+                        <span key={v} className="tag-badge">{v.trim()}</span>
+                      ))}
+                    </dd>
                   </div>
                 ))}
               </dl>
