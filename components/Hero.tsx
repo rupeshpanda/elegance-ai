@@ -81,15 +81,12 @@ export default function Hero({ data }: { data: HeroData }) {
         </div>
 
         {/* Stats row */}
-        <div className="border-t border-border pt-10 mt-16">
-          <div className="flex flex-wrap gap-10 md:gap-0">
+        <div className="border-t border-border pt-8 mt-12">
+          <div className="grid grid-cols-2 gap-y-6 gap-x-4 md:grid-cols-4 md:gap-0">
             {data.stats.map((stat, i) => (
               <div
                 key={stat.label}
-                className={[
-                  "flex-1 min-w-[120px]",
-                  i < data.stats.length - 1 ? "md:pr-10 md:border-r md:border-border" : "",
-                ].filter(Boolean).join(" ")}
+                className={i < data.stats.length - 1 ? "md:pr-10 md:border-r md:border-border" : ""}
               >
                 <div className="font-serif text-navy" style={{ fontSize: 28, fontWeight: 500, lineHeight: 1, marginBottom: 5 }}>
                   {stat.value}

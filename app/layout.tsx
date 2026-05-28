@@ -14,15 +14,21 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Elegance AI - Enterprise AI Perspectives",
+  title: "Enterprise AI. No Agenda.",
   description:
-    "Independent analysis on integrating AI into enterprise environments - SAP landscapes, legacy architecture, inference economics, and agentic systems.",
+    "Independent analysis on integrating AI into enterprise environments — SAP landscapes, legacy architecture, inference economics, and agentic systems.",
   openGraph: {
-    title: "Elegance AI - Enterprise AI Perspectives",
+    title: "Enterprise AI. No Agenda.",
     description:
       "Independent analysis on integrating AI into enterprise environments.",
     url: "https://eleganceai.ai",
     siteName: "Elegance AI",
+  },
+  twitter: {
+    card: "summary",
+    title: "Enterprise AI. No Agenda.",
+    description:
+      "Independent analysis on integrating AI into enterprise environments.",
   },
 };
 
