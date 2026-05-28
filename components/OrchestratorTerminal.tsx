@@ -15,7 +15,7 @@ export function OrchestratorTerminal() {
   const [done, setDone] = useState<{ t: string; c: string }[]>([]);
   const [cur, setCur] = useState("");
   const [li, setLi] = useState(0);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

@@ -9,7 +9,7 @@ const TIER_NAMES = ["Frontier", "Standard", "Economy"];
 export function HeroInferenceCard() {
   const [di, setDi] = useState(1);
   const [displayCost, setDisplayCost] = useState(0);
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number | undefined>(undefined);
   const prevCostRef = useRef(0);
 
   const mult = DEPTHS[di];
