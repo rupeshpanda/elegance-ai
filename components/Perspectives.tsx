@@ -1,3 +1,4 @@
+"use client";
 import { SectionLabel } from "./SectionLabel";
 
 type Section = { eyebrow: string; headline: string; sub: string };
