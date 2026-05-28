@@ -37,7 +37,7 @@ export default function AccordionFAQ() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-5 md:mb-10">
           <SectionLabel text="COMMON QUESTIONS" />
-          <h2 className="font-serif text-6xl md:text-7xl text-navy leading-tight">
+          <h2 className="font-serif text-6xl md:text-7xl text-accent leading-tight">
             Common questions
           </h2>
         </div>

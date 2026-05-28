@@ -24,7 +24,7 @@ export default function HowIEngage() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-5 md:mb-10">
           <SectionLabel text="HOW IT WORKS" />
-          <h2 className="font-serif text-6xl md:text-7xl text-navy leading-tight mb-3">
+          <h2 className="font-serif text-6xl md:text-7xl text-accent leading-tight mb-3">
             How I engage
           </h2>
           <p className="text-base text-muted">

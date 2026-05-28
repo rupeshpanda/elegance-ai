@@ -29,7 +29,7 @@ export default function DemoWork({ projects }: { projects: Project[] }) {
       <div className="max-w-6xl mx-auto">
         <div className="max-w-xl mb-5 md:mb-10">
           <SectionLabel text="BUILT TO SHOW" />
-          <h2 className="font-serif text-6xl md:text-7xl text-navy leading-tight whitespace-pre-line mb-4">
+          <h2 className="font-serif text-6xl md:text-7xl text-accent leading-tight whitespace-pre-line mb-4">
             Built to show. Shared to teach.
           </h2>
           <p className="text-base text-muted leading-relaxed">
