@@ -1,9 +1,11 @@
+"use client";
 import Link from "next/link";
 
 export function LogoMark() {
   return (
     <Link
       href="/"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       style={{ display: "flex", alignItems: "center", gap: 8, textDecoration: "none" }}
     >
       <div
