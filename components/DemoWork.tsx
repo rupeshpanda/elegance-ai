@@ -1,6 +1,7 @@
 "use client";
 import { SectionLabel } from "./SectionLabel";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { OrchestratorTerminal } from "./OrchestratorTerminal";
 
 type Project = { slug: string; title: string; desc: string; tags: readonly string[]; status: string; url: string };
 
@@ -22,6 +23,12 @@ const CAPABILITIES: Record<string, string[]> = {
     "Natural language churn-risk analysis across two disconnected systems",
     "Demonstrates the context engineering pattern for enterprise RAG",
     "Live Claude API calls with structured SSE streaming output",
+  ],
+  "agentic-workflow-orchestrator": [
+    "Decomposes enterprise tasks into specialised subtask chains",
+    "Routes work across agents with role-scoped permissions",
+    "Human-in-the-loop checkpoints at defined cost and risk thresholds",
+    "Audit trail per step — every decision logged and explainable",
   ],
 };
 
@@ -62,6 +69,8 @@ export default function DemoWork({ projects }: { projects: Project[] }) {
           {projects.map((project, idx) => {
             const caps = CAPABILITIES[project.slug] ?? [];
             const isLive = project.url && project.url !== "#";
+            const isOrchestrator = project.slug === "agentic-workflow-orchestrator";
+
             return (
               <div
                 key={project.slug}
@@ -74,6 +83,7 @@ export default function DemoWork({ projects }: { projects: Project[] }) {
                   flexDirection: "column",
                   gap: 16,
                   transition: "transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease",
+                  ...(isOrchestrator ? { gridColumn: "1 / -1" } : {}),
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
@@ -90,62 +100,85 @@ export default function DemoWork({ projects }: { projects: Project[] }) {
               >
                 <span className="section-label">DEMO {String(idx + 1).padStart(2, "0")}</span>
 
-                <div>
-                  <h3 style={{ fontWeight: 600, fontSize: 16, color: "var(--navy)", margin: "0 0 8px" }}>
-                    {project.title}
-                  </h3>
-                  <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.55, margin: 0 }}>
-                    {project.desc}
-                  </p>
-                </div>
+                {isOrchestrator ? (
+                  /* Orchestrator: two-column inner layout with terminal */
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                      <div>
+                        <h3 style={{ fontWeight: 600, fontSize: 16, color: "var(--navy)", margin: "0 0 8px" }}>
+                          {project.title}
+                        </h3>
+                        <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.55, margin: 0 }}>
+                          {project.desc}
+                        </p>
+                      </div>
+                      {caps.length > 0 && (
+                        <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 4 }}>
+                          {caps.map((cap) => (
+                            <li key={cap} style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.8, display: "flex", alignItems: "flex-start", gap: 8 }}>
+                              <span style={{ color: "var(--accent)", flexShrink: 0, marginTop: 1 }}>·</span>
+                              {cap}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      <div className="flex flex-wrap gap-2" style={{ marginTop: "auto" }}>
+                        {project.tags.map((tag) => (
+                          <span key={tag} className="tag-badge">{tag}</span>
+                        ))}
+                      </div>
+                      <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+                        <span style={{ fontSize: 13, color: "var(--muted)" }}>Coming soon</span>
+                      </div>
+                    </div>
+                    <div>
+                      <OrchestratorTerminal />
+                    </div>
+                  </div>
+                ) : (
+                  /* Standard card layout */
+                  <>
+                    <div>
+                      <h3 style={{ fontWeight: 600, fontSize: 16, color: "var(--navy)", margin: "0 0 8px" }}>
+                        {project.title}
+                      </h3>
+                      <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.55, margin: 0 }}>
+                        {project.desc}
+                      </p>
+                    </div>
 
-                {caps.length > 0 && (
-                  <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 4 }}>
-                    {caps.map((cap) => (
-                      <li
-                        key={cap}
-                        style={{
-                          fontSize: 13,
-                          color: "var(--muted)",
-                          lineHeight: 1.8,
-                          display: "flex",
-                          alignItems: "flex-start",
-                          gap: 8,
-                        }}
-                      >
-                        <span style={{ color: "var(--accent)", flexShrink: 0, marginTop: 1 }}>·</span>
-                        {cap}
-                      </li>
-                    ))}
-                  </ul>
+                    {caps.length > 0 && (
+                      <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 4 }}>
+                        {caps.map((cap) => (
+                          <li key={cap} style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.8, display: "flex", alignItems: "flex-start", gap: 8 }}>
+                            <span style={{ color: "var(--accent)", flexShrink: 0, marginTop: 1 }}>·</span>
+                            {cap}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="tag-badge">{tag}</span>
+                      ))}
+                    </div>
+
+                    <div style={{ display: "flex", gap: 20, alignItems: "center", marginTop: "auto" }}>
+                      {isLive ? (
+                        <a
+                          href={project.url}
+                          style={{ fontSize: 13, fontWeight: 500, color: "var(--accent)", textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+                        >
+                          <span className="live-dot" />
+                          Launch demo →
+                        </a>
+                      ) : (
+                        <span style={{ fontSize: 13, color: "var(--muted)" }}>Coming soon</span>
+                      )}
+                    </div>
+                  </>
                 )}
-
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="tag-badge">{tag}</span>
-                  ))}
-                </div>
-
-                <div style={{ display: "flex", gap: 20, alignItems: "center", marginTop: "auto" }}>
-                  {isLive ? (
-                    <a
-                      href={project.url}
-                      style={{
-                        fontSize: 13,
-                        fontWeight: 500,
-                        color: "var(--accent)",
-                        textDecoration: "none",
-                        display: "inline-flex",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span className="live-dot" />
-                      Launch demo →
-                    </a>
-                  ) : (
-                    <span style={{ fontSize: 13, color: "var(--muted)" }}>Coming soon</span>
-                  )}
-                </div>
               </div>
             );
           })}
