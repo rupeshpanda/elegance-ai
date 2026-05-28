@@ -1,17 +1,21 @@
 eyebrow: About
-headline: "Why I write.\nWhy I share."
+headline: |-
+  Why I write.
+  Why I share.
 paragraphs:
   - >-
     I've spent 25 years running large-scale IT and SAP transformation programs
     for Fortune 500 clients — the kind with $100M+ budgets, multi-year
     timelines, and very little room for vendor hype. I currently lead SAP
     S/4HANA Greenfield initiatives and advise CXO and business leaders on
-    embedding AI into existing enterprise landscapes. I graduated from NIT
-    Calicut, one of India's premier technology institutions, and hold an MBA and
-    MS in IT Management from Jindal School of Management at UT Dallas. I'm a PhD
-    Scholar at IIM India and Bordeaux University, France, where my research
-    focuses on the application of AI in enterprises. That's the experience this
-    site is written from.
+    embedding AI into existing enterprise landscapes. 
+
+
+    I graduated from NIT Calicut, one of India's premier technology
+    institutions, and hold an MBA and MS in IT Management from Jindal School of
+    Management at UT Dallas. I'm a PhD Scholar at IIM India and Bordeaux
+    University, France, where my research focuses on the application of AI in
+    enterprises. That's the experience this site is written from.
   - >-
     The question I hear most often from CIOs and technology leaders is not
     *"should we do AI?"* — that decision has already been made. The question is
@@ -37,14 +41,18 @@ facts:
   - key: Experience
     val: 25 years · Enterprise IT & SAP transformation
   - key: Background
-    val: 'Cognizant · Capgemini · Hitachi'
+    val: Cognizant · Capgemini · Hitachi
   - key: Education
-    val: 'B.Tech, NIT Calicut · MBA & MS (IT Management), Jindal School of Management / UT Dallas'
+    val: >-
+      B.Tech, NIT Calicut · MBA & MS (IT Management), Jindal School of
+      Management / UT Dallas
   - key: Research
-    val: 'PhD Scholar, IIM India & Bordeaux University, France · AI Applications in Enterprise'
+    val: >-
+      PhD Scholar, IIM India & Bordeaux University, France · AI Applications in
+      Enterprise
   - key: Location
-    val: 'Frisco, Dallas TX'
+    val: Frisco, Dallas TX
   - key: Community
     val: The AI Edge — free weekly sessions
   - key: Approach
-    val: 'Pro bono — no charge, no agenda'
+    val: Pro bono — no charge, no agenda
