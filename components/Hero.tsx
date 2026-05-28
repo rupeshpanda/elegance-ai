@@ -36,7 +36,7 @@ export default function Hero({ data }: { data: HeroData }) {
                   color: "var(--muted)",
                 }}
               >
-                Frisco, TX &nbsp;·&nbsp; Pro bono &nbsp;·&nbsp; Est. 2025
+                Frisco, TX &nbsp;Â·&nbsp; Pro bono &nbsp;Â·&nbsp; Est. 2025
               </span>
             </div>
 

@@ -59,7 +59,7 @@ export default function Perspectives({ section, articles }: { section: Section; 
               <span
                 style={{ fontSize: 12, color: "var(--muted)", marginBottom: 8 }}
               >
-                {article.date}&nbsp;&nbsp;�&nbsp;&nbsp;{readTime(article.excerpt)} min read
+                {article.date}&nbsp;&nbsp;·&nbsp;&nbsp;{readTime(article.excerpt)} min read
               </span>
 
               {/* Title */}
@@ -92,7 +92,7 @@ export default function Perspectives({ section, articles }: { section: Section; 
                   display: "block",
                 }}
               >
-                Read ?
+                Read →
               </span>
             </a>
           ))}

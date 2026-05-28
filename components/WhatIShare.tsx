@@ -58,7 +58,7 @@ export default function WhatIShare({ data }: { data: WhatIShareData }) {
                   className="mt-auto text-sm font-medium self-start pb-0.5"
                   style={{ color: "var(--accent)", borderBottom: "1px solid var(--accent-light)", textDecoration: "none" }}
                 >
-                  {item.cta} ?
+                  {item.cta} →
                 </a>
               </div>
             );

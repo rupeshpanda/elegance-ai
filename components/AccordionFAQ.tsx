@@ -72,7 +72,7 @@ export default function AccordionFAQ() {
                     flexShrink: 0,
                   }}
                 >
-                  {open === i ? "-" : "+"}
+                  {open === i ? "−" : "+"}
                 </span>
               </div>
               {open === i && (

@@ -87,7 +87,7 @@ export default function DemoWork({ projects }: { projects: Project[] }) {
                           gap: 8,
                         }}
                       >
-                        <span style={{ color: "var(--accent)", flexShrink: 0, marginTop: 1 }}>�</span>
+                        <span style={{ color: "var(--accent)", flexShrink: 0, marginTop: 1 }}>·</span>
                         {cap}
                       </li>
                     ))}
@@ -111,7 +111,7 @@ export default function DemoWork({ projects }: { projects: Project[] }) {
                         textDecoration: "none",
                       }}
                     >
-                      Launch demo ?
+                      Launch demo →
                     </a>
                   ) : (
                     <span style={{ fontSize: 13, color: "var(--muted)" }}>Coming soon</span>
