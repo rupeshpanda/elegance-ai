@@ -5,20 +5,25 @@ headline: |-
 paragraphs:
   - >-
     I've spent 25 years running large-scale IT and SAP transformation programs
-    for Fortune 500 clients — the kind with $100M+ budgets, multi-year
-    timelines, and very little room for vendor hype. I currently lead SAP
-    S/4HANA Greenfield initiatives and advise CXO and business leaders on
-    embedding AI into existing enterprise landscapes. I graduated from NIT
-    Calicut, one of India's premier technology institutions, and hold an MBA and
-    MS in IT Management from Jindal School of Management at UT Dallas. I'm a PhD
-    Scholar at IIM India and Bordeaux University, France, where my research
-    focuses on the application of AI in enterprises. That's the experience this
-    site is written from.
+    for Fortune 500 clients, the kind with $100M+ budgets, multi-year timelines,
+    and very little room for vendor hype. 
+
+
+    I currently lead SAP S/4HANA Greenfield initiatives and advise CXO and
+    business leaders on embedding AI into existing enterprise landscapes. I
+    graduated from NIT Calicut, one of India's premier technology institutions,
+    and hold an MBA and MS in IT Management from Jindal School of Management at
+    UT Dallas. 
+
+
+    I'm a PhD Scholar at IIM India and Bordeaux University, France, where my
+    research focuses on the application of AI in enterprises. That's the
+    experience this site is written from.
   - >-
     The question I hear most often from CIOs and technology leaders is not
-    *"should we do AI?"* — that decision has already been made. The question is
-    **"how do we integrate AI into what we already have"** — and that question
-    is much harder than the vendors acknowledge.
+    *"should we do AI?"* - that decision has already been made. The question is
+    **"how do we integrate AI into what we already have"**  and that question is
+    much harder than the vendors acknowledge.
   - >
     SAP landscapes, legacy integrations, data governance, inference costs,
     autonomous agents - the complexity is real and it compounds.
