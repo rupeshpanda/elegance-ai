@@ -30,7 +30,7 @@ export default function Contact({ data }: { data: ContactData }) {
   }
 
   return (
-    <section id="contact" className="px-6 py-12 md:py-20">
+    <section id="contact" className="px-6 py-8 md:py-14">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-[1fr_480px] gap-12 md:gap-20">
           <div>

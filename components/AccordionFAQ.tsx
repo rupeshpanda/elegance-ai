@@ -33,9 +33,9 @@ export default function AccordionFAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="px-6 py-12 md:py-20">
+    <section id="faq" className="px-6 py-8 md:py-14">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-8 md:mb-14">
+        <div className="mb-5 md:mb-10">
           <SectionLabel text="COMMON QUESTIONS" />
           <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight">
             Common questions

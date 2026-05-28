@@ -20,9 +20,9 @@ const STEPS = [
 
 export default function HowIEngage() {
   return (
-    <section id="how-i-engage" className="px-6 py-12 md:py-20">
+    <section id="how-i-engage" className="px-6 py-8 md:py-14">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-8 md:mb-14">
+        <div className="mb-5 md:mb-10">
           <SectionLabel text="HOW IT WORKS" />
           <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight mb-3">
             How I engage
