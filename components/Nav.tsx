@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LogoMark } from "./LogoMark";
 
 const desktopLinks = [
@@ -17,24 +17,74 @@ const mobileLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+const SECTION_IDS = ["perspectives", "work", "about", "edge", "faq", "contact"];
+
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    const visible = new Set<string>();
+
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            visible.add(id);
+          } else {
+            visible.delete(id);
+          }
+          const first = SECTION_IDS.find((s) => visible.has(s)) ?? "";
+          setActiveSection(first);
+        },
+        { rootMargin: "-20% 0px -60% 0px" }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    return () => observers.forEach((obs) => obs.disconnect());
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-bg/95 backdrop-blur-sm">
+    <header
+      className="sticky top-0 z-50 border-b border-border backdrop-blur-sm transition-shadow duration-200"
+      style={{
+        background: scrolled ? "rgba(250,250,248,0.98)" : "rgba(250,250,248,0.95)",
+        boxShadow: scrolled ? "0 1px 12px rgba(0,0,0,0.06)" : "none",
+      }}
+    >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <LogoMark />
 
         <nav className="hidden md:flex items-center gap-8">
-          {desktopLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-muted hover:text-ink transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
+          {desktopLinks.map((link) => {
+            const id = link.href.slice(1);
+            const isActive = activeSection === id;
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm transition-colors"
+                style={{
+                  color: isActive ? "var(--accent)" : "var(--muted)",
+                  fontWeight: isActive ? 500 : 400,
+                }}
+              >
+                {link.label}
+              </a>
+            );
+          })}
           <a
             href="https://lu.ma/1fxx84io"
             target="_blank"
@@ -77,16 +127,21 @@ export default function Nav() {
 
       {menuOpen && (
         <div className="md:hidden border-t border-border bg-bg px-6 py-5 flex flex-col gap-5">
-          {mobileLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-muted"
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
+          {mobileLinks.map((link) => {
+            const id = link.href.slice(1);
+            const isActive = activeSection === id;
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm"
+                style={{ color: isActive ? "var(--accent)" : "var(--muted)", fontWeight: isActive ? 500 : 400 }}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            );
+          })}
           <a
             href="https://lu.ma/1fxx84io"
             target="_blank"

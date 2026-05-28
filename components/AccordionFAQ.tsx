@@ -33,7 +33,7 @@ export default function AccordionFAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="px-6 py-8 md:py-10">
+    <section id="faq" className="px-6 py-8 md:py-10" style={{ background: "var(--bg-secondary)" }}>
       <div className="max-w-6xl mx-auto">
         <div className="mb-5 md:mb-10">
           <SectionLabel text="COMMON QUESTIONS" />

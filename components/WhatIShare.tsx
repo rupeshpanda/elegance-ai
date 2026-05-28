@@ -1,5 +1,7 @@
+"use client";
 import { FileText, Terminal, Users } from "lucide-react";
 import { SectionLabel } from "./SectionLabel";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const ICONS = [FileText, Terminal, Users];
 
@@ -11,10 +13,16 @@ type WhatIShareData = {
 };
 
 export default function WhatIShare({ data }: { data: WhatIShareData }) {
+  const header = useScrollReveal();
+  const grid = useScrollReveal();
+
   return (
     <section className="px-6 py-8 md:py-10">
       <div className="max-w-6xl mx-auto">
-        <div className="max-w-xl mb-5 md:mb-10">
+        <div
+          ref={header.ref}
+          className={`max-w-xl mb-5 md:mb-10 reveal${header.visible ? " visible" : ""}`}
+        >
           <SectionLabel text="WHAT I DO" />
           <h2 className="font-serif text-6xl md:text-7xl text-navy leading-tight mb-5 whitespace-pre-line">
             {data.headline}
@@ -22,7 +30,10 @@ export default function WhatIShare({ data }: { data: WhatIShareData }) {
           <p className="text-base text-muted leading-relaxed">{data.sub}</p>
         </div>
 
-        <div className="grid md:grid-cols-3">
+        <div
+          ref={grid.ref}
+          className={`grid md:grid-cols-3 reveal${grid.visible ? " visible" : ""}`}
+        >
           {data.items.map((item, idx) => {
             const Icon = ICONS[idx] ?? FileText;
             const isLast = idx === data.items.length - 1;

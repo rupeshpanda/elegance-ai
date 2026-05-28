@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import { SectionLabel } from "./SectionLabel";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 type AboutData = {
   eyebrow: string;
@@ -20,10 +22,16 @@ function renderParagraph(text: string) {
 }
 
 export default function About({ data }: { data: AboutData }) {
+  const header = useScrollReveal();
+  const body = useScrollReveal();
+
   return (
     <section id="about" className="px-6 py-8 md:py-10">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-5 md:mb-10">
+        <div
+          ref={header.ref}
+          className={`mb-5 md:mb-10 reveal${header.visible ? " visible" : ""}`}
+        >
           <SectionLabel text="ABOUT" />
           <h2 className="font-serif text-6xl md:text-7xl text-navy leading-tight whitespace-pre-line">
             {data.headline}
@@ -31,7 +39,10 @@ export default function About({ data }: { data: AboutData }) {
         </div>
 
         {/* Credential card FIRST, then prose */}
-        <div className="grid md:grid-cols-[300px_1fr] gap-12 md:gap-20 items-start">
+        <div
+          ref={body.ref}
+          className={`grid md:grid-cols-[300px_1fr] gap-12 md:gap-20 items-start reveal${body.visible ? " visible" : ""}`}
+        >
           {/* Credential card */}
           <div className="bg-card border border-border rounded-2xl overflow-hidden md:sticky md:top-24">
             <div className="relative w-full aspect-[4/3]">

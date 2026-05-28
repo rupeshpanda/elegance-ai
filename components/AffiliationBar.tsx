@@ -13,7 +13,7 @@ const AFFILIATIONS = [
 
 export default function AffiliationBar() {
   return (
-    <section className="px-6 py-6 md:py-10">
+    <section className="px-6 py-6 md:py-10" style={{ background: "var(--bg-secondary)" }}>
       <div className="max-w-6xl mx-auto">
         <SectionLabel text="BACKGROUND & AFFILIATIONS" />
         <div className="flex flex-wrap gap-x-8 gap-y-4 items-center mt-4">

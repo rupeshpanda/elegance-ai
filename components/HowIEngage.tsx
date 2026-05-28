@@ -1,4 +1,6 @@
+"use client";
 import { SectionLabel } from "./SectionLabel";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const STEPS = [
   {
@@ -19,10 +21,16 @@ const STEPS = [
 ];
 
 export default function HowIEngage() {
+  const header = useScrollReveal();
+  const grid = useScrollReveal();
+
   return (
-    <section id="how-i-engage" className="px-6 py-8 md:py-10">
+    <section id="how-i-engage" className="px-6 py-8 md:py-10" style={{ background: "var(--bg-secondary)" }}>
       <div className="max-w-6xl mx-auto">
-        <div className="mb-5 md:mb-10">
+        <div
+          ref={header.ref}
+          className={`mb-5 md:mb-10 reveal${header.visible ? " visible" : ""}`}
+        >
           <SectionLabel text="HOW IT WORKS" />
           <h2 className="font-serif text-6xl md:text-7xl text-navy leading-tight mb-3">
             How I engage
@@ -32,7 +40,10 @@ export default function HowIEngage() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3">
+        <div
+          ref={grid.ref}
+          className={`grid md:grid-cols-3 reveal${grid.visible ? " visible" : ""}`}
+        >
           {STEPS.map((s, idx) => {
             const isLast = idx === STEPS.length - 1;
             return (

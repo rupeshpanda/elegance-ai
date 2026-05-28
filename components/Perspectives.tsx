@@ -1,5 +1,7 @@
 "use client";
 import { SectionLabel } from "./SectionLabel";
+import { TopicThumb } from "./TopicThumb";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 type Section = { eyebrow: string; headline: string; sub: string };
 type Article = { slug: string; tag: string; title: string; excerpt: string; date: string; url: string };
@@ -10,10 +12,16 @@ function readTime(excerpt: string) {
 }
 
 export default function Perspectives({ section, articles }: { section: Section; articles: Article[] }) {
+  const header = useScrollReveal();
+  const grid = useScrollReveal();
+
   return (
     <section id="perspectives" className="px-6 py-8 md:py-10">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-5 md:mb-10 gap-6">
+        <div
+          ref={header.ref}
+          className={`flex flex-col md:flex-row md:items-end justify-between mb-5 md:mb-10 gap-6 reveal${header.visible ? " visible" : ""}`}
+        >
           <div>
             <SectionLabel text="PERSPECTIVES" />
             <h2 className="font-serif text-6xl md:text-7xl text-navy leading-tight whitespace-pre-line">
@@ -25,7 +33,10 @@ export default function Perspectives({ section, articles }: { section: Section; 
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div
+          ref={grid.ref}
+          className={`grid md:grid-cols-2 gap-5 reveal${grid.visible ? " visible" : ""}`}
+        >
           {articles.map((article) => (
             <a
               key={article.slug}
@@ -37,32 +48,31 @@ export default function Perspectives({ section, articles }: { section: Section; 
                 padding: 24,
                 textDecoration: "none",
                 color: "inherit",
-                transition: "box-shadow 0.15s ease, border-color 0.15s ease",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease",
                 background: "var(--card)",
+                overflow: "hidden",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-                  "0 4px 16px rgba(0,0,0,0.07)";
-                (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                  "var(--accent)";
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.transform = "translateY(-2px)";
+                el.style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)";
+                el.style.borderColor = "var(--accent)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
-                (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                  "var(--border)";
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.transform = "translateY(0)";
+                el.style.boxShadow = "none";
+                el.style.borderColor = "var(--border)";
               }}
             >
-              {/* Tag badge */}
+              <TopicThumb topic={article.tag + " " + article.title} />
+
               <span className="tag-badge self-start mb-3">{article.tag}</span>
 
-              {/* Date + read time */}
-              <span
-                style={{ fontSize: 12, color: "var(--muted)", marginBottom: 8 }}
-              >
+              <span style={{ fontSize: 12, color: "var(--muted)", marginBottom: 8 }}>
                 {article.date}&nbsp;&nbsp;·&nbsp;&nbsp;{readTime(article.excerpt)} min read
               </span>
 
-              {/* Title */}
               <h3
                 className="font-serif text-navy group-hover:text-indigo transition-colors"
                 style={{ fontSize: "1.05rem", fontWeight: 500, marginBottom: 8, lineHeight: 1.4 }}
@@ -70,28 +80,11 @@ export default function Perspectives({ section, articles }: { section: Section; 
                 {article.title}
               </h3>
 
-              {/* Excerpt */}
-              <p
-                style={{
-                  fontSize: 13,
-                  color: "var(--muted)",
-                  lineHeight: 1.55,
-                  margin: 0,
-                  flex: 1,
-                }}
-              >
+              <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.55, margin: 0, flex: 1 }}>
                 {article.excerpt.split(". ")[0]}.
               </p>
 
-              {/* Read link */}
-              <span
-                style={{
-                  fontSize: 12,
-                  color: "var(--accent)",
-                  marginTop: 16,
-                  display: "block",
-                }}
-              >
+              <span style={{ fontSize: 12, color: "var(--accent)", marginTop: 16, display: "block" }}>
                 Read →
               </span>
             </a>

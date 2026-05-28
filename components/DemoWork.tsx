@@ -1,4 +1,6 @@
+"use client";
 import { SectionLabel } from "./SectionLabel";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 type Project = { slug: string; title: string; desc: string; tags: readonly string[]; status: string; url: string };
 
@@ -24,10 +26,25 @@ const CAPABILITIES: Record<string, string[]> = {
 };
 
 export default function DemoWork({ projects }: { projects: Project[] }) {
+  const header = useScrollReveal();
+  const grid = useScrollReveal();
+  const liveCount = projects.filter((p) => p.url && p.url !== "#").length;
+
   return (
     <section id="work" className="px-6 py-8 md:py-10">
       <div className="max-w-6xl mx-auto">
-        <div className="max-w-xl mb-5 md:mb-10">
+        <div
+          ref={header.ref}
+          className={`max-w-xl mb-5 md:mb-10 reveal${header.visible ? " visible" : ""}`}
+        >
+          {liveCount > 0 && (
+            <div
+              className="font-serif"
+              style={{ fontSize: "2rem", color: "var(--accent)", lineHeight: 1.1, marginBottom: 8 }}
+            >
+              {liveCount} live system{liveCount !== 1 ? "s" : ""}
+            </div>
+          )}
           <SectionLabel text="BUILT TO SHOW" />
           <h2 className="font-serif text-6xl md:text-7xl text-navy leading-tight whitespace-pre-line mb-4">
             Built to show. Shared to teach.
@@ -38,7 +55,10 @@ export default function DemoWork({ projects }: { projects: Project[] }) {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div
+          ref={grid.ref}
+          className={`grid md:grid-cols-2 gap-5 reveal${grid.visible ? " visible" : ""}`}
+        >
           {projects.map((project, idx) => {
             const caps = CAPABILITIES[project.slug] ?? [];
             const isLive = project.url && project.url !== "#";
@@ -53,19 +73,25 @@ export default function DemoWork({ projects }: { projects: Project[] }) {
                   display: "flex",
                   flexDirection: "column",
                   gap: 16,
+                  transition: "transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.transform = "translateY(-2px)";
+                  el.style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)";
+                  el.style.borderColor = "var(--accent)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.transform = "translateY(0)";
+                  el.style.boxShadow = "none";
+                  el.style.borderColor = "var(--border)";
                 }}
               >
                 <span className="section-label">DEMO {String(idx + 1).padStart(2, "0")}</span>
 
                 <div>
-                  <h3
-                    style={{
-                      fontWeight: 600,
-                      fontSize: 16,
-                      color: "var(--navy)",
-                      margin: "0 0 8px",
-                    }}
-                  >
+                  <h3 style={{ fontWeight: 600, fontSize: 16, color: "var(--navy)", margin: "0 0 8px" }}>
                     {project.title}
                   </h3>
                   <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.55, margin: 0 }}>
@@ -109,8 +135,11 @@ export default function DemoWork({ projects }: { projects: Project[] }) {
                         fontWeight: 500,
                         color: "var(--accent)",
                         textDecoration: "none",
+                        display: "inline-flex",
+                        alignItems: "center",
                       }}
                     >
+                      <span className="live-dot" />
                       Launch demo →
                     </a>
                   ) : (
