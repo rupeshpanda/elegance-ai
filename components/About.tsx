@@ -51,14 +51,10 @@ export default function About({ data }: { data: AboutData }) {
               <dl className="flex flex-col gap-5">
                 {data.facts.map((fact) => (
                   <div key={fact.key}>
-                    <dt className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">
-                      {fact.key}
+                    <dt className="mb-1.5">
+                      <span className="tag-badge">{fact.key}</span>
                     </dt>
-                    <dd className="flex flex-wrap gap-2">
-                      {fact.val.split(",").map((v) => (
-                        <span key={v} className="tag-badge">{v.trim()}</span>
-                      ))}
-                    </dd>
+                    <dd className="text-sm text-ink leading-snug">{fact.val}</dd>
                   </div>
                 ))}
               </dl>
