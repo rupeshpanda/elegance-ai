@@ -25,7 +25,7 @@ const CAPABILITIES: Record<string, string[]> = {
 
 export default function DemoWork({ projects }: { projects: Project[] }) {
   return (
-    <section id="work" className="px-6 py-8 md:py-14">
+    <section id="work" className="px-6 py-8 md:py-10">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-xl mb-5 md:mb-10">
           <SectionLabel text="BUILT TO SHOW" />

@@ -12,7 +12,7 @@ type WhatIShareData = {
 
 export default function WhatIShare({ data }: { data: WhatIShareData }) {
   return (
-    <section className="px-6 py-8 md:py-14">
+    <section className="px-6 py-8 md:py-10">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-xl mb-5 md:mb-10">
           <SectionLabel text="WHAT I DO" />

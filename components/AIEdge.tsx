@@ -12,7 +12,7 @@ type AIEdgeData = {
 
 export default function AIEdge({ data }: { data: AIEdgeData }) {
   return (
-    <section id="edge" className="py-8 md:py-14 px-6 bg-navy">
+    <section id="edge" className="py-8 md:py-10 px-6 bg-navy">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-2xl mb-6 md:mb-12">
           <SectionLabel text="FREE COMMUNITY" />

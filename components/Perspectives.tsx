@@ -11,7 +11,7 @@ function readTime(excerpt: string) {
 
 export default function Perspectives({ section, articles }: { section: Section; articles: Article[] }) {
   return (
-    <section id="perspectives" className="px-6 py-8 md:py-14">
+    <section id="perspectives" className="px-6 py-8 md:py-10">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-5 md:mb-10 gap-6">
           <div>
