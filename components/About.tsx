@@ -33,7 +33,7 @@ export default function About({ data }: { data: AboutData }) {
         {/* Credential card FIRST, then prose */}
         <div className="grid md:grid-cols-[300px_1fr] gap-12 md:gap-20 items-start">
           {/* Credential card */}
-          <div className="bg-card border border-border rounded-2xl overflow-hidden sticky top-24">
+          <div className="bg-card border border-border rounded-2xl overflow-hidden md:sticky md:top-24">
             <div className="relative w-full aspect-[4/3]">
               <Image
                 src="/rupesh.jpg.png"
