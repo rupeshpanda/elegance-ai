@@ -35,7 +35,7 @@ export default function Contact({ data }: { data: ContactData }) {
         <div className="grid md:grid-cols-[1fr_480px] gap-12 md:gap-20">
           <div>
             <SectionLabel text="GET IN TOUCH" />
-            <h2 className="font-serif text-6xl md:text-7xl text-navy leading-tight mb-6 whitespace-pre-line mt-2">
+            <h2 className="font-serif text-5xl md:text-7xl text-navy leading-tight mb-6 whitespace-pre-line mt-2">
               {data.headline}
             </h2>
             <p className="text-base text-muted leading-relaxed mb-10">

@@ -34,7 +34,7 @@ export default function Hero({ data }: { data: HeroData }) {
       <div className="max-w-6xl mx-auto">
         <div className="hero-grid">
           {/* Left: network animation + text */}
-          <div style={{ position: "relative", minHeight: 340 }}>
+          <div style={{ position: "relative" }}>
             <HeroNetwork />
             <div style={{ position: "relative", zIndex: 1, ...textStyle }}>
               {/* Eyebrow */}
@@ -45,7 +45,7 @@ export default function Hero({ data }: { data: HeroData }) {
                 </span>
               </div>
 
-              <h1 className="font-serif text-6xl md:text-7xl lg:text-[5rem] text-navy leading-[1.08] mb-7 max-w-2xl">
+              <h1 className="font-serif text-5xl md:text-7xl lg:text-[5rem] text-navy leading-[1.08] mb-7 max-w-2xl">
                 {data.headline.map((line, i) => (
                   <span key={i} className="block">{line}</span>
                 ))}
@@ -86,11 +86,10 @@ export default function Hero({ data }: { data: HeroData }) {
             {data.stats.map((stat, i) => (
               <div
                 key={stat.label}
-                className="flex-1 min-w-[120px]"
-                style={{
-                  paddingRight: i < data.stats.length - 1 ? "40px" : 0,
-                  borderRight: i < data.stats.length - 1 ? "1px solid var(--border)" : "none",
-                }}
+                className={[
+                  "flex-1 min-w-[120px]",
+                  i < data.stats.length - 1 ? "md:pr-10 md:border-r md:border-border" : "",
+                ].filter(Boolean).join(" ")}
               >
                 <div className="font-serif text-navy" style={{ fontSize: 28, fontWeight: 500, lineHeight: 1, marginBottom: 5 }}>
                   {stat.value}

@@ -24,7 +24,7 @@ export default function Perspectives({ section, articles }: { section: Section; 
         >
           <div>
             <SectionLabel text="PERSPECTIVES" />
-            <h2 className="font-serif text-6xl md:text-7xl text-navy leading-tight whitespace-pre-line">
+            <h2 className="font-serif text-5xl md:text-7xl text-navy leading-tight whitespace-pre-line">
               {section.headline}
             </h2>
           </div>

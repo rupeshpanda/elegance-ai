@@ -33,7 +33,7 @@ export default function About({ data }: { data: AboutData }) {
           className={`mb-5 md:mb-10 reveal${header.visible ? " visible" : ""}`}
         >
           <SectionLabel text="ABOUT" />
-          <h2 className="font-serif text-6xl md:text-7xl text-navy leading-tight whitespace-pre-line">
+          <h2 className="font-serif text-5xl md:text-7xl text-navy leading-tight whitespace-pre-line">
             {data.headline}
           </h2>
         </div>

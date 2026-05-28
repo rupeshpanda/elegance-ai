@@ -32,7 +32,7 @@ export default function HowIEngage() {
           className={`mb-5 md:mb-10 reveal${header.visible ? " visible" : ""}`}
         >
           <SectionLabel text="HOW IT WORKS" />
-          <h2 className="font-serif text-6xl md:text-7xl text-navy leading-tight mb-3">
+          <h2 className="font-serif text-5xl md:text-7xl text-navy leading-tight mb-3">
             How I engage
           </h2>
           <p className="text-base text-muted">
