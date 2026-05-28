@@ -1,0 +1,58 @@
+{
+  "churn_risk_signals": {
+    "description": "Behavioural patterns suggesting customer disengagement or intent to leave",
+    "sap_indicators": [
+      "declining order frequency over 3 or more consecutive months",
+      "declining average order value over 3 or more consecutive months",
+      "narrowing product category mix — ordering fewer categories than historical baseline",
+      "extended gap between orders vs historical average cadence",
+      "complete cessation of orders for 4 or more weeks in a previously active account"
+    ],
+    "crm_indicators": [
+      "no CRM activity logged in 30 or more days",
+      "NPS score below 5",
+      "NPS score decline of 3 or more points since last measurement",
+      "renewal opportunity within 90 days with no recent activity",
+      "support ticket open and unresolved for more than 21 days",
+      "escalated support ticket open",
+      "renewal opportunity stage not updated in 45 or more days"
+    ],
+    "risk_levels": {
+      "confirmed": "3 or more signals present across both systems",
+      "possible": "2 signals present, or signals from one system only",
+      "watch": "1 signal present — monitor but no immediate action required"
+    }
+  },
+  "order_pattern_change": {
+    "description": "Statistically meaningful change in a customer ordering behaviour",
+    "calculation": "compare order frequency and average value in last 90 days vs prior 90 days",
+    "meaningful_threshold": "20 percent or more decline in frequency or value",
+    "tables": [
+      "orders"
+    ]
+  },
+  "crm_engagement_decline": {
+    "description": "Reduction in sales and support touchpoints with a customer",
+    "fields": [
+      "last_crm_activity_date",
+      "open_support_tickets",
+      "escalated_tickets",
+      "nps_score",
+      "nps_previous",
+      "opportunity_last_updated"
+    ],
+    "tables": [
+      "customers"
+    ]
+  },
+  "cross_signal_analysis": {
+    "description": "Synthesis of SAP behavioural signals and CRM engagement signals",
+    "approach": "flag customers where two or more signals from different systems align",
+    "priority": "customers with signals in both systems are higher risk than those with signals from one system only"
+  },
+  "product_category_mix": {
+    "description": "The range of product categories a customer orders across",
+    "calculation": "count distinct categories ordered in last 90 days vs prior 90 days",
+    "signal": "reduction of 2 or more categories is a meaningful narrowing signal"
+  }
+}
