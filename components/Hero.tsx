@@ -40,7 +40,7 @@ export default function Hero({ data }: { data: HeroData }) {
               </span>
             </div>
 
-            <h1 className="font-serif text-6xl md:text-7xl lg:text-[4.5rem] text-accent leading-[1.08] mb-7">
+            <h1 className="font-serif text-6xl md:text-7xl lg:text-[4.5rem] text-navy leading-[1.08] mb-7">
               {data.headline.map((line, i) => (
                 <span key={i} className="block">{line}</span>
               ))}
