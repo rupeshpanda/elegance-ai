@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useState, useCallback } from 'react'
 
@@ -137,13 +137,13 @@ function MarkdownText({ text }: { text: string }) {
         // Numbered actions
         if (/^\d+\./.test(line)) {
           const [num, ...rest] = line.split('. ')
-          const [action, ...why] = rest.join('. ').split(' — ')
+          const [action, ...why] = rest.join('. ').split(' - ')
           return (
             <div key={i} style={{ display: 'flex', gap: 10, margin: '6px 0', padding: '8px 12px', background: '#F8FAFC', borderRadius: 6, borderLeft: `3px solid ${ACCENT}` }}>
               <span style={{ fontWeight: 700, color: ACCENT, flexShrink: 0, fontSize: '0.8rem' }}>{num}.</span>
               <span>
                 <span style={{ fontWeight: 600 }}>{action}</span>
-                {why.length > 0 && <span style={{ color: '#6B7280' }}> — {why.join(' — ')}</span>}
+                {why.length > 0 && <span style={{ color: '#6B7280' }}> - {why.join(' - ')}</span>}
               </span>
             </div>
           )
@@ -218,7 +218,7 @@ export default function ContextBridgePage() {
           <h1 style={{ fontSize: '2rem', fontWeight: 700, color: ACCENT, margin: '0 0 14px', letterSpacing: '-0.02em' }}>SAP ContextBridge</h1>
           <p style={{ color: '#4B5563', lineHeight: 1.65, maxWidth: 660, margin: 0, fontSize: '0.93rem' }}>
             Select an account and run the analysis. The AI reads order history from a mock SAP system, then crosses
-            the boundary into CRM data to synthesise a churn-risk recommendation — connecting context that would
+            the boundary into CRM data to synthesise a churn-risk recommendation - connecting context that would
             otherwise live in two separate systems with no shared language.
           </p>
         </div>
@@ -281,14 +281,14 @@ export default function ContextBridgePage() {
         {/* Stage cards */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
 
-          {/* Card 1 — Context Assembly */}
+          {/* Card 1 - Context Assembly */}
           <StageCard title="Context Assembly" icon="🔗" badge="SAP + CRM" status={state.contextStatus}>
             {stats && customer && (
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
                 <div>
                   <p style={{ fontWeight: 700, fontSize: '0.72rem', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 10px' }}>SAP Order Data</p>
-                  <StatRow label="Orders — last 90 days"  value={String(stats.last90Count)} />
-                  <StatRow label="Orders — prior 90 days" value={String(stats.prior90Count)} />
+                  <StatRow label="Orders - last 90 days"  value={String(stats.last90Count)} />
+                  <StatRow label="Orders - prior 90 days" value={String(stats.prior90Count)} />
                   <StatRow
                     label="Frequency change"
                     value={`${stats.freqChangePct >= 0 ? '+' : ''}${stats.freqChangePct.toFixed(0)}%`}
@@ -339,12 +339,12 @@ export default function ContextBridgePage() {
             )}
           </StageCard>
 
-          {/* Card 2 — SAP Analysis */}
+          {/* Card 2 - SAP Analysis */}
           <StageCard title="SAP Order Intelligence" icon="📊" badge="Claude call 1" status={state.sapStatus}>
             {state.sapContent && <MarkdownText text={state.sapContent} />}
           </StageCard>
 
-          {/* Card 3 — Synthesis */}
+          {/* Card 3 - Synthesis */}
           <StageCard title="Cross-Boundary Synthesis" icon="🤖" badge="Claude call 2" status={state.crmStatus}>
             {state.crmContent && <MarkdownText text={state.crmContent} />}
           </StageCard>

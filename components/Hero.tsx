@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Image from "next/image";
 
 type HeroData = {
@@ -15,7 +15,7 @@ export default function Hero({ data }: { data: HeroData }) {
       <div className="max-w-6xl mx-auto">
         {/* Two-column grid: text left, photo right */}
         <div className="grid md:grid-cols-[3fr_2fr] gap-16 items-center mb-16">
-          {/* Left — text */}
+          {/* Left - text */}
           <div>
             {/* Eyebrow */}
             <div className="flex items-center gap-2 mb-5">
@@ -81,7 +81,7 @@ export default function Hero({ data }: { data: HeroData }) {
             </div>
           </div>
 
-          {/* Right — photo */}
+          {/* Right - photo */}
           <div className="order-first md:order-last">
             <div className="relative w-full" style={{ borderRadius: 12, overflow: "hidden", maxHeight: 420 }}>
               <Image

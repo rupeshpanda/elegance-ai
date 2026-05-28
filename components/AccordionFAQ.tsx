@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 import { SectionLabel } from "./SectionLabel";
 
@@ -9,11 +9,11 @@ const FAQS = [
   },
   {
     q: "Are you available for paid consulting engagements?",
-    a: "Everything here is genuinely pro bono. If you're working on something at the intersection of enterprise AI and SAP where deep program delivery experience would be valuable, reach out — we can have that conversation.",
+    a: "Everything here is genuinely pro bono. If you're working on something at the intersection of enterprise AI and SAP where deep program delivery experience would be valuable, reach out - we can have that conversation.",
   },
   {
     q: "What industries do you have direct experience in?",
-    a: "Utilities, manufacturing, retail, and life sciences — all in large-scale SAP S/4HANA transformations. The architecture and governance thinking transfers across sectors.",
+    a: "Utilities, manufacturing, retail, and life sciences - all in large-scale SAP S/4HANA transformations. The architecture and governance thinking transfers across sectors.",
   },
   {
     q: "How is this different from vendor content or sponsored analysis?",
@@ -25,7 +25,7 @@ const FAQS = [
   },
   {
     q: "Can I access demo source code or architecture docs?",
-    a: "The demos are documented with architecture decisions and design rationale. Reach out directly — some are hosted, some I walk through on a call.",
+    a: "The demos are documented with architecture decisions and design rationale. Reach out directly - some are hosted, some I walk through on a call.",
   },
 ];
 

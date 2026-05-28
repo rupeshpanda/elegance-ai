@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState, useEffect } from "react";
 
 interface JoinModalProps {
@@ -62,7 +62,7 @@ export default function JoinModal({ isOpen, onClose }: JoinModalProps) {
               </p>
               <h3 className="font-serif text-2xl text-navy mb-2">Join for free</h3>
               <p className="text-sm text-muted leading-relaxed">
-                Monthly live session — 1st Wednesday of each month. No fees. No upsells.
+                Monthly live session - 1st Wednesday of each month. No fees. No upsells.
                 Practical AI education for enterprise practitioners.
               </p>
             </div>

@@ -1,4 +1,4 @@
-export default function TestimonialStrip() {
+﻿export default function TestimonialStrip() {
   return (
     <section style={{ background: "var(--bg-secondary)", padding: "var(--space-section-sm) 0" }}>
       <div
@@ -30,7 +30,7 @@ export default function TestimonialStrip() {
             color: "var(--ink)",
           }}
         >
-          Finally — AI writing that speaks to the realities of enterprise IT,
+          Finally - AI writing that speaks to the realities of enterprise IT,
           not just startup greenfield. This is what CIOs actually need to read.
         </p>
         <p
@@ -40,7 +40,7 @@ export default function TestimonialStrip() {
             marginTop: 20,
           }}
         >
-          — VP of Technology, Fortune 500
+          - VP of Technology, Fortune 500
         </p>
       </div>
     </section>

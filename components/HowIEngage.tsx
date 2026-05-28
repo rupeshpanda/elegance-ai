@@ -1,4 +1,4 @@
-import { SectionLabel } from "./SectionLabel";
+﻿import { SectionLabel } from "./SectionLabel";
 
 const STEPS = [
   {
@@ -9,7 +9,7 @@ const STEPS = [
   {
     step: "STEP 02",
     title: "Reach Out",
-    body: "Send a message with your specific challenge. No form to fill out — just email or LinkedIn. I read every message personally.",
+    body: "Send a message with your specific challenge. No form to fill out - just email or LinkedIn. I read every message personally.",
   },
   {
     step: "STEP 03",

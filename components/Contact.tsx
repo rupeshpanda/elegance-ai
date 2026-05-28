@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 import { SectionLabel } from "./SectionLabel";
 
@@ -40,7 +40,7 @@ export default function Contact({ data }: { data: ContactData }) {
             </h2>
             <p className="text-base text-muted leading-relaxed mb-10">
               Working through an AI integration challenge? Want an honest
-              conversation with someone who&apos;s been in the room — not a
+              conversation with someone who&apos;s been in the room - not a
               vendor pitch deck? Reach out.
             </p>
 

@@ -1,4 +1,4 @@
-eyebrow: What you'll find here
+﻿eyebrow: What you'll find here
 headline: "Three things I do.\nAll of it free."
 sub: >-
   I write to share what I learn at the intersection of enterprise architecture
@@ -9,7 +9,7 @@ items:
     title: Enterprise AI Perspectives
     desc: >-
       I write about the real challenges of integrating AI into enterprise
-      landscapes — SAP ecosystems, headless architecture, agentic systems,
+      landscapes - SAP ecosystems, headless architecture, agentic systems,
       inference economics, and context engineering. Written for technical
       leaders making high-stakes decisions.
     link: '#perspectives'
@@ -23,10 +23,10 @@ items:
     link: '#work'
     cta: Explore demos
   - num: '03'
-    title: The AI Edge — Free Community
+    title: The AI Edge - Free Community
     desc: >-
       A free monthly session where practitioners learn to apply AI in real
-      enterprise environments. No fees, no upsells — just rigorous, practical
+      enterprise environments. No fees, no upsells - just rigorous, practical
       learning with peers.
     link: '#edge'
     cta: Join for free

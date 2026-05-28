@@ -1,8 +1,8 @@
-eyebrow: Contact
+﻿eyebrow: Contact
 headline: "Let's exchange\nideas."
 sub: >-
   If you're a CIO, technology leader, or practitioner thinking through AI
-  integration challenges — I'm genuinely happy to have a candid conversation.
+  integration challenges - I'm genuinely happy to have a candid conversation.
   No pitch. No invoice. Just an honest exchange with someone who finds this
   space fascinating.
 links:
@@ -16,5 +16,5 @@ links:
     val: 'Frisco, Dallas TX'
     url: '#'
   - key: Approach
-    val: 'Pro bono — no charge, ever'
+    val: 'Pro bono - no charge, ever'
     url: '#'
