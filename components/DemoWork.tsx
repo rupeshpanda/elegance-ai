@@ -70,6 +70,8 @@ export default function DemoWork({ projects }: { projects: Project[] }) {
             const caps = CAPABILITIES[project.slug] ?? [];
             const isLive = project.url && project.url !== "#";
             const isOrchestrator = project.slug === "agentic-workflow-orchestrator";
+            const isAssessment = project.slug === "enterprise-ai-readiness";
+            const badgeLabel = isAssessment ? "TOOL" : "DEMO";
 
             return (
               <div
@@ -98,7 +100,7 @@ export default function DemoWork({ projects }: { projects: Project[] }) {
                   el.style.borderColor = "var(--border)";
                 }}
               >
-                <span className="section-label">DEMO {String(idx + 1).padStart(2, "0")}</span>
+                <span className="section-label">{badgeLabel} {String(idx + 1).padStart(2, "0")}</span>
 
                 {isOrchestrator ? (
                   /* Orchestrator: two-column inner layout with terminal */
@@ -171,7 +173,7 @@ export default function DemoWork({ projects }: { projects: Project[] }) {
                           style={{ fontSize: 13, fontWeight: 500, color: "var(--accent)", textDecoration: "none", display: "inline-flex", alignItems: "center" }}
                         >
                           <span className="live-dot" />
-                          Launch demo →
+                          {isAssessment ? "Assess your org →" : "Launch demo →"}
                         </a>
                       ) : (
                         <span style={{ fontSize: 13, color: "var(--muted)" }}>Coming soon</span>

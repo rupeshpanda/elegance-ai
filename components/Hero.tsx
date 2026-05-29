@@ -51,8 +51,12 @@ export default function Hero({ data }: { data: HeroData }) {
                 ))}
               </h1>
 
-              <p className="text-lg text-muted leading-relaxed mb-8 max-w-md">
+              <p className="text-lg text-muted leading-relaxed mb-3 max-w-md">
                 {data.sub}
+              </p>
+
+              <p className="text-sm mb-8 max-w-md" style={{ color: "var(--muted)", opacity: 0.65 }}>
+                Written for CIOs, architects, and enterprise technology leaders
               </p>
 
               <div className="flex flex-wrap items-center gap-5">
