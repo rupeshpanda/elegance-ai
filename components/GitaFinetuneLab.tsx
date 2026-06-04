@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-const STREAMLIT_URL = "https://gita-finetune-demo.streamlit.app"; // update after deploy
+const STREAMLIT_URL = "https://gita-finetune-demo-sfe5jxbmrsrwmskjger88w.streamlit.app";
 const GITHUB_URL = "https://github.com/rupeshpanda/gita-finetune-demo";
 const HF_URL = "https://huggingface.co/rupeshpanda/gita-text-generation-gpt2";
 const COLAB_URL =
