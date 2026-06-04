@@ -1,16 +1,20 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { LogoMark } from "./LogoMark";
 
 const desktopLinks = [
   { label: "Perspectives", href: "#perspectives" },
   { label: "Work", href: "#work" },
+  { label: "Lab", href: "/lab" },
   { label: "About", href: "#about" },
 ];
 
 const mobileLinks = [
   { label: "Perspectives", href: "#perspectives" },
   { label: "Work", href: "#work" },
+  { label: "Lab", href: "/lab" },
   { label: "About", href: "#about" },
   { label: "AI Edge", href: "#edge" },
   { label: "FAQ", href: "#faq" },
@@ -23,6 +27,7 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -69,17 +74,29 @@ export default function Nav() {
 
         <nav className="hidden md:flex items-center gap-8">
           {desktopLinks.map((link) => {
-            const id = link.href.slice(1);
-            const isActive = activeSection === id;
-            return (
+            const isPageLink = link.href.startsWith("/");
+            const isActive = isPageLink
+              ? pathname.startsWith(link.href)
+              : activeSection === link.href.slice(1);
+            const linkStyle = {
+              color: isActive ? "var(--accent)" : "var(--muted)",
+              fontWeight: isActive ? 500 : 400,
+            };
+            return isPageLink ? (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm transition-colors"
+                style={linkStyle}
+              >
+                {link.label}
+              </Link>
+            ) : (
               <a
                 key={link.href}
                 href={link.href}
                 className="text-sm transition-colors"
-                style={{
-                  color: isActive ? "var(--accent)" : "var(--muted)",
-                  fontWeight: isActive ? 500 : 400,
-                }}
+                style={linkStyle}
               >
                 {link.label}
               </a>
@@ -128,14 +145,27 @@ export default function Nav() {
       {menuOpen && (
         <div className="md:hidden border-t border-border bg-bg px-6 py-5 flex flex-col gap-5">
           {mobileLinks.map((link) => {
-            const id = link.href.slice(1);
-            const isActive = activeSection === id;
-            return (
+            const isPageLink = link.href.startsWith("/");
+            const isActive = isPageLink
+              ? pathname.startsWith(link.href)
+              : activeSection === link.href.slice(1);
+            const linkStyle = { color: isActive ? "var(--accent)" : "var(--muted)", fontWeight: isActive ? 500 : 400 };
+            return isPageLink ? (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm"
+                style={linkStyle}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ) : (
               <a
                 key={link.href}
                 href={link.href}
                 className="text-sm"
-                style={{ color: isActive ? "var(--accent)" : "var(--muted)", fontWeight: isActive ? 500 : 400 }}
+                style={linkStyle}
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
