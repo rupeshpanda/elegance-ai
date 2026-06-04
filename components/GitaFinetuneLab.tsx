@@ -155,30 +155,58 @@ export default function GitaFinetuneLab() {
           Side-by-side responses reveal exactly what fine-tuning changes — and what it doesn't.
         </p>
 
-        {/* Iframe embed */}
+        {/* Demo launch card */}
         <div
           style={{
             borderRadius: 12,
-            overflow: "hidden",
             border: "1px solid var(--border)",
             boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
-            background: "#fff",
+            background: "var(--card)",
+            padding: "48px 32px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 20,
+            textAlign: "center",
           }}
         >
-          <iframe
-            src={STREAMLIT_URL}
-            width="100%"
-            height="640"
-            style={{ display: "block", border: "none" }}
-            title="Bhagavad Gita GPT-2 Fine-tuning Demo"
-            loading="lazy"
-          />
+          <div style={{ fontSize: "2.5rem" }}>⚡</div>
+          <div>
+            <div
+              style={{
+                fontFamily: "var(--font-serif)",
+                fontSize: "1.25rem",
+                color: "var(--navy)",
+                marginBottom: 8,
+              }}
+            >
+              Live on Streamlit Cloud
+            </div>
+            <p style={{ color: "var(--muted)", fontSize: "0.9rem", lineHeight: 1.6, maxWidth: 440 }}>
+              Models load from HuggingFace Hub. Generation runs on CPU — allow 15–30 s for the first response.
+            </p>
+          </div>
+          <a
+            href={STREAMLIT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: "#C8922A",
+              color: "#fff",
+              padding: "12px 28px",
+              borderRadius: 6,
+              fontWeight: 600,
+              fontSize: "0.95rem",
+              textDecoration: "none",
+              display: "inline-block",
+            }}
+          >
+            Open Demo →
+          </a>
+          <p style={{ fontSize: "0.75rem", color: "var(--muted)", margin: 0 }}>
+            Opens in a new tab · Streamlit Cloud · free tier
+          </p>
         </div>
-
-        <p style={{ fontSize: "0.8rem", color: "var(--muted)", marginTop: 12 }}>
-          Demo running on Streamlit Cloud · Models load from HuggingFace Hub ·
-          Generation on CPU (~15–30 s)
-        </p>
       </section>
 
       <hr style={{ border: "none", borderTop: "1px solid var(--border)" }} />
