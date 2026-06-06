@@ -328,7 +328,7 @@ export default function ResolveLab() {
           Architecture — three tiers, one Next.js app
         </h2>
 
-        <div style={{ border: "1px solid var(--border)", borderRadius: 10, overflow: "hidden" }}>
+        <div style={{ border: "1px solid var(--border)", borderRadius: 10, overflowX: "auto" }}>
           {ARCHITECTURE.map(({ tier, label, detail }, i) => (
             <div
               key={label}
@@ -337,6 +337,7 @@ export default function ResolveLab() {
                 gridTemplateColumns: "100px 160px 1fr",
                 gap: 16,
                 padding: "14px 20px",
+                minWidth: 480,
                 borderBottom: i < ARCHITECTURE.length - 1 ? "1px solid var(--border)" : "none",
                 background: i % 2 === 0 ? "var(--card)" : "var(--bg)",
                 alignItems: "center",

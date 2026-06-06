@@ -113,7 +113,7 @@ export default function LabIndex() {
               }}
             >
               {/* Status + meta row */}
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 8, marginBottom: 20 }}>
                 <span
                   style={{
                     fontSize: "0.7rem",
