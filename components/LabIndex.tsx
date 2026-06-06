@@ -4,6 +4,15 @@ import Link from "next/link";
 
 const LABS = [
   {
+    slug: "resolve",
+    title: "Resolve: Autonomous Support Resolution on MCP",
+    desc:
+      "An AI agent that reconciles two siloed systems of record in real time — billing and access control — and shows every step of its reasoning in a live trace panel. Built on a real MCP client–server architecture.",
+    tags: ["MCP", "Agents", "Claude", "Next.js"],
+    status: "live" as const,
+    meta: "MCP · Claude Sonnet · SSE · TypeScript",
+  },
+  {
     slug: "gita-finetuning",
     title: "Fine-tuning a Language Model: A Working Demo",
     desc:
@@ -16,7 +25,7 @@ const LABS = [
 
 const COMING = [
   { title: "RAG Pipeline from Scratch", tags: ["RAG", "Vector DB"] },
-  { title: "Agentic Workflows with Tool Use", tags: ["Agents", "LLMs"] },
+  { title: "Multi-Agent Orchestration Deep Dive", tags: ["Agents", "LLMs"] },
 ];
 
 export default function LabIndex() {
