@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 // Update this URL after deploying to Vercel
-const RESOLVE_URL = "https://resolve-eleganceai.vercel.app";
+const RESOLVE_URL = "https://resolve-mcp-demo.vercel.app";
 const GITHUB_URL = "https://github.com/rupeshpanda/resolve-mcp-demo";
 
 const MCP_STEPS = [
