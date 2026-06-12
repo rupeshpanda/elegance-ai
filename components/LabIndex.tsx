@@ -4,6 +4,15 @@ import Link from "next/link";
 
 const LABS = [
   {
+    slug: "mcp-advanced",
+    title: "MCP HTTP Transport & Tool Use",
+    desc:
+      "A live demo of the Model Context Protocol over HTTP. Claude uses MCP tools to manage a real file workspace — read, write, list, delete — with every tool call visible in the trace panel. Includes a deep-dive on MCP concepts.",
+    tags: ["MCP", "Tool Use", "Claude", "HTTP Transport"],
+    status: "live" as const,
+    meta: "MCP · Claude Haiku · HTTP · Python · Next.js",
+  },
+  {
     slug: "resolve",
     title: "Resolve: Autonomous Support Resolution on MCP",
     desc:
