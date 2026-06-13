@@ -155,3 +155,17 @@ textarea:focus-visible {
 
 /* Prose article styles */
 .prose-article { font-size: 15px; line-height: 1.75; color: var(--ink); }
+
+/* MCP Advanced Lab — responsive demo grid */
+.mcp-demo-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 20px;
+  align-items: start;
+  width: 100%;
+}
+@media (max-width: 767px) {
+  .mcp-demo-grid {
+    grid-template-columns: 1fr;
+  }
+}

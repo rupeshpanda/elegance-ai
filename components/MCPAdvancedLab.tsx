@@ -253,7 +253,7 @@ export default function MCPAdvancedLab() {
 
       {/* Main demo area */}
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "40px 24px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "240px 1fr", gap: 20, alignItems: "start" }}>
+        <div className="mcp-demo-grid">
 
           {/* Left: Workspace + file viewer */}
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
