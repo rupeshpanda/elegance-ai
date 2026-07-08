@@ -4,6 +4,15 @@ import Link from "next/link";
 
 const LABS = [
   {
+    slug: "claude-code-team-workflow",
+    title: "Configuring Claude Code for a Team Workflow",
+    desc:
+      "Project CLAUDE.md hierarchies, path-scoped rules, an isolated forked skill, and multi-server MCP config with credential expansion — with an interactive rule-matcher demo and a knowledge-check quiz.",
+    tags: ["Claude Code", "MCP", "DevEx"],
+    status: "live" as const,
+    meta: "Claude Code · MCP · Rules · Skills",
+  },
+  {
     slug: "mcp-advanced",
     title: "MCP HTTP Transport & Tool Use",
     desc:
