@@ -1,8 +1,39 @@
 "use client";
 
 import Link from "next/link";
+import type { ReactNode } from "react";
 
-const LABS = [
+type Lab = {
+  slug: string;
+  /** External demo URL. When set, the card links out instead of to /lab/<slug>. */
+  href?: string;
+  title: string;
+  desc: string;
+  tags: string[];
+  status: "live" | "soon";
+  meta: string;
+};
+
+const LABS: Lab[] = [
+  {
+    slug: "procurement-exception-triage-agent",
+    href: "https://procurement-exception-triage-agent.vercel.app/lab/procurement-exception-triage-agent",
+    title: "Procurement Exception Triage Agent",
+    desc:
+      "An enterprise agentic AI pilot on Claude Haiku. The agent investigates delayed POs, blocked invoices, and vendor risk through governed MCP tools — with a deterministic $25K approval hook, structured errors, human-review escalation, live agent-loop streaming, and per-run cost tracking (~half a cent per triage).",
+    tags: ["Agents", "MCP", "Governance", "Claude"],
+    status: "live" as const,
+    meta: "Claude Haiku · MCP · Hooks · SSE · Next.js",
+  },
+  {
+    slug: "data-extraction",
+    title: "Structured Data Extraction Pipeline",
+    desc:
+      "A self-correcting structured output pipeline for enterprise contracts. Implements Pydantic validation schemas, self-healing retry loops, Message Batches API for 100+ documents, and a human-in-the-loop exception dashboard.",
+    tags: ["Structured Output", "Validation", "Batches API", "HITL"],
+    status: "live" as const,
+    meta: "JSON Schema · Pydantic · Claude · Next.js · Python",
+  },
   {
     slug: "claude-code-team-workflow",
     title: "Configuring Claude Code for a Team Workflow",
@@ -45,6 +76,27 @@ const COMING = [
   { title: "RAG Pipeline from Scratch", tags: ["RAG", "Vector DB"] },
   { title: "Multi-Agent Orchestration Deep Dive", tags: ["Agents", "LLMs"] },
 ];
+
+function LabLink({
+  lab,
+  children,
+}: {
+  lab: Lab;
+  children: ReactNode;
+}) {
+  if (lab.href) {
+    return (
+      <a href={lab.href} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link href={`/lab/${lab.slug}`} style={{ textDecoration: "none" }}>
+      {children}
+    </Link>
+  );
+}
 
 export default function LabIndex() {
   const [featured, ...rest] = LABS;
@@ -119,7 +171,7 @@ export default function LabIndex() {
             Latest
           </div>
 
-          <Link href={`/lab/${featured.slug}`} style={{ textDecoration: "none" }}>
+          <LabLink lab={featured}>
             <div
               style={{
                 border: "1px solid var(--border)",
@@ -195,11 +247,11 @@ export default function LabIndex() {
                   ))}
                 </div>
                 <span style={{ fontSize: "0.88rem", color: "var(--accent)", fontWeight: 600 }}>
-                  View lab →
+                  {featured.href ? "Open live demo ↗" : "View lab →"}
                 </span>
               </div>
             </div>
-          </Link>
+          </LabLink>
         </section>
       )}
 
@@ -213,8 +265,8 @@ export default function LabIndex() {
               gap: 16,
             }}
           >
-            {rest.map(({ slug, title, desc, tags, status }) => (
-              <Link key={slug} href={`/lab/${slug}`} style={{ textDecoration: "none" }}>
+            {rest.map((lab) => (
+              <LabLink key={lab.slug} lab={lab}>
                 <div
                   style={{
                     border: "1px solid var(--border)",
@@ -236,26 +288,28 @@ export default function LabIndex() {
                       textTransform: "uppercase",
                       padding: "2px 8px",
                       borderRadius: 20,
-                      background: status === "live" ? "#dcfce7" : "#fef9c3",
-                      color: status === "live" ? "#15803d" : "#92400e",
+                      background: lab.status === "live" ? "#dcfce7" : "#fef9c3",
+                      color: lab.status === "live" ? "#15803d" : "#92400e",
                     }}
                   >
-                    {status}
+                    {lab.status}
                   </span>
                   <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", color: "var(--navy)", lineHeight: 1.3, margin: 0 }}>
-                    {title}
+                    {lab.title}
                   </h2>
-                  <p style={{ fontSize: "0.87rem", color: "var(--muted)", lineHeight: 1.65, margin: 0, flex: 1 }}>{desc}</p>
+                  <p style={{ fontSize: "0.87rem", color: "var(--muted)", lineHeight: 1.65, margin: 0, flex: 1 }}>{lab.desc}</p>
                   <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                    {tags.map((tag) => (
+                    {lab.tags.map((tag) => (
                       <span key={tag} style={{ fontSize: "0.68rem", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", padding: "2px 8px", borderRadius: 20, border: "1px solid #C8922A", color: "#C8922A" }}>
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <div style={{ fontSize: "0.85rem", color: "var(--accent)", fontWeight: 600 }}>View lab →</div>
+                  <div style={{ fontSize: "0.85rem", color: "var(--accent)", fontWeight: 600 }}>
+                    {lab.href ? "Open live demo ↗" : "View lab →"}
+                  </div>
                 </div>
-              </Link>
+              </LabLink>
             ))}
           </div>
         </section>
