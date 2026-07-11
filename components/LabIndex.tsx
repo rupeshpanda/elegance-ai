@@ -16,6 +16,16 @@ type Lab = {
 
 const LABS: Lab[] = [
   {
+    slug: "finetuning-decision-lab",
+    href: "https://finetuning-decision-lab.vercel.app",
+    title: "When Does Fine-Tuning Earn Its Keep?",
+    desc:
+      "The same conversation run live through three models, base BART, a fine-tuned BART, and Claude Haiku, side by side with cost and latency. A working demo plus a CIO decision framework: prompt first, RAG for missing facts, and fine-tune only for proprietary judgment, volume economics, or data that can't leave.",
+    tags: ["AI/ML", "Fine-tuning", "LLMs", "Inference Economics"],
+    status: "live" as const,
+    meta: "BART · SAMSum · Claude Haiku · Cloud Run · Next.js",
+  },
+  {
     slug: "procurement-exception-triage-agent",
     href: "https://procurement-exception-triage-agent.vercel.app/lab/procurement-exception-triage-agent",
     title: "Procurement Exception Triage Agent",
