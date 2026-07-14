@@ -16,6 +16,16 @@ type Lab = {
 
 const LABS: Lab[] = [
   {
+    slug: "what-is-an-agent",
+    href: "https://what-is-an-agent.vercel.app",
+    title: "What Is an Agent?",
+    desc:
+      "A beginner lab that explains what an AI agent actually is. Learn how models, tools, tool definitions, agent loops, memory, and the harness work through a simple enterprise leave assistant with exactly two tools. Ask it a question and watch every decision in a safe execution trace: which tool it picked, with what input, and what came back. Level: Beginner. Time: 10 to 15 minutes.",
+    tags: ["Agents", "Tool Calling", "LangChain", "Groq"],
+    status: "live" as const,
+    meta: "LangChain · Llama 3.3 70B · Groq · Next.js",
+  },
+  {
     slug: "finetuning-decision-lab",
     href: "https://finetuning-decision-lab.vercel.app",
     title: "When Does Fine-Tuning Earn Its Keep?",
