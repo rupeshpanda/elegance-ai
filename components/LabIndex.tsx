@@ -16,6 +16,16 @@ type Lab = {
 
 const LABS: Lab[] = [
   {
+    slug: "month-end-close-agent",
+    href: "https://close-diagnosis-agent.vercel.app/lab/month-end-close-agent",
+    title: "Why Are We Always Late?",
+    desc:
+      "A CFO-facing agent that diagnoses why a month-end close keeps running late, tracing the recurring cause through system evidence and attributed interview testimony, and predicts the next occurrence before it happens. Proposes a controlled corrective action with a real authorization boundary — approval never grants authority, and the tool re-checks the acting role after every approval, against a live Postgres audit trail.",
+    tags: ["Agents", "Governance", "Claude", "SAP"],
+    status: "live" as const,
+    meta: "Claude Haiku · Neon Postgres · SSE · Next.js",
+  },
+  {
     slug: "what-is-an-agent",
     href: "https://what-is-an-agent.vercel.app",
     title: "What Is an Agent?",
