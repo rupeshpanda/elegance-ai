@@ -16,6 +16,15 @@ type Lab = {
 
 const LABS: Lab[] = [
   {
+    slug: "a2a-purchase-order-status",
+    title: "Enterprise A2A: Purchase Order Status",
+    desc:
+      "See how a buyer's procurement agent asks a supplier's fulfillment agent for the latest purchase order status through the A2A protocol, without accessing the supplier's ERP system. Two independently deployed Google ADK agents, a live Agent Card, and a real-time execution trace over a genuine cross-service A2A call.",
+    tags: ["A2A", "Google ADK", "Gemini", "SAP", "Enterprise Architecture"],
+    status: "soon" as const,
+    meta: "Google ADK · Gemini · A2A Protocol · Cloud Run · SSE · Next.js",
+  },
+  {
     slug: "month-end-close-agent",
     href: "https://close-diagnosis-agent.vercel.app/lab/month-end-close-agent",
     title: "Why Are We Always Late?",
