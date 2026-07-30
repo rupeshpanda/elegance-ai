@@ -409,7 +409,7 @@ export default function EnterpriseA2APOStatusLab() {
               padding: "8px 16px",
             }}
           >
-            How A2A actually works →
+            What A2A actually is →
           </a>
         </div>
       </section>
