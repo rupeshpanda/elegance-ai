@@ -17,6 +17,17 @@
   --accent-light: #E8F5F5;
   --bg-secondary: #F0F0EC;
 
+  /* gold accent (tech/stack badges) */
+  --gold: #C8922A;
+
+  /* semantic status colors (delivery outlook, live-status indicators) */
+  --success: #15803D;
+  --success-bg: #DCFCE7;
+  --warning: #92400E;
+  --warning-bg: #FEF9C3;
+  --danger: #B91C1C;
+  --danger-bg: #FEE2E2;
+
   /* spacing scale */
   --space-section: 80px;
   --space-section-sm: 32px;
@@ -37,6 +48,13 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-light: var(--accent-light);
   --color-bg-secondary: var(--bg-secondary);
+  --color-gold: var(--gold);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
   --font-serif: var(--font-dm-serif);
   --font-sans: var(--font-inter);
 }
@@ -167,5 +185,25 @@ textarea:focus-visible {
 @media (max-width: 767px) {
   .mcp-demo-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* A2A PO Status Lab — responsive buyer/supplier interactive grid */
+.a2a-interactive-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+@media (max-width: 860px) {
+  .a2a-interactive-grid {
+    grid-template-columns: 1fr;
+  }
+  .a2a-interactive-grid > .a2a-indicator-col {
+    order: 2;
+    padding: 12px 0;
+  }
+  .a2a-interactive-grid > .a2a-supplier-col {
+    order: 3;
   }
 }

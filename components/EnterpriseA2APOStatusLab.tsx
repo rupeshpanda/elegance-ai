@@ -161,9 +161,9 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 function OutlookBadge({ outlook }: { outlook: PurchaseOrderSummary["delivery_outlook"] }) {
   if (!outlook) return null;
   const styles: Record<string, { bg: string; fg: string; label: string }> = {
-    on_time: { bg: "#dcfce7", fg: "#15803d", label: "On time" },
-    at_risk: { bg: "#fef9c3", fg: "#92400e", label: "At risk" },
-    delayed: { bg: "#fee2e2", fg: "#b91c1c", label: "Delayed" },
+    on_time: { bg: "var(--success-bg)", fg: "var(--success)", label: "On time" },
+    at_risk: { bg: "var(--warning-bg)", fg: "var(--warning)", label: "At risk" },
+    delayed: { bg: "var(--danger-bg)", fg: "var(--danger)", label: "Delayed" },
   };
   const s = styles[outlook];
   return (
@@ -366,8 +366,8 @@ export default function EnterpriseA2APOStatusLab() {
                 textTransform: "uppercase",
                 padding: "3px 10px",
                 borderRadius: 20,
-                border: "1px solid #C8922A",
-                color: "#C8922A",
+                border: "1px solid var(--gold)",
+                color: "var(--gold)",
               }}
             >
               {tag}
@@ -396,6 +396,21 @@ export default function EnterpriseA2APOStatusLab() {
               {a.label} →
             </a>
           ))}
+          <a
+            href="/lab/a2a-purchase-order-status/protocol"
+            style={{
+              fontSize: "0.85rem",
+              fontWeight: 600,
+              color: "white",
+              textDecoration: "none",
+              background: "var(--accent)",
+              border: "1px solid var(--accent)",
+              borderRadius: 8,
+              padding: "8px 16px",
+            }}
+          >
+            How A2A actually works →
+          </a>
         </div>
       </section>
 
@@ -441,7 +456,7 @@ export default function EnterpriseA2APOStatusLab() {
           Ask the Buyer Procurement Agent
         </h2>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 16, alignItems: "stretch" }}>
+        <div className="a2a-interactive-grid">
           {/* Buyer panel */}
           <div style={{ border: "1px solid var(--border)", borderRadius: 12, background: "var(--card)", display: "flex", flexDirection: "column" }}>
             <div style={{ padding: "16px 20px", borderBottom: "1px solid var(--border)" }}>
@@ -481,7 +496,7 @@ export default function EnterpriseA2APOStatusLab() {
                     </div>
                   )}
                   {t.status === "error" && (
-                    <div style={{ fontSize: "0.85rem", color: "#b91c1c" }}>{t.errorMessage}</div>
+                    <div style={{ fontSize: "0.85rem", color: "var(--danger)" }}>{t.errorMessage}</div>
                   )}
                   {t.status === "done" && t.result && (
                     <div style={{ fontSize: "0.88rem", color: "var(--ink)", lineHeight: 1.6, whiteSpace: "pre-wrap" }}>
@@ -575,6 +590,7 @@ export default function EnterpriseA2APOStatusLab() {
 
           {/* Middle indicator */}
           <div
+            className="a2a-indicator-col"
             style={{
               display: "flex",
               flexDirection: "column",
@@ -608,7 +624,7 @@ export default function EnterpriseA2APOStatusLab() {
           </div>
 
           {/* Supplier panel */}
-          <div style={{ border: "1px solid var(--border)", borderRadius: 12, background: "var(--card)" }}>
+          <div className="a2a-supplier-col" style={{ border: "1px solid var(--border)", borderRadius: 12, background: "var(--card)" }}>
             <div style={{ padding: "16px 20px", borderBottom: "1px solid var(--border)" }}>
               <div style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)" }}>
                 Supplier Company
@@ -679,7 +695,7 @@ export default function EnterpriseA2APOStatusLab() {
 
         {agentCardLoading && <p style={{ fontSize: "0.9rem", color: "var(--muted)" }}>Fetching the live Agent Card…</p>}
         {agentCardError && (
-          <p style={{ fontSize: "0.9rem", color: "#b91c1c" }}>
+          <p style={{ fontSize: "0.9rem", color: "var(--danger)" }}>
             Could not fetch the Agent Card: {agentCardError}
           </p>
         )}
@@ -845,8 +861,8 @@ function StatusRow({ label, ok, okLabel, badLabel }: { label: string; ok: boolea
           fontWeight: 600,
           padding: "2px 10px",
           borderRadius: 20,
-          background: ok ? "#dcfce7" : "#fef9c3",
-          color: ok ? "#15803d" : "#92400e",
+          background: ok ? "var(--success-bg)" : "var(--warning-bg)",
+          color: ok ? "var(--success)" : "var(--warning)",
         }}
       >
         {ok ? okLabel : badLabel}
@@ -952,7 +968,7 @@ function TracePanel({ turn, expanded, onToggle }: { turn: Turn; expanded: boolea
               <span
                 style={{
                   fontWeight: 600,
-                  color: e.status === "failed" ? "#b91c1c" : e.status === "completed" ? "#15803d" : "var(--accent)",
+                  color: e.status === "failed" ? "var(--danger)" : e.status === "completed" ? "var(--success)" : "var(--accent)",
                   minWidth: 90,
                 }}
               >
