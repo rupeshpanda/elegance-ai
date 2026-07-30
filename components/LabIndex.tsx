@@ -21,7 +21,7 @@ const LABS: Lab[] = [
     desc:
       "See how a buyer's procurement agent asks a supplier's fulfillment agent for the latest purchase order status through the A2A protocol, without accessing the supplier's ERP system. Two independently deployed Google ADK agents, a live Agent Card, and a real-time execution trace over a genuine cross-service A2A call.",
     tags: ["A2A", "Google ADK", "Gemini", "SAP", "Enterprise Architecture"],
-    status: "soon" as const,
+    status: "live" as const,
     meta: "Google ADK · Gemini · A2A Protocol · Cloud Run · SSE · Next.js",
   },
   {
