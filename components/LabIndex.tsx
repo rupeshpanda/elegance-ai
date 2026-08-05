@@ -14,7 +14,19 @@ type Lab = {
   meta: string;
 };
 
+const SAP_CHANGE_IMPACT_LAB_URL = process.env.NEXT_PUBLIC_SAP_CHANGE_IMPACT_LAB_URL;
+
 const LABS: Lab[] = [
+  {
+    slug: "sap-sales-change-impact-assessment",
+    href: SAP_CHANGE_IMPACT_LAB_URL,
+    title: "SAP Sales Change Impact Assessment",
+    desc:
+      "Turn a synthetic SAP S/4HANA Explore workshop's As-Is and To-Be sales-order discussion into an evidence-linked Change Impact Assessment. A bounded Qwen agent uses allowlisted MCP context, deterministic validation, and an explicit business-review boundary.",
+    tags: ["SAP S/4HANA", "Change Impact", "Qwen", "MCP", "Human Review"],
+    status: SAP_CHANGE_IMPACT_LAB_URL ? "live" as const : "soon" as const,
+    meta: "Qwen 3.7 · MCP · Structured Output · Next.js",
+  },
   {
     slug: "a2a-purchase-order-status",
     title: "Enterprise A2A: Purchase Order Status",
