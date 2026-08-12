@@ -18,6 +18,15 @@ const SAP_CHANGE_IMPACT_LAB_URL = process.env.NEXT_PUBLIC_SAP_CHANGE_IMPACT_LAB_
 
 const LABS: Lab[] = [
   {
+    slug: "hybrid-rag",
+    title: "Enterprise Hybrid RAG",
+    desc:
+      "See how an AI customer-service agent combines enterprise data, Vector RAG, ontology and Graph RAG to resolve complex distributor returns. A fictional battery company, structured transaction data, a small policy knowledge base, a lightweight knowledge graph, and deterministic refund rules — with a live evidence panel showing exactly what the agent retrieved and why.",
+    tags: ["RAG", "Knowledge Graph", "Ontology", "Claude", "Agentic RAG"],
+    status: "live" as const,
+    meta: "Claude · Structured Retrieval · Vector RAG · Graph RAG · Next.js",
+  },
+  {
     slug: "sap-sales-change-impact-assessment",
     href: SAP_CHANGE_IMPACT_LAB_URL,
     title: "SAP Sales Change Impact Assessment",
