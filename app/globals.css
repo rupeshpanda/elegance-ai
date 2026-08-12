@@ -188,19 +188,6 @@ textarea:focus-visible {
   }
 }
 
-/* Hybrid RAG Lab — 60/40 chat / evidence grid */
-.hybrid-rag-grid {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 20px;
-  align-items: start;
-}
-@media (max-width: 900px) {
-  .hybrid-rag-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* A2A PO Status Lab — responsive buyer/supplier interactive grid */
 .a2a-interactive-grid {
   display: grid;

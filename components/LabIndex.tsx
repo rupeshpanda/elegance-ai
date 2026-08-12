@@ -15,15 +15,17 @@ type Lab = {
 };
 
 const SAP_CHANGE_IMPACT_LAB_URL = process.env.NEXT_PUBLIC_SAP_CHANGE_IMPACT_LAB_URL;
+const HYBRID_RAG_LAB_URL = process.env.NEXT_PUBLIC_HYBRID_RAG_LAB_URL;
 
 const LABS: Lab[] = [
   {
     slug: "hybrid-rag",
+    href: HYBRID_RAG_LAB_URL,
     title: "Enterprise Hybrid RAG",
     desc:
-      "See how an AI customer-service agent combines enterprise data, Vector RAG, ontology and Graph RAG to resolve complex distributor returns. A fictional battery company, structured transaction data, a small policy knowledge base, a lightweight knowledge graph, and deterministic refund rules — with a live evidence panel showing exactly what the agent retrieved and why.",
+      "See how an AI customer-service agent combines enterprise data, Vector RAG, ontology and Graph RAG to resolve complex distributor returns. A fictional battery company, structured transaction data, a small policy knowledge base, a lightweight knowledge graph, and deterministic refund rules, with a live evidence panel showing exactly what the agent retrieved and why.",
     tags: ["RAG", "Knowledge Graph", "Ontology", "Claude", "Agentic RAG"],
-    status: "live" as const,
+    status: HYBRID_RAG_LAB_URL ? "live" as const : "soon" as const,
     meta: "Claude · Structured Retrieval · Vector RAG · Graph RAG · Next.js",
   },
   {
