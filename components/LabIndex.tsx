@@ -23,10 +23,10 @@ const LABS: Lab[] = [
     href: "https://good-tools-bad-tools.vercel.app/lab/good-tools-bad-tools",
     title: "Good Tools, Bad Tools",
     desc:
-      "The model never sees your code — only the sentence you wrote about it. Two agents get identical questions, identical Python functions, identical data, and the same model; only the tool descriptions differ. One tells an operations officer not to worry about a flight sitting under fog, and makes no errors doing it. A recorded 2×2 experiment separating what a tool's NAME contributes from what its DESCRIPTION contributes, with all 36 runs published — including the five scenarios that refused to break.",
+      "The model never sees your code. It sees the declaration you wrote about it. Two agents get identical questions, identical functions, identical data, and the same model. The only thing that differs is how their tools are described. Ask a question and watch their execution diverge live, then read the recorded experiment that separates what a tool's name contributes from what its description contributes, with all 36 runs published including the five scenarios that refused to break.",
     tags: ["Tool Calling", "Agents", "Claude", "Evaluation"],
     status: "live" as const,
-    meta: "Claude Sonnet 4.5 · Recorded Traces · 2×2 Ablation · Next.js",
+    meta: "Claude Sonnet 4.5 · Live Demo · Recorded Experiment · Next.js",
   },
   {
     slug: "hybrid-rag",
