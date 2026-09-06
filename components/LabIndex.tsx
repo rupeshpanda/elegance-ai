@@ -19,6 +19,16 @@ const HYBRID_RAG_LAB_URL = process.env.NEXT_PUBLIC_HYBRID_RAG_LAB_URL;
 
 const LABS: Lab[] = [
   {
+    slug: "it-helpdesk-copilot",
+    href: "https://it-helpdesk-copilot.vercel.app/lab/it-helpdesk-copilot",
+    title: "IT Helpdesk Copilot",
+    desc:
+      "A chat agent for a fictional USA-based SAP helpdesk, built to make three ideas visible while they happen rather than merely described. State a preference, start a new session, and watch a recalled fact drive a real tool argument. Every tool call crosses a hand-rolled Model Context Protocol boundary, initialize, tools/list, tools/call, with no MCP SDK, so the JSON-RPC exchange behind each answer is shown live rather than hidden behind a library.",
+    tags: ["Tool Calling", "Memory", "MCP", "Claude", "SAP"],
+    status: "live" as const,
+    meta: "Claude Sonnet 4.5 · Live Demo · Hand-Rolled MCP · Next.js",
+  },
+  {
     slug: "good-tools-bad-tools",
     href: "https://good-tools-bad-tools.vercel.app/lab/good-tools-bad-tools",
     title: "Good Tools, Bad Tools",
